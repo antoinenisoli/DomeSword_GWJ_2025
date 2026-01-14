@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 @export var bullet: PackedScene
 @export var reload_timer: Timer
@@ -23,4 +23,4 @@ func _process(_delta):
 		shoot()
 
 func _on_body_entered(_body: Node2D) -> void:
-	pass # Replace with function body.
+	print(_body)

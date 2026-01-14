@@ -2,12 +2,15 @@ extends CharacterBody2D
 
 @export var sprite: AnimatedSprite2D
 @export var hitColor: Color
+@export var min_distance: float = 50
 @export var _stats: Stats
-var direction = 1
+
+@onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready() -> void:
 	_stats.entity_death.connect(death)
 	await get_tree().process_frame
+	print(player)
 	print(_stats)
 
 func hit_flash() -> void:
@@ -25,5 +28,14 @@ func death() -> void:
 	queue_free()
 
 func _physics_process(_delta: float):
-	velocity.x = direction * _stats.move_speed
+	var dir = position.distance_to(player.position)
+	print(dir)
+	if dir > min_distance:
+		sprite.play("move")
+		var direction: Vector2 = (player.position - position).normalized()
+		velocity = direction * _stats.move_speed
+	else:
+		sprite.play("idle")
+		velocity = Vector2.ZERO
+		
 	move_and_slide()

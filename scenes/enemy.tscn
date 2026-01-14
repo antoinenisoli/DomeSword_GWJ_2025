@@ -9,7 +9,7 @@ resource_local_to_scene = true
 resource_name = "stats"
 script = ExtResource("2_4ra3w")
 max_hp = 10
-move_speed = 10.0
+move_speed = 150.0
 metadata/_custom_type_script = "uid://pmgwglta8bfr"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
@@ -200,6 +200,7 @@ radius = 19.0
 script = ExtResource("1_md0e3")
 sprite = NodePath("AnimatedSprite2D")
 hitColor = Color(4.6165767, 0, 0, 1)
+min_distance = 250.0
 _stats = SubResource("Resource_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

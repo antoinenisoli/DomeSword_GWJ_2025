@@ -6,6 +6,7 @@ signal entity_death
 @export var max_hp: int = 100
 @export var attack: int = 1
 @export var shoot_rate: float = 5
+@export var move_speed: float = 5
 var current_hp: int = 0: set = _on_hp_set
 
 func _on_hp_set(new_value: int) -> void:

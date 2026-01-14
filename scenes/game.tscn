@@ -28,5 +28,5 @@ texture = SubResource("GradientTexture2D_yqjtg")
 position = Vector2(0, -216)
 
 [node name="enemy" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-320.00003, -96.00001)
+position = Vector2(0, -384)
 scale = Vector2(2.03, 2.03)

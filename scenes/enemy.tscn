@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://pmgwglta8bfr" path="res://scripts/Stats.gd" id="2_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/enemies/spritesheet.png" id="3_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/enemies/frog.png" id="3_4ra3w"]
 
 [sub_resource type="Resource" id="Resource_5uy6h"]
 resource_local_to_scene = true
 resource_name = "stats"
 script = ExtResource("2_4ra3w")
-max_hp = 45
+max_hp = 10
+move_speed = 10.0
 metadata/_custom_type_script = "uid://pmgwglta8bfr"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
@@ -193,21 +194,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
-radius = 24.0
+radius = 19.0
 
-[node name="Frog" type="Node2D"]
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Enemies"]]
 script = ExtResource("1_md0e3")
+sprite = NodePath("AnimatedSprite2D")
+hitColor = Color(4.6165767, 0, 0, 1)
 _stats = SubResource("Resource_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.52718365
+frame_progress = 0.13401365
 
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ra3w")
-
-[connection signal="body_entered" from="Hitbox" to="." method="_on_body_entered"]

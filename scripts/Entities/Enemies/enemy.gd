@@ -29,7 +29,8 @@ func death() -> void:
 
 func _physics_process(_delta: float):
 	var dir = position.distance_to(player.position)
-	print(dir)
+	#print(dir)
+
 	if dir > min_distance:
 		sprite.play("move")
 		var direction: Vector2 = (player.position - position).normalized()

@@ -7,28 +7,33 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 96.332756
 
-[node name="player" type="StaticBody2D" node_paths=PackedStringArray("reload_timer", "aim", "shootPos") groups=["Player"]]
+[node name="player" type="StaticBody2D" node_paths=PackedStringArray("reload_timer", "shootPos") groups=["Player"]]
 script = ExtResource("1_g2els")
 bullet = ExtResource("2_qhqgy")
 reload_timer = NodePath("reload")
-aim = NodePath("Sprite2D/RayCast2D")
-shootPos = NodePath("shootPos")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 500
-position = Vector2(0, -100)
-texture = ExtResource("1_3vyb7")
-
-[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
-target_position = Vector2(0, -113.27)
+shootPos = NodePath("turret/shootPos")
+rotate_speed = 1.0
 
 [node name="reload" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
-[node name="shootPos" type="Node2D" parent="."]
-position = Vector2(0, -128)
-rotation = -1.5707964
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g2els")
+
+[node name="turret" type="Sprite2D" parent="."]
+z_index = 500
+position = Vector2(0, -91)
+scale = Vector2(1.7254901, 1.7254902)
+texture = ExtResource("1_3vyb7")
+
+[node name="shadow" type="Sprite2D" parent="turret"]
+modulate = Color(0, 0, 0, 0.5372549)
+z_index = -100
+position = Vector2(0, 5)
+texture = ExtResource("1_3vyb7")
+
+[node name="shootPos" type="Node2D" parent="turret"]
+position = Vector2(0, -21.44318)
+rotation = -1.5707964
+scale = Vector2(0.57954544, 0.5795455)

@@ -27,8 +27,10 @@ metadata/_custom_type_script = "uid://pmgwglta8bfr"
 [node name="Game" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
+rotate_speed = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 7.6293945e-06)
 scale = Vector2(1.1842877, 0.8125)
 texture = SubResource("GradientTexture2D_yqjtg")

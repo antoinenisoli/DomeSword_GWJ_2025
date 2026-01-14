@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Entity
 
 @export var bullet: PackedScene
 @export var reload_timer: Timer
@@ -39,6 +39,3 @@ func _process(_delta):
 	rotate_turret(_delta)
 	if Input.is_action_pressed("fire"):
 		shoot()
-
-func _on_body_entered(_body: Node2D) -> void:
-	print(_body)

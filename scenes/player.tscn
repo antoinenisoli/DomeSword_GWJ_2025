@@ -1,18 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://3kingdh3j0ce"]
+[gd_scene load_steps=9 format=3 uid="uid://3kingdh3j0ce"]
 
 [ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cuxwuk3wycde6" path="res://scripts/Entities/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://dj81kfmjv00jg" path="res://scenes/bullet.tscn" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_dqkch"]
+
+[sub_resource type="Resource" id="Resource_dqkch"]
+resource_local_to_scene = true
+script = ExtResource("3_dqkch")
+metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 68.0
 
-[node name="player" type="StaticBody2D" node_paths=PackedStringArray("reload_timer", "shootPos") groups=["Player"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 63, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("reload_timer", "shootPos", "sprite") groups=["Player"]]
 script = ExtResource("1_g2els")
 bullet = ExtResource("2_qhqgy")
 reload_timer = NodePath("reload")
-shootPos = NodePath("turret/shootPos")
+shootPos = NodePath("AnimatedSprite2D/shootPos")
 rotate_speed = 1.0
+sprite = NodePath("AnimatedSprite2D")
+_health = SubResource("Resource_dqkch")
 
 [node name="reload" type="Timer" parent="."]
 wait_time = 0.25
@@ -21,19 +44,19 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g2els")
 
-[node name="turret" type="Sprite2D" parent="."]
-z_index = 500
-position = Vector2(-1, -8)
-scale = Vector2(2.7424064, 2.7424068)
-texture = ExtResource("1_3vyb7")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.1587303, 2.1960785)
+sprite_frames = SubResource("SpriteFrames_fjrip")
+frame_progress = 0.28467357
 
-[node name="shadow" type="Sprite2D" parent="turret"]
+[node name="shadow" type="Sprite2D" parent="AnimatedSprite2D"]
 modulate = Color(0, 0, 0, 0.5372549)
 z_index = -100
-position = Vector2(0, 5)
+position = Vector2(-4.4703484e-08, 1.8214284)
+scale = Vector2(1.0445462, 1.0705532)
 texture = ExtResource("1_3vyb7")
 
-[node name="shootPos" type="Node2D" parent="turret"]
-position = Vector2(0, -21.44318)
+[node name="shootPos" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(-0.46323526, -30.420551)
 rotation = -1.5707964
-scale = Vector2(0.57954544, 0.5795455)
+scale = Vector2(0.72372156, 0.7362426)

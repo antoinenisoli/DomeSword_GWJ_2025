@@ -18,7 +18,7 @@ func hit_flash() -> void:
 	await get_tree().create_timer(0.1).timeout
 	sprite.self_modulate = Color.WHITE # reset to default
 
-func takeBullet() -> void:
+func takeDmg() -> void:
 	_stats.current_hp -= 1
 	print(_stats.current_hp)
 	hit_flash()

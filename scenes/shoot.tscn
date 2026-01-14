@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdxn5allwtq1u"]
+
+[ext_resource type="Script" uid="uid://dat13l583ynny" path="res://scripts/shooting.gd" id="1_nsl4x"]
+[ext_resource type="PackedScene" uid="uid://dj81kfmjv00jg" path="res://scenes/bullets/bullet1.tscn" id="2_v046p"]
+
+[node name="shoot" type="Node2D" node_paths=PackedStringArray("reload_timer", "shootPos")]
+script = ExtResource("1_nsl4x")
+bullet = ExtResource("2_v046p")
+reload_timer = NodePath("reload")
+shootPos = NodePath(".")
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true

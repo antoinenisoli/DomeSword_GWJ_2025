@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2rl7rcfgc1gi"]
+
+[ext_resource type="Script" uid="uid://cspl7fwiehio3" path="res://scripts/spawner.gd" id="1_2vbf6"]
+[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="2_ik2nu"]
+
+[node name="Spawner" type="Node2D" node_paths=PackedStringArray("cooldown")]
+script = ExtResource("1_2vbf6")
+cooldown_range = Vector2(1, 3)
+spawn_range = Vector2(0, 10)
+enemy = ExtResource("2_ik2nu")
+cooldown = NodePath("cooldown")
+
+[node name="cooldown" type="Timer" parent="."]
+
+[connection signal="child_entered_tree" from="cooldown" to="." method="_on_cooldown_child_entered_tree"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

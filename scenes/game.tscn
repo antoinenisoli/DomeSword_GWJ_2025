@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=8 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="PackedScene" uid="uid://3kingdh3j0ce" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Stats.gd" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/healthbar.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 
 [sub_resource type="Resource" id="Resource_lnu2h"]
 resource_local_to_scene = true
@@ -23,18 +22,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="Resource" id="Resource_iywne"]
-resource_local_to_scene = true
-resource_name = "stats"
-script = ExtResource("3_lbhrr")
-metadata/_custom_type_script = "uid://pmgwglta8bfr"
-
-[sub_resource type="Resource" id="Resource_lbhrr"]
-resource_local_to_scene = true
-script = ExtResource("2_yqjtg")
-max_hp = 10
-metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
-
 [node name="Game" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
@@ -49,11 +36,6 @@ texture = SubResource("GradientTexture2D_yqjtg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -248)
-
-[node name="Frog" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-624, -624)
-_stats = SubResource("Resource_iywne")
-_health = SubResource("Resource_lbhrr")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -77,7 +59,20 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="EnemySpawner1" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(632, -768)
+cooldown_range = Vector2(3, 6)
+spawn_range = 400.0
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(-672, -768)
+cooldown_range = Vector2(3, 6)
+spawn_range = 400.0
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(0, -768)
+cooldown_range = Vector2(3, 6)
+spawn_range = 400.0
+
 [editable path="player"]
 [editable path="player/shoot"]
-[editable path="Frog"]
-[editable path="Frog/shoot"]

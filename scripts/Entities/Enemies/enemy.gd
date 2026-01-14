@@ -8,6 +8,10 @@ func reset() -> void:
 	sprite.play("idle")
 	velocity = Vector2.ZERO
 
+func shoot():
+	_shooting.look_at(player.position)
+	_shooting.shoot()
+
 func _physics_process(_delta: float):
 	if !player:
 		reset()
@@ -24,6 +28,5 @@ func _physics_process(_delta: float):
 		reset()
 		shoot()
 	
-func shoot():
-	_shooting.look_at(player.position)
-	_shooting.shoot()
+func _process(_delta):
+	sprite.flip_h = player.position.x < position.x

@@ -23,4 +23,4 @@ func _init() -> void:
 
 func setup_stats() -> void:
     current_hp = max_hp
-    print(current_hp)
+    #print(current_hp)

@@ -1,16 +1,21 @@
-[gd_scene load_steps=31 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=33 format=3 uid="uid://byxfdf0x8un4k"]
 
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Stats.gd" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/enemies/frog.png" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_5uy6h"]
 
 [sub_resource type="Resource" id="Resource_5uy6h"]
 resource_local_to_scene = true
 resource_name = "stats"
 script = ExtResource("2_4ra3w")
-max_hp = 10
-move_speed = 150.0
 metadata/_custom_type_script = "uid://pmgwglta8bfr"
+
+[sub_resource type="Resource" id="Resource_c4w8v"]
+resource_local_to_scene = true
+script = ExtResource("3_5uy6h")
+max_hp = 10
+metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("3_4ra3w")
@@ -199,10 +204,10 @@ radius = 16.0
 [node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Enemies"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_md0e3")
+_stats = SubResource("Resource_5uy6h")
+_health = SubResource("Resource_c4w8v")
 sprite = NodePath("AnimatedSprite2D")
 hitColor = Color(4.6165767, 0, 0, 1)
-min_distance = 250.0
-_stats = SubResource("Resource_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_md0e3")

@@ -51,7 +51,7 @@ texture = SubResource("GradientTexture2D_yqjtg")
 position = Vector2(0, -248)
 
 [node name="Frog" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-488, -480)
+position = Vector2(-624, -624)
 _stats = SubResource("Resource_iywne")
 _health = SubResource("Resource_lbhrr")
 

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dj81kfmjv00jg" path="res://scenes/bullet.tscn" id="2_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 96.332756
+radius = 68.0
 
 [node name="player" type="StaticBody2D" node_paths=PackedStringArray("reload_timer", "shootPos") groups=["Player"]]
 script = ExtResource("1_g2els")
@@ -23,8 +23,8 @@ shape = SubResource("CircleShape2D_g2els")
 
 [node name="turret" type="Sprite2D" parent="."]
 z_index = 500
-position = Vector2(0, -91)
-scale = Vector2(1.7254901, 1.7254902)
+position = Vector2(-1, -8)
+scale = Vector2(2.7424064, 2.7424068)
 texture = ExtResource("1_3vyb7")
 
 [node name="shadow" type="Sprite2D" parent="turret"]

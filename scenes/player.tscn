@@ -31,11 +31,11 @@ animations = [{
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Player"]]
 script = ExtResource("1_g2els")
+_shooting = NodePath("shoot")
 rotate_speed = 1.0
 _health = SubResource("Resource_dqkch")
-hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
-_shooting = NodePath("shoot")
 sprite = NodePath("AnimatedSprite2D")
+hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g2els")
@@ -56,7 +56,6 @@ texture = ExtResource("1_3vyb7")
 position = Vector2(0, -60)
 rotation = -1.5707964
 bullet = ExtResource("6_fjrip")
-_team = null
 shoot_rate = 0.25
 
 [node name="reload" parent="shoot" index="0"]

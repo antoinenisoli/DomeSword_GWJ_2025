@@ -1,6 +1,7 @@
 extends Area2D
 
 var right = Vector2.RIGHT
+@export var dmg: int = 1
 @export var speed: float = 15
 
 func _physics_process(delta):
@@ -13,7 +14,7 @@ func destroy() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	print(body)
-	body.takeDmg()
+	body.takeDmg(dmg)
 	destroy()
 
 func _on_screen_exited() -> void:

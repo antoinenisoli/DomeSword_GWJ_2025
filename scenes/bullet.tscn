@@ -42,7 +42,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkf8s"]
 radius = 13.038404
 
-[node name="bullet" type="Area2D"]
+[node name="bullet1" type="Area2D"]
 script = ExtResource("1_y25gk")
 speed = 500.0
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=10 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="PackedScene" uid="uid://3kingdh3j0ce" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Stats.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 
 [sub_resource type="Resource" id="Resource_lnu2h"]
@@ -20,6 +21,12 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_iywne"]
+resource_local_to_scene = true
+resource_name = "stats"
+script = ExtResource("3_lbhrr")
+metadata/_custom_type_script = "uid://pmgwglta8bfr"
 
 [sub_resource type="Resource" id="Resource_lbhrr"]
 resource_local_to_scene = true
@@ -43,5 +50,6 @@ texture = SubResource("GradientTexture2D_yqjtg")
 position = Vector2(0, -248)
 
 [node name="Frog" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-488, -496)
+position = Vector2(-488, -480)
+_stats = SubResource("Resource_iywne")
 _health = SubResource("Resource_lbhrr")

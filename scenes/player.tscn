@@ -11,7 +11,7 @@ script = ExtResource("3_dqkch")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 68.0
+radius = 50.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -34,8 +34,9 @@ bullet = ExtResource("2_qhqgy")
 reload_timer = NodePath("reload")
 shootPos = NodePath("AnimatedSprite2D/shootPos")
 rotate_speed = 1.0
-sprite = NodePath("AnimatedSprite2D")
 _health = SubResource("Resource_dqkch")
+sprite = NodePath("AnimatedSprite2D")
+hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
 
 [node name="reload" type="Timer" parent="."]
 wait_time = 0.25

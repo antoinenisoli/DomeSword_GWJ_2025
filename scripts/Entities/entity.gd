@@ -14,8 +14,8 @@ func hit_flash() -> void:
 	await get_tree().create_timer(0.1).timeout
 	sprite.self_modulate = Color.WHITE # reset to default
 
-func takeDmg() -> void:
-	_health.current_hp -= 1
+func takeDmg(dmg: int) -> void:
+	_health.current_hp -= dmg
 	hit_flash()
 
 func death() -> void:

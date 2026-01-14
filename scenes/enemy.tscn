@@ -1,9 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=35 format=3 uid="uid://byxfdf0x8un4k"]
 
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Stats.gd" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/enemies/frog.png" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_5uy6h"]
+[ext_resource type="Script" uid="uid://dat13l583ynny" path="res://scripts/shooting.gd" id="5_xwavj"]
+[ext_resource type="PackedScene" uid="uid://dj81kfmjv00jg" path="res://scenes/bullet.tscn" id="6_nenq2"]
 
 [sub_resource type="Resource" id="Resource_5uy6h"]
 resource_local_to_scene = true
@@ -201,9 +203,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 radius = 16.0
 
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Enemies"]]
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Enemies"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_md0e3")
+_shooting = NodePath("shoot")
 _stats = SubResource("Resource_5uy6h")
 _health = SubResource("Resource_c4w8v")
 sprite = NodePath("AnimatedSprite2D")
@@ -217,3 +220,13 @@ frame_progress = 0.13401365
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ra3w")
+
+[node name="shoot" type="Node2D" parent="." node_paths=PackedStringArray("reload_timer", "shootPos")]
+position = Vector2(14.5, 12)
+script = ExtResource("5_xwavj")
+bullet = ExtResource("6_nenq2")
+reload_timer = NodePath("reload")
+shootPos = NodePath(".")
+
+[node name="reload" type="Timer" parent="shoot"]
+one_shot = true

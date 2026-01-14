@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=9 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="PackedScene" uid="uid://3kingdh3j0ce" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/healthbar.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 
 [sub_resource type="Resource" id="Resource_lnu2h"]
@@ -37,42 +38,33 @@ texture = SubResource("GradientTexture2D_yqjtg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -248)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -576.0
-offset_top = -568.0
-offset_right = 576.0
-offset_bottom = 80.0
-
-[node name="Healthbar" parent="Control" instance=ExtResource("5_iywne")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -512.0
-offset_top = -10.0
-offset_right = 512.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
-
 [node name="EnemySpawner1" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(632, -768)
-cooldown_range = Vector2(3, 6)
 spawn_range = 400.0
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(-672, -768)
-cooldown_range = Vector2(3, 6)
 spawn_range = 400.0
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(0, -768)
-cooldown_range = Vector2(3, 6)
 spawn_range = 400.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("5_iywne")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_right = 0.0
+offset_bottom = -0.8200073
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("canvas") instance=ExtResource("5_p57ef")]
+canvas = NodePath("../CanvasLayer")
 
 [editable path="player"]
 [editable path="player/shoot"]

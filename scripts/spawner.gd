@@ -6,6 +6,7 @@ extends Node2D
 @export var cooldown: Timer
 
 func _ready():
+    cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
     cooldown.start()
 
 func _on_cooldown_timeout() -> void:

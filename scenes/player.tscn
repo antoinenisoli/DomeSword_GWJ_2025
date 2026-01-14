@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3kingdh3j0ce"]
+[gd_scene load_steps=12 format=3 uid="uid://3kingdh3j0ce"]
 
 [ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cuxwuk3wycde6" path="res://scripts/Entities/player.gd" id="1_g2els"]
@@ -28,6 +28,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_qlg0r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tuyoq"]
+gradient = SubResource("Gradient_qlg0r")
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Player"]]
 script = ExtResource("1_g2els")
@@ -60,5 +66,15 @@ shoot_rate = 0.25
 
 [node name="reload" parent="shoot" index="0"]
 wait_time = 0.25
+
+[node name="sword" type="Node2D" parent="."]
+scale = Vector2(0.3125, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="sword"]
+modulate = Color(1, 1, 1, 0.31764707)
+z_index = -1
+position = Vector2(-7.629394e-07, -0.99999994)
+scale = Vector2(0.99999994, 0.99999994)
+texture = SubResource("GradientTexture1D_tuyoq")
 
 [editable path="shoot"]

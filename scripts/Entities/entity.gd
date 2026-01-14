@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Entity
 
 signal damage_taken
+
 @export var _health: Health
 @export var sprite: AnimatedSprite2D
 @export var hitColor: Color
@@ -24,4 +25,5 @@ func takeDmg(dmg: int) -> void:
 	hit_flash()
 
 func death() -> void:
+	await get_tree().process_frame
 	queue_free()

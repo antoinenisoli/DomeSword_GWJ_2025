@@ -10,6 +10,7 @@
 resource_local_to_scene = true
 resource_name = "stats"
 script = ExtResource("2_4ra3w")
+move_speed = 100.0
 metadata/_custom_type_script = "uid://pmgwglta8bfr"
 
 [sub_resource type="Resource" id="Resource_c4w8v"]
@@ -205,11 +206,11 @@ radius = 16.0
 [node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Enemies"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_md0e3")
+_shooting = NodePath("shoot")
 _stats = SubResource("Resource_5uy6h")
 _health = SubResource("Resource_c4w8v")
-hitColor = Color(4.6165767, 0, 0, 1)
-_shooting = NodePath("shoot")
 sprite = NodePath("AnimatedSprite2D")
+hitColor = Color(4.6165767, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_md0e3")

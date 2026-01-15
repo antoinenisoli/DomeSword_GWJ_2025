@@ -2,29 +2,44 @@ extends Entity
 
 @export var _shooting: Shooting
 @export var _stats: Stats
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
+@export var target: Node2D
+var player: Player
+var _target: Node2D: get = get_target
+
+func _ready():
+    super ()
+    var group = get_tree().get_nodes_in_group("Player")
+    print(group.is_empty())
+    if !group.is_empty():
+        player = get_tree().get_nodes_in_group("Player")[0]
+
+func get_target() -> Node2D:
+    if player:
+        return player
+    else:
+        return target
 
 func reset() -> void:
     sprite.play("idle")
     velocity = Vector2.ZERO
 
 func shoot():
-    if !player:
+    if !_target:
         return
         
-    _shooting.look_at(player.position)
+    _shooting.look_at(_target.position)
     _shooting.shoot()
 
 func _physics_process(_delta: float):
-    if !player:
+    if !_target:
         reset()
         return
 
-    var dir = position.distance_to(player.position)
+    var dir = position.distance_to(_target.position)
     #print(dir)
     if dir > _stats.min_distance:
         sprite.play("move")
-        var direction: Vector2 = (player.position - position).normalized()
+        var direction: Vector2 = (_target.position - position).normalized()
         velocity = direction * _stats.move_speed
         move_and_slide()
     else:
@@ -32,7 +47,7 @@ func _physics_process(_delta: float):
         shoot()
     
 func _process(_delta):
-    if !player:
+    if !_target:
         return
 
-    sprite.flip_h = player.position.x < position.x
+    sprite.flip_h = _target.position.x < position.x

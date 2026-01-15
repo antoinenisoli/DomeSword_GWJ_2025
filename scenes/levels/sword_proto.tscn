@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=11 format=3 uid="uid://ubw14t1aqsrk"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/sword.gd" id="1_3cbej"]
+[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="2_38len"]
+[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Stats.gd" id="3_y0mr8"]
+[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_232hh"]
 
 [sub_resource type="Gradient" id="Gradient_qlg0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -15,17 +18,33 @@ size = Vector2(9.227221, 26.149487)
 [sub_resource type="LabelSettings" id="LabelSettings_3cbej"]
 font_size = 41
 
+[sub_resource type="Resource" id="Resource_okoxa"]
+resource_local_to_scene = true
+resource_name = "stats"
+script = ExtResource("3_y0mr8")
+move_speed = 100.0
+metadata/_custom_type_script = "uid://pmgwglta8bfr"
+
+[sub_resource type="Resource" id="Resource_fhl1k"]
+resource_local_to_scene = true
+script = ExtResource("4_232hh")
+max_hp = 10
+metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
+
 [node name="SwordProto" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -248)
 
-[node name="sword" type="Area2D" parent="." node_paths=PackedStringArray("txt")]
+[node name="sword" type="Area2D" parent="." node_paths=PackedStringArray("txt", "timer")]
+scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_3cbej")
-multiplier = 10
-max_value = 200
+power = 100.0
+min_value = 2.0
+max_value = 999999999.0
 speed = 5.0
 txt = NodePath("../Label")
+timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="sword"]
 modulate = Color(1, 1, 1, 0.31764707)
@@ -41,14 +60,30 @@ scale = Vector2(8.67, 22.945)
 shape = SubResource("RectangleShape2D_0ph48")
 
 [node name="Timer" type="Timer" parent="sword"]
+wait_time = 0.6
 one_shot = true
+ignore_time_scale = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -55.0
-offset_top = -1.0
+offset_top = -68.0
 offset_right = 56.0
-offset_bottom = 76.0
+offset_bottom = 9.0
 text = "180"
 label_settings = SubResource("LabelSettings_3cbej")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = -559.0
+offset_top = 29.0
+offset_right = 551.0
+offset_bottom = 73.0
+
+[node name="Frog" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
+position = Vector2(-422, -373)
+_stats = SubResource("Resource_okoxa")
+target = NodePath("../sword")
+_health = SubResource("Resource_fhl1k")
+
+[connection signal="body_entered" from="sword" to="sword" method="_on_body_entered"]

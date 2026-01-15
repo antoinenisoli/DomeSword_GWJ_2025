@@ -1,4 +1,5 @@
 extends Entity
+class_name Player
 
 @export var _shooting: Shooting
 @export var rotate_speed: float = 150

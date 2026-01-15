@@ -1,45 +1,35 @@
 extends Area2D
 
-@export var multiplier: int = 1
-@export var max_value: int = 100
+@export var power: float = 1
+@export var min_value: float = 1
+@export var max_value: float = 100
 @export var rot_limit: float = 70
 @export var speed: float = 70
+
 @export var txt: Label
-var force: int
-var target_force: int
-var released: bool
-var base_rot
+@export var timer: Timer
+
+var force: float
+var velocity: float
 
 func start_slash() -> void:
     print("start")
-    target_force = force
-    base_rot = rotation_degrees
-    released = true
-
-    await get_tree().create_timer(1.5).timeout
-    reset()
-
-func reset() -> void:
-    print("done")
+    velocity = force
     force = 0
-    released = false
 
 func slash(delta) -> void:
-    if !released:
-        return
-    
-    rotation_degrees = lerp(rotation_degrees, base_rot + target_force, speed * delta)
+    velocity = lerpf(velocity, 0, speed * delta)
+    rotation_degrees += velocity * delta
     if rotation_degrees > rot_limit || rotation_degrees < -rot_limit:
-        target_force = - target_force
+        velocity = - velocity
+
+    rotation_degrees = clampf(rotation_degrees, -rot_limit, rot_limit)
 
 func move_sword() -> void:
-    if released:
-        return
-
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
-        var axis: int = Input.get_axis("move_left", "move_right") as int
-        force += axis * multiplier
-        force = clampi(force, -max_value, max_value)
+        var axis: float = Input.get_axis("move_left", "move_right")
+        force += axis * power
+        force = clampf(force, -max_value, max_value)
         print(force)
     pass
 
@@ -50,3 +40,22 @@ func _process(delta: float):
     move_sword()
     slash(delta)
     txt.text = str(roundf(rotation_degrees))
+
+func check_velocity() -> bool:
+    return absf(velocity) >= min_value
+
+func get_damage() -> int:
+    return absi(roundi(velocity))
+
+func slow_motion() -> void:
+    timer.start()
+    Engine.time_scale = 0.1
+    await timer.timeout
+    Engine.time_scale = 1
+
+func _on_body_entered(body: Node2D) -> void:
+    if body.is_in_group("Enemies"):
+        print(str(velocity) + " hit:" + str(body))
+        if check_velocity():
+            slow_motion()
+            body.takeDmg(get_damage())

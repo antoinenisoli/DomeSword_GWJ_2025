@@ -11,7 +11,6 @@ signal on_enemy_hit
 @export var cam: Camera2D
 @export var slider: HSlider
 @export var curve: Curve
-var camera = get_viewport().get_camera_2d()
 
 var force: float
 var velocity: float
@@ -61,6 +60,6 @@ func _on_body_entered(body: Node2D) -> void:
         var dmg = compute_damage()
         if dmg > 0:
             on_enemy_hit.emit(body)
-            camera.shake()
+            cam.shake()
             TimeManager.slow_motion(slowMo)
             body.takeDmg(dmg)

@@ -5,7 +5,7 @@
 
 [node name="Spawner" type="Node2D" node_paths=PackedStringArray("cooldown")]
 script = ExtResource("1_2vbf6")
-cooldown_range = Vector2(5, 15)
+cooldown_range = Vector2(2, 10)
 enemy = ExtResource("2_ik2nu")
 cooldown = NodePath("cooldown")
 

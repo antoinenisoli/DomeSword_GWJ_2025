@@ -10,14 +10,15 @@ signal on_enemy_hit
 @export var txt: Label
 @export var cam: Camera2D
 @export var slider: HSlider
-@export var curve: Curve
+@export var force_curve: Curve
+@export var deceleration_curve: Curve
 
 var force: float
 var velocity: float
 
 func _ready():
-    slider.min_value = - curve.max_domain
-    slider.max_value = curve.max_domain
+    slider.min_value = - force_curve.max_domain
+    slider.max_value = force_curve.max_domain
 
 func start_slash() -> void:
     print("slash!!")
@@ -36,7 +37,7 @@ func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
         var axis: float = Input.get_axis("move_left", "move_right")
         force += axis * power
-        force = clampf(force, -curve.max_domain, curve.max_domain)
+        force = clampf(force, -force_curve.max_domain, force_curve.max_domain)
         print("force: " + str(force))
     pass
 
@@ -44,7 +45,7 @@ func move_sword() -> void:
         start_slash()
 
 func compute_damage() -> int:
-    var dmg = curve.sample(absf(velocity))
+    var dmg = force_curve.sample(absf(velocity))
     return roundi(dmg)
 
 func _process(delta: float):

@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdb2g7iw4tamu"]
+[gd_scene load_steps=7 format=3 uid="uid://cdb2g7iw4tamu"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/turret_sword.gd" id="1_o616w"]
+[ext_resource type="Curve" uid="uid://bhy33dv46yc6t" path="res://resources/sword_force_curve.tres" id="2_3pnln"]
 
-[sub_resource type="Curve" id="Curve_38len"]
-_limits = [0.0, 10.0, 0.0, 2000.0]
-_data = [Vector2(150, 0), 0.0, 0.0, 0, 0, Vector2(150, 1), 0.0, 0.0048648645, 0, 1, Vector2(2000, 10), 0.0048648645, 0.0, 1, 0]
-point_count = 3
-metadata/_snap_enabled = true
+[sub_resource type="Curve" id="Curve_3pnln"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_qlg0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -22,7 +21,8 @@ size = Vector2(9.227221, 26.149487)
 scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_o616w")
 rot_limit = 85.0
-curve = SubResource("Curve_38len")
+force_curve = ExtResource("2_3pnln")
+deceleration_curve = SubResource("Curve_3pnln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.31764707)

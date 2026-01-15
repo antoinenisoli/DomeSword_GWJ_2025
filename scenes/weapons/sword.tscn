@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdb2g7iw4tamu"]
+[gd_scene load_steps=6 format=3 uid="uid://cdb2g7iw4tamu"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/turret_sword.gd" id="1_o616w"]
 [ext_resource type="Curve" uid="uid://bhy33dv46yc6t" path="res://resources/sword_force_curve.tres" id="2_3pnln"]
-
-[sub_resource type="Curve" id="Curve_3pnln"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_qlg0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -17,12 +13,12 @@ width = 10
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
 size = Vector2(9.227221, 26.149487)
 
-[node name="sword" type="Area2D"]
+[node name="sword" type="Area2D" node_paths=PackedStringArray("timer")]
 scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_o616w")
 rot_limit = 85.0
+timer = NodePath("Timer")
 force_curve = ExtResource("2_3pnln")
-deceleration_curve = SubResource("Curve_3pnln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.31764707)
@@ -38,7 +34,7 @@ scale = Vector2(8.67, 22.945)
 shape = SubResource("RectangleShape2D_0ph48")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 2.0
 one_shot = true
 ignore_time_scale = true
 

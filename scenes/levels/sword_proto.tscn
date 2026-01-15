@@ -1,10 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=16 format=3 uid="uid://ubw14t1aqsrk"]
 
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="1_y0mr8"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="2_38len"]
 [ext_resource type="PackedScene" uid="uid://cdb2g7iw4tamu" path="res://scenes/weapons/sword.tscn" id="2_y0mr8"]
 [ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="3_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_232hh"]
+[ext_resource type="Script" uid="uid://cqqj71kmg0ke6" path="res://scripts/ease_test.gd" id="6_232hh"]
+
+[sub_resource type="Curve" id="Curve_232hh"]
+_data = [Vector2(0, 0), 0.0, -5.097836, 0, 0, Vector2(0.5, 1), -5.425904, -5.425904, 0, 0, Vector2(0.8, 0.1), -1.2075583, -1.2075583, 0, 0, Vector2(1, 0), -0.35753322, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_y0mr8"]
+resource_local_to_scene = true
+_limits = [0.0, 10.0, 0.0, 2000.0]
+_data = [Vector2(150, 0), 0.0, 0.0, 0, 0, Vector2(150, 1), 0.0, 0.0048648645, 0, 1, Vector2(2000, 10), 0.0048648645, 0.0, 1, 0]
+point_count = 3
+metadata/_snap_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cbej"]
 font_size = 41
@@ -48,9 +61,12 @@ position = Vector2(0, -248)
 
 [node name="sword" parent="." node_paths=PackedStringArray("txt", "cam", "slider") instance=ExtResource("2_y0mr8")]
 position = Vector2(-0.99999994, 0)
+power = 1.0
+deceleration_curve = SubResource("Curve_232hh")
 txt = NodePath("../Label")
 cam = NodePath("../Camera2D")
 slider = NodePath("../HSlider")
+force_curve = SubResource("Curve_y0mr8")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -55.0
@@ -82,3 +98,13 @@ position = Vector2(376, -373)
 _stats = SubResource("Resource_232hh")
 target = NodePath("../sword")
 _health = SubResource("Resource_h05mg")
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
+process_mode = 4
+position = Vector2(-304, -56)
+script = ExtResource("6_232hh")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Node2D"]
+wait_time = 2.0
+one_shot = true

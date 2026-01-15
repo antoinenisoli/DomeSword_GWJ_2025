@@ -10,7 +10,7 @@ var _target: Node2D: get = get_target
 func _ready():
     super ()
     var group = get_tree().get_nodes_in_group("Player")
-    print(group.is_empty())
+    #print(group.is_empty())
     if !group.is_empty():
         player = get_tree().get_nodes_in_group("Player")[0]
 

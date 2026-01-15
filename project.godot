@@ -15,6 +15,10 @@ run/main_scene="uid://pmrhth1mkfnr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TimeManager="*res://scenes/time_manager.tscn"
+
 [input]
 
 fire={

@@ -7,7 +7,6 @@ extends Area2D
 
 @export var txt: Label
 @export var slider: HSlider
-@export var timer: Timer
 @export var curve: Curve
 
 var force: float
@@ -45,12 +44,6 @@ func compute_damage() -> int:
     var dmg = curve.sample(absf(velocity))
     return roundi(dmg)
 
-func slow_motion() -> void:
-    timer.start()
-    Engine.time_scale = slowMo
-    await timer.timeout
-    Engine.time_scale = 1
-
 func _process(delta: float):
     move_sword()
     slash(delta)
@@ -63,5 +56,5 @@ func _on_body_entered(body: Node2D) -> void:
         print(str(velocity) + " hit:" + str(body))
         var dmg = compute_damage()
         if dmg > 0:
-            slow_motion()
+            TimeManager.slow_motion(slowMo)
             body.takeDmg(dmg)

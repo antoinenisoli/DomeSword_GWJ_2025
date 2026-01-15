@@ -11,8 +11,8 @@ func _ready():
 func game_over() -> void:
     var screen = gameover_screen.instantiate()
     canvas.add_child(screen)
-    Engine.time_scale = 0.1
+    TimeManager.set_time(0.1)
 
     await get_tree().create_timer(2, true, true, true).timeout
-    Engine.time_scale = 1
+    TimeManager.reset_time()
     get_tree().reload_current_scene()

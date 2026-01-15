@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyuoihel21y2r"]
+
+[ext_resource type="Script" uid="uid://dy6m2nnj185ec" path="res://scripts/time_manager.gd" id="1_ebsuv"]
+
+[node name="TimeManager" type="Node2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_ebsuv")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+ignore_time_scale = true

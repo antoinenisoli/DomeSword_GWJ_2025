@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://3kingdh3j0ce"]
+
+[ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/shoot.tscn" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="6_fjrip"]
+
+[sub_resource type="Resource" id="Resource_dqkch"]
+resource_local_to_scene = true
+script = ExtResource("3_dqkch")
+metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 102.01961
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 63, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Player"]]
+script = ExtResource("1_g2els")
+_shooting = NodePath("shoot")
+_health = SubResource("Resource_dqkch")
+sprite = NodePath("AnimatedSprite2D")
+hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.1587303, 2.1960785)
+sprite_frames = SubResource("SpriteFrames_fjrip")
+frame_progress = 0.28467357
+
+[node name="shadow" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 0.5372549)
+z_index = -100
+position = Vector2(-4.4703484e-08, 1.8214284)
+scale = Vector2(1.0445462, 1.0705532)
+texture = ExtResource("1_3vyb7")
+
+[node name="shoot" parent="." instance=ExtResource("5_tuyoq")]
+position = Vector2(0, -60)
+rotation = -1.5707964
+bullet = ExtResource("6_fjrip")
+shoot_rate = 0.25
+
+[node name="reload" parent="shoot" index="0"]
+wait_time = 0.25
+
+[editable path="shoot"]

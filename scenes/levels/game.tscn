@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=9 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/Dome.png" id="3_limtx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cyleivx7ywp7m" path="res://scenes/dome.tscn" id="7_7rg7d"]
+[ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
 
 [sub_resource type="Resource" id="Resource_limtx"]
 resource_local_to_scene = true
@@ -14,27 +15,19 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [node name="Game" type="Node2D"]
 
+[node name="Camera2D" parent="." instance=ExtResource("7_xmnyv")]
+position = Vector2(0, -240)
+
+[node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
+position = Vector2(1, 63)
+_health = SubResource("Resource_limtx")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 z_index = -5
 position = Vector2(417.99997, -87.00001)
 scale = Vector2(2.2578125, 2.2578125)
 texture = ExtResource("3_limtx")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -248)
-
-[node name="EnemySpawner1" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(929, -411)
-spawn_range = 400.0
-
-[node name="EnemySpawner2" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(-820, -506)
-spawn_range = 400.0
-
-[node name="EnemySpawner3" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(0, -768)
-spawn_range = 400.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,6 +45,16 @@ grow_vertical = 0
 [node name="GameManager" parent="." node_paths=PackedStringArray("canvas") instance=ExtResource("5_p57ef")]
 canvas = NodePath("../CanvasLayer")
 
-[node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
-position = Vector2(1, 63)
-_health = SubResource("Resource_limtx")
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="EnemySpawner1" parent="Spawners" instance=ExtResource("6_p57ef")]
+position = Vector2(929, -411)
+spawn_range = 400.0
+
+[node name="EnemySpawner2" parent="Spawners" instance=ExtResource("6_p57ef")]
+position = Vector2(-820, -506)
+spawn_range = 400.0
+
+[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
+position = Vector2(0, -768)
+spawn_range = 400.0

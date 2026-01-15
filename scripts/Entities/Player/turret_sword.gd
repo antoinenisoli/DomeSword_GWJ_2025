@@ -1,13 +1,17 @@
 extends Area2D
 
+signal on_enemy_hit
+
 @export_range(0, 1) var slowMo: float = 0.1
 @export_range(0, 360) var rot_limit: float = 70
 @export var power: float = 100
 @export var deceleration: float = 5
 
 @export var txt: Label
+@export var cam: Camera2D
 @export var slider: HSlider
 @export var curve: Curve
+var camera = get_viewport().get_camera_2d()
 
 var force: float
 var velocity: float
@@ -56,5 +60,7 @@ func _on_body_entered(body: Node2D) -> void:
         print(str(velocity) + " hit:" + str(body))
         var dmg = compute_damage()
         if dmg > 0:
+            on_enemy_hit.emit(body)
+            camera.shake()
             TimeManager.slow_motion(slowMo)
             body.takeDmg(dmg)

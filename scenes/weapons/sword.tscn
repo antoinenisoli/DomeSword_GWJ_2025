@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdb2g7iw4tamu"]
+
+[ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/turret_sword.gd" id="1_o616w"]
+
+[sub_resource type="Curve" id="Curve_38len"]
+_limits = [0.0, 10.0, 0.0, 2000.0]
+_data = [Vector2(150, 0), 0.0, 0.0, 0, 0, Vector2(150, 1), 0.0, 0.0048648645, 0, 1, Vector2(2000, 10), 0.0048648645, 0.0, 1, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_qlg0r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1l7jo"]
+gradient = SubResource("Gradient_qlg0r")
+width = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
+size = Vector2(9.227221, 26.149487)
+
+[node name="sword" type="Area2D"]
+scale = Vector2(0.56, 0.7599994)
+script = ExtResource("1_o616w")
+rot_limit = 85.0
+curve = SubResource("Curve_38len")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.31764707)
+z_index = -1
+position = Vector2(-2.2737368e-13, 0)
+scale = Vector2(8.67, 600)
+texture = SubResource("GradientTexture1D_1l7jo")
+offset = Vector2(9.3132265e-08, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -300)
+scale = Vector2(8.67, 22.945)
+shape = SubResource("RectangleShape2D_0ph48")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

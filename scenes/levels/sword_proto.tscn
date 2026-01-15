@@ -1,26 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=13 format=3 uid="uid://ubw14t1aqsrk"]
 
-[ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/turret_sword.gd" id="1_3cbej"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="1_y0mr8"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="2_38len"]
+[ext_resource type="PackedScene" uid="uid://cdb2g7iw4tamu" path="res://scenes/weapons/sword.tscn" id="2_y0mr8"]
 [ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="3_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_232hh"]
-
-[sub_resource type="Curve" id="Curve_38len"]
-_limits = [0.0, 10.0, 0.0, 2000.0]
-_data = [Vector2(200, 0), 0.0, 0.005555555, 0, 1, Vector2(2000, 10), 0.005555555, 0.0, 1, 0]
-point_count = 2
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_qlg0r"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1l7jo"]
-gradient = SubResource("Gradient_qlg0r")
-width = 10
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
-size = Vector2(9.227221, 26.149487)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cbej"]
 font_size = 41
@@ -44,38 +28,29 @@ script = ExtResource("4_232hh")
 max_hp = 10
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
+[sub_resource type="Resource" id="Resource_232hh"]
+resource_local_to_scene = true
+resource_name = "stats"
+script = ExtResource("3_y0mr8")
+move_speed = 100.0
+metadata/_custom_type_script = "uid://pmgwglta8bfr"
+
+[sub_resource type="Resource" id="Resource_h05mg"]
+resource_local_to_scene = true
+script = ExtResource("4_232hh")
+max_hp = 10
+metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
+
 [node name="SwordProto" type="Node2D"]
 
 [node name="Camera2D" parent="." instance=ExtResource("1_y0mr8")]
 position = Vector2(0, -248)
 
-[node name="sword" type="Area2D" parent="." node_paths=PackedStringArray("txt", "cam", "slider")]
+[node name="sword" parent="." node_paths=PackedStringArray("txt", "cam", "slider") instance=ExtResource("2_y0mr8")]
 position = Vector2(-0.99999994, 0)
-scale = Vector2(0.56, 0.7599994)
-script = ExtResource("1_3cbej")
-rot_limit = 85.0
 txt = NodePath("../Label")
 cam = NodePath("../Camera2D")
 slider = NodePath("../HSlider")
-curve = SubResource("Curve_38len")
-
-[node name="Sprite2D" type="Sprite2D" parent="sword"]
-modulate = Color(1, 1, 1, 0.31764707)
-z_index = -1
-position = Vector2(-2.2737368e-13, 0)
-scale = Vector2(8.67, 600)
-texture = SubResource("GradientTexture1D_1l7jo")
-offset = Vector2(9.3132265e-08, -1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sword"]
-position = Vector2(0, -300)
-scale = Vector2(8.67, 22.945)
-shape = SubResource("RectangleShape2D_0ph48")
-
-[node name="Timer" type="Timer" parent="sword"]
-wait_time = 0.6
-one_shot = true
-ignore_time_scale = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -55.0
@@ -102,4 +77,8 @@ _stats = SubResource("Resource_okoxa")
 target = NodePath("../sword")
 _health = SubResource("Resource_fhl1k")
 
-[connection signal="body_entered" from="sword" to="sword" method="_on_body_entered"]
+[node name="Frog2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
+position = Vector2(376, -373)
+_stats = SubResource("Resource_232hh")
+target = NodePath("../sword")
+_health = SubResource("Resource_h05mg")

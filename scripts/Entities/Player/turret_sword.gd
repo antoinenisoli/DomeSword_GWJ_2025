@@ -58,6 +58,7 @@ func _on_body_entered(body: Node2D) -> void:
     if body.is_in_group("Enemies"):
         print(str(velocity) + " hit:" + str(body))
         var dmg = compute_damage()
+        #print(dmg)
         if dmg > 0:
             on_enemy_hit.emit(body)
             cam.shake()

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/Dome.png" id="1_x3mc5"]
 [ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="2_pp6j5"]
 [ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="2_xhnkd"]
-[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/shoot.tscn" id="3_6fjxm"]
+[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_6fjxm"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="4_dirdf"]
 
@@ -35,7 +35,6 @@ animations = [{
 script = ExtResource("2_xhnkd")
 turret_body = NodePath("Turret")
 _shooting = NodePath("Turret/AnimatedSprite2D/shoot")
-rotate_speed = 0.8
 _health = SubResource("Resource_dqkch")
 sprite = NodePath("Turret/AnimatedSprite2D")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)

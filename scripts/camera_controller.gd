@@ -7,8 +7,8 @@ extends Camera2D
 var current_shake = 0
 
 func _ready():
-    print(turret)
-    turret.damage_taken.connect(shake)
+    if turret:
+        turret.damage_taken.connect(shake)
 
 func shake(_t = 0) -> void:
     current_shake = shake_amount
@@ -22,5 +22,3 @@ func manage_shake(delta) -> void:
 
 func _process(delta):
     manage_shake(delta)
-    if Input.is_action_just_pressed("ui_accept"):
-        shake()

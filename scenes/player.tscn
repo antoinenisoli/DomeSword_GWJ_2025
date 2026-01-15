@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_dqkch"]
-[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/shoot.tscn" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="6_fjrip"]
 
 [sub_resource type="Resource" id="Resource_dqkch"]

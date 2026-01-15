@@ -4,6 +4,7 @@ extends Area2D
 @export var max_value: int = 100
 @export var rot_limit: float = 70
 @export var speed: float = 70
+@export var txt: Label
 var force: int
 var target_force: int
 var released: bool
@@ -48,3 +49,4 @@ func move_sword() -> void:
 func _process(delta: float):
     move_sword()
     slash(delta)
+    txt.text = str(roundf(rotation_degrees))

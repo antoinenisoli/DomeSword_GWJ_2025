@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=6 format=3 uid="uid://ubw14t1aqsrk"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/sword.gd" id="1_3cbej"]
 
@@ -12,16 +12,20 @@ width = 10
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
 size = Vector2(9.227221, 26.149487)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3cbej"]
+font_size = 41
+
 [node name="SwordProto" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -248)
 
-[node name="sword" type="Area2D" parent="."]
+[node name="sword" type="Area2D" parent="." node_paths=PackedStringArray("txt")]
 script = ExtResource("1_3cbej")
 multiplier = 10
 max_value = 200
-speed = 1.0
+speed = 5.0
+txt = NodePath("../Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="sword"]
 modulate = Color(1, 1, 1, 0.31764707)
@@ -37,5 +41,14 @@ scale = Vector2(8.67, 22.945)
 shape = SubResource("RectangleShape2D_0ph48")
 
 [node name="Timer" type="Timer" parent="sword"]
-wait_time = 1.5
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -1.0
+offset_right = 56.0
+offset_bottom = 76.0
+text = "180"
+label_settings = SubResource("LabelSettings_3cbej")
+horizontal_alignment = 1
+vertical_alignment = 1

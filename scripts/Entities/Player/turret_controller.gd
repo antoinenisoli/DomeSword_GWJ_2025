@@ -1,5 +1,5 @@
 extends Entity
-class_name Player
+class_name Turret
 
 @export var _shooting: Shooting
 @export var rotate_speed: float = 150

@@ -1,24 +1,29 @@
 extends Area2D
 
-@export var power: float = 1
-@export var min_value: float = 1
-@export var max_value: float = 100
-@export var rot_limit: float = 70
-@export var speed: float = 70
+@export_range(0, 1) var slowMo: float = 0.1
+@export_range(0, 360) var rot_limit: float = 70
+@export var power: float = 100
+@export var deceleration: float = 5
 
 @export var txt: Label
+@export var slider: HSlider
 @export var timer: Timer
+@export var curve: Curve
 
 var force: float
 var velocity: float
 
+func _ready():
+    slider.min_value = - curve.max_domain
+    slider.max_value = curve.max_domain
+
 func start_slash() -> void:
-    print("start")
+    print("slash!!")
     velocity = force
     force = 0
 
 func slash(delta) -> void:
-    velocity = lerpf(velocity, 0, speed * delta)
+    velocity = lerpf(velocity, 0, deceleration * delta)
     rotation_degrees += velocity * delta
     if rotation_degrees > rot_limit || rotation_degrees < -rot_limit:
         velocity = - velocity
@@ -29,33 +34,34 @@ func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
         var axis: float = Input.get_axis("move_left", "move_right")
         force += axis * power
-        force = clampf(force, -max_value, max_value)
-        print(force)
+        force = clampf(force, -curve.max_domain, curve.max_domain)
+        print("force: " + str(force))
     pass
 
     if Input.is_action_just_pressed("fire") && force != 0:
         start_slash()
 
+func compute_damage() -> int:
+    var dmg = curve.sample(absf(velocity))
+    return roundi(dmg)
+
+func slow_motion() -> void:
+    timer.start()
+    Engine.time_scale = slowMo
+    await timer.timeout
+    Engine.time_scale = 1
+
 func _process(delta: float):
     move_sword()
     slash(delta)
     txt.text = str(roundf(rotation_degrees))
-
-func check_velocity() -> bool:
-    return absf(velocity) >= min_value
-
-func get_damage() -> int:
-    return absi(roundi(velocity))
-
-func slow_motion() -> void:
-    timer.start()
-    Engine.time_scale = 0.1
-    await timer.timeout
-    Engine.time_scale = 1
+    if slider:
+        slider.value = force
 
 func _on_body_entered(body: Node2D) -> void:
     if body.is_in_group("Enemies"):
         print(str(velocity) + " hit:" + str(body))
-        if check_velocity():
+        var dmg = compute_damage()
+        if dmg > 0:
             slow_motion()
-            body.takeDmg(get_damage())
+            body.takeDmg(dmg)

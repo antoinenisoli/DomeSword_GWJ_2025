@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=14 format=3 uid="uid://ubw14t1aqsrk"]
 
-[ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/sword.gd" id="1_3cbej"]
+[ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/turret_sword.gd" id="1_3cbej"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="2_38len"]
-[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Stats.gd" id="3_y0mr8"]
+[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="3_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_232hh"]
+
+[sub_resource type="Curve" id="Curve_38len"]
+_limits = [0.0, 10.0, 0.0, 2000.0]
+_data = [Vector2(200, 0), 0.0, 0.005555555, 0, 1, Vector2(2000, 10), 0.005555555, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_qlg0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -17,6 +23,12 @@ size = Vector2(9.227221, 26.149487)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cbej"]
 font_size = 41
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38len"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0mr8"]
+bg_color = Color(0.6, 0.27, 0.27, 1)
 
 [sub_resource type="Resource" id="Resource_okoxa"]
 resource_local_to_scene = true
@@ -36,15 +48,14 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -248)
 
-[node name="sword" type="Area2D" parent="." node_paths=PackedStringArray("txt", "timer")]
+[node name="sword" type="Area2D" parent="." node_paths=PackedStringArray("txt", "slider", "timer")]
 scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_3cbej")
-power = 100.0
-min_value = 2.0
-max_value = 999999999.0
-speed = 5.0
+rot_limit = 85.0
 txt = NodePath("../Label")
+slider = NodePath("../HSlider")
 timer = NodePath("Timer")
+curve = SubResource("Curve_38len")
 
 [node name="Sprite2D" type="Sprite2D" parent="sword"]
 modulate = Color(1, 1, 1, 0.31764707)
@@ -75,10 +86,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="."]
-offset_left = -559.0
+offset_left = -533.0
 offset_top = 29.0
-offset_right = 551.0
+offset_right = 534.0
 offset_bottom = 73.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_38len")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_y0mr8")
+value = 50.0
 
 [node name="Frog" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
 position = Vector2(-422, -373)

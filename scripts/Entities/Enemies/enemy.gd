@@ -3,7 +3,8 @@ extends Entity
 @export var _shooting: Shooting
 @export var _stats: Stats
 @export var target: Node2D
-var player: Player
+
+var player: Turret
 var _target: Node2D: get = get_target
 
 func _ready():

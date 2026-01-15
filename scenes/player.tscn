@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://3kingdh3j0ce"]
+[gd_scene load_steps=14 format=3 uid="uid://3kingdh3j0ce"]
 
 [ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cuxwuk3wycde6" path="res://scripts/Entities/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/shoot.tscn" id="5_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="6_fjrip"]
+[ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/sword.gd" id="6_tuyoq"]
 
 [sub_resource type="Resource" id="Resource_dqkch"]
 resource_local_to_scene = true
@@ -34,6 +35,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tuyoq"]
 gradient = SubResource("Gradient_qlg0r")
+width = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(9.227221, 26.149487)
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Player"]]
 script = ExtResource("1_g2els")
@@ -67,14 +72,20 @@ shoot_rate = 0.25
 [node name="reload" parent="shoot" index="0"]
 wait_time = 0.25
 
-[node name="sword" type="Node2D" parent="."]
-scale = Vector2(0.3125, 640)
+[node name="sword" type="Area2D" parent="."]
+script = ExtResource("6_tuyoq")
 
 [node name="Sprite2D" type="Sprite2D" parent="sword"]
 modulate = Color(1, 1, 1, 0.31764707)
 z_index = -1
-position = Vector2(-7.629394e-07, -0.99999994)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-2.2737368e-13, 0)
+scale = Vector2(8.67, 600)
 texture = SubResource("GradientTexture1D_tuyoq")
+offset = Vector2(9.3132265e-08, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword"]
+position = Vector2(0, -300)
+scale = Vector2(8.67, 22.945)
+shape = SubResource("RectangleShape2D_qlg0r")
 
 [editable path="shoot"]

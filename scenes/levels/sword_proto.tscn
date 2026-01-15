@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ubw14t1aqsrk"]
+
+[ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/sword.gd" id="1_3cbej"]
+
+[sub_resource type="Gradient" id="Gradient_qlg0r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1l7jo"]
+gradient = SubResource("Gradient_qlg0r")
+width = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
+size = Vector2(9.227221, 26.149487)
+
+[node name="SwordProto" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -248)
+
+[node name="sword" type="Area2D" parent="."]
+script = ExtResource("1_3cbej")
+multiplier = 10
+max_value = 200
+speed = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="sword"]
+modulate = Color(1, 1, 1, 0.31764707)
+z_index = -1
+position = Vector2(-2.2737368e-13, 0)
+scale = Vector2(8.67, 600)
+texture = SubResource("GradientTexture1D_1l7jo")
+offset = Vector2(9.3132265e-08, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword"]
+position = Vector2(0, -300)
+scale = Vector2(8.67, 22.945)
+shape = SubResource("RectangleShape2D_0ph48")
+
+[node name="Timer" type="Timer" parent="sword"]
+wait_time = 1.5
+one_shot = true

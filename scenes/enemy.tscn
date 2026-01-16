@@ -227,4 +227,6 @@ position = Vector2(8.5, -1)
 _team = 1
 shoot_rate = 1.0
 
+[connection signal="damage_taken" from="." to="." method="_on_damage_taken"]
+
 [editable path="shoot"]

@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="domeShelter"
-run/main_scene="uid://ubw14t1aqsrk"
+run/main_scene="uid://pmrhth1mkfnr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 TimeManager="*res://scenes/time_manager.tscn"
+FxManager="*res://scenes/fx_manager.tscn"
 
 [display]
 

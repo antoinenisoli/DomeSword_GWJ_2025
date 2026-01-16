@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhl07m054kcp"]
+
+[ext_resource type="Script" uid="uid://cxvtm16gb24kb" path="res://scripts/fx_manager.gd" id="1_kd21r"]
+[ext_resource type="PackedScene" uid="uid://cju8mcsp5dvmx" path="res://scenes/vfx/blood_fx.tscn" id="2_v8lyr"]
+
+[node name="FxManager" type="Node2D"]
+script = ExtResource("1_kd21r")
+fx_list = Dictionary[String, PackedScene]({
+"blood_slash": ExtResource("2_v8lyr")
+})

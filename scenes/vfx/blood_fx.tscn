@@ -67,14 +67,17 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="BloodFx" type="Node2D"]
+[node name="BloodFx" type="Node2D" node_paths=PackedStringArray("anim")]
 scale = Vector2(2, 2)
 script = ExtResource("1_t61ma")
+anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kaoby")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.10146555
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]

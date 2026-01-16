@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="2_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/enemies/frog.png" id="3_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_5uy6h"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_c4w8v"]
 

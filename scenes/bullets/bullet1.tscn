@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj81kfmjv00jg"]
 
-[ext_resource type="Texture2D" uid="uid://esntdft8f1vi" path="res://assets/projectiles/energy1.png" id="1_mkf8s"]
+[ext_resource type="Texture2D" uid="uid://esntdft8f1vi" path="res://assets/sprites/projectiles/energy1.png" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://dn0m1a87nl7hn" path="res://scripts/Entities/bullet.gd" id="1_y25gk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]

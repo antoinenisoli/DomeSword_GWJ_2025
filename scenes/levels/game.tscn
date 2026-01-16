@@ -1,17 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=15 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/Dome.png" id="3_limtx"]
+[ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/sprites/Dome.png" id="3_limtx"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
+[ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="6_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cyleivx7ywp7m" path="res://scenes/dome.tscn" id="7_7rg7d"]
+[ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_uk881"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
+[ext_resource type="Texture2D" uid="uid://dkt3nukb772pa" path="res://assets/sprites/UI/icons/blue/cash_coin_B.png" id="8_r0gsk"]
+[ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="9_oi2tv"]
+[ext_resource type="Texture2D" uid="uid://hkmrvv70dn7o" path="res://assets/sprites/UI/icons/blue/battery.png" id="10_6370d"]
 
 [sub_resource type="Resource" id="Resource_limtx"]
 resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmnyv"]
+font = ExtResource("7_uk881")
 
 [node name="Game" type="Node2D"]
 
@@ -20,7 +28,7 @@ position = Vector2(0, -240)
 turret = NodePath("../Dome")
 
 [node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
-position = Vector2(1, 63)
+position = Vector2(1, 103)
 _health = SubResource("Resource_limtx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -42,6 +50,94 @@ offset_right = 0.0
 offset_bottom = -0.8200073
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = 169.0
+grow_horizontal = 0
+texture = ExtResource("6_oi2tv")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 28.0
+offset_right = 124.0
+offset_bottom = 126.0
+
+[node name="Control" type="Control" parent="CanvasLayer/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.835)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/Control"]
+layout_mode = 0
+offset_left = -7.0
+offset_right = 66.99982
+offset_bottom = 42.0
+text = "500"
+label_settings = SubResource("LabelSettings_xmnyv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/VBoxContainer/Control"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 14.999825
+offset_bottom = 35.999966
+texture = ExtResource("8_r0gsk")
+stretch_mode = 4
+
+[node name="Control2" type="Control" parent="CanvasLayer/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.835)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/Control2"]
+layout_mode = 0
+offset_left = -7.0
+offset_right = 66.99982
+offset_bottom = 42.0
+text = "500"
+label_settings = SubResource("LabelSettings_xmnyv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/VBoxContainer/Control2"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 14.999825
+offset_bottom = 35.999966
+texture = ExtResource("9_oi2tv")
+stretch_mode = 4
+
+[node name="Control3" type="Control" parent="CanvasLayer/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.835)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/Control3"]
+layout_mode = 0
+offset_left = -7.0
+offset_right = 66.99982
+offset_bottom = 42.0
+text = "500"
+label_settings = SubResource("LabelSettings_xmnyv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/VBoxContainer/Control3"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 14.999825
+offset_bottom = 35.999966
+texture = ExtResource("10_6370d")
+stretch_mode = 4
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("canvas") instance=ExtResource("5_p57ef")]
 canvas = NodePath("../CanvasLayer")

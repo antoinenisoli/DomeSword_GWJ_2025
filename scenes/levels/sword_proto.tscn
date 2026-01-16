@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=15 format=3 uid="uid://ubw14t1aqsrk"]
 
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="1_y0mr8"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/enemy.tscn" id="2_38len"]
@@ -6,6 +6,14 @@
 [ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="3_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_232hh"]
 [ext_resource type="Script" uid="uid://cqqj71kmg0ke6" path="res://scripts/ease_test.gd" id="6_232hh"]
+
+[sub_resource type="Curve" id="Curve_232hh"]
+resource_local_to_scene = true
+_limits = [0.0, 10.0, 0.0, 25.0]
+_data = [Vector2(3, 0), 0.0, 0.45454547, 0, 1, Vector2(25, 10), 0.45454547, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cbej"]
 font_size = 41
@@ -52,6 +60,7 @@ position = Vector2(-0.99999994, 0)
 txt = NodePath("../Label")
 cam = NodePath("../Camera2D")
 slider = NodePath("../HSlider")
+force_curve = SubResource("Curve_232hh")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -55.0

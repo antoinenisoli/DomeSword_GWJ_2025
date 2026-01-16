@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cyleivx7ywp7m"]
 
-[ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/Dome.png" id="1_x3mc5"]
-[ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/1.png" id="2_pp6j5"]
+[ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/sprites/Dome.png" id="1_x3mc5"]
+[ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/sprites/1.png" id="2_pp6j5"]
 [ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="2_xhnkd"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_6fjxm"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]

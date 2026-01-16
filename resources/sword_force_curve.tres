@@ -2,7 +2,8 @@
 
 [resource]
 resource_local_to_scene = true
-_limits = [0.0, 10.0, 0.0, 2000.0]
-_data = [Vector2(150, 0), 0.0, 0.0, 0, 0, Vector2(150, 1), 0.0, 0.0048648645, 0, 1, Vector2(2000, 10), 0.0048648645, 0.0, 1, 0]
-point_count = 3
+_limits = [0.0, 10.0, 0.0, 25.0]
+_data = [Vector2(3, 0), 0.0, 0.45454547, 0, 1, Vector2(25, 10), 0.45454547, 0.0, 1, 0]
+point_count = 2
 metadata/_snap_enabled = true
+metadata/_snap_count = 50

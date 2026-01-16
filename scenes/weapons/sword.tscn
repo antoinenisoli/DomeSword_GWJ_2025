@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdb2g7iw4tamu"]
+[gd_scene load_steps=7 format=3 uid="uid://cdb2g7iw4tamu"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/turret_sword.gd" id="1_o616w"]
 [ext_resource type="Curve" uid="uid://bhy33dv46yc6t" path="res://resources/sword_force_curve.tres" id="2_3pnln"]
+
+[sub_resource type="Curve" id="Curve_232hh"]
+_data = [Vector2(0, 0), 0.0, -5.097836, 0, 0, Vector2(0.5, 1), -5.425904, -5.425904, 0, 0, Vector2(0.8, 0.1), -1.2075583, -1.2075583, 0, 0, Vector2(1, 0), -0.35753322, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_qlg0r"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -17,6 +22,8 @@ size = Vector2(9.227221, 26.149487)
 scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_o616w")
 rot_limit = 85.0
+power = 1.5
+deceleration_curve = SubResource("Curve_232hh")
 timer = NodePath("Timer")
 force_curve = ExtResource("2_3pnln")
 

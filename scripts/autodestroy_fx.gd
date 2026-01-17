@@ -1,13 +1,16 @@
 extends Node2D
 
-@export var anim: AnimatedSprite2D
+@export var time_multiplier: float = 100
+@onready var anim: AnimatedSprite2D = get_node("AnimatedSprite2D")
 
-func _on_animation_looped() -> void:
-    queue_free()
+func _ready():
+    anim.animation_looped.connect(queue_free)
 
-func _process(delta):
+func compensate_timeScale() -> void:
     if Engine.time_scale < 1:
-        print(anim.speed_scale)
-        anim.speed_scale = Engine.time_scale * 100
+        anim.speed_scale = Engine.time_scale * time_multiplier
     else:
         anim.speed_scale = 1
+
+func _process(_delta):
+    compensate_timeScale()

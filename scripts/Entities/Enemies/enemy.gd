@@ -54,4 +54,5 @@ func _process(_delta):
     sprite.flip_h = _target.position.x < position.x
 
 func _on_damage_taken(_hp) -> void:
-    FxManager.spawn_fx("blood_slash", position)
+    pass
+    #FxManager.spawn_fx("blood_slash", position)

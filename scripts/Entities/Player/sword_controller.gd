@@ -1,4 +1,5 @@
-extends Node2D
+extends DomeWeapon
+class_name Sword
 
 signal on_enemy_hit
 
@@ -20,6 +21,7 @@ var velocity: float
 var target_velocity: float
 
 func _ready():
+    super ()
     force_slider.value = 0
     force_slider.min_value = - max_power
     force_slider.max_value = max_power

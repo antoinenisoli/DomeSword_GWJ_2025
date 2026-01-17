@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyleivx7ywp7m"]
+[gd_scene load_steps=13 format=3 uid="uid://cyleivx7ywp7m"]
 
 [ext_resource type="Script" uid="uid://cb8y4fhtikaj7" path="res://scripts/Entities/Player/player_dome.gd" id="1_si0v0"]
-[ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/sprites/player/1.png" id="2_pp6j5"]
-[ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="2_xhnkd"]
-[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_6fjxm"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
 [ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/player/Dome2.png" id="3_pw578"]
-[ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="4_dirdf"]
+[ext_resource type="PackedScene" uid="uid://kksfipc358r0" path="res://scenes/weapons/turret.tscn" id="3_t5h6n"]
+[ext_resource type="PackedScene" uid="uid://cdb2g7iw4tamu" path="res://scenes/weapons/sword.tscn" id="4_l7o3r"]
 [ext_resource type="Texture2D" uid="uid://c3rv2r2h01koa" path="res://assets/sprites/player/GreenCrystal_01.png" id="7_r38io"]
 [ext_resource type="Texture2D" uid="uid://b35k0c63xgmtt" path="res://assets/sprites/player/GreenCrystal_02.png" id="8_pmijb"]
 
@@ -19,25 +17,37 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 radius = 141.0
 height = 326.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("2_pp6j5")
-region = Rect2(0, 0, 63, 51)
+[sub_resource type="Curve" id="Curve_si0v0"]
+resource_local_to_scene = true
+_limits = [0.0, 10.0, 0.0, 25.0]
+_data = [Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.5, 0, 0, Vector2(25, 10), 0.5, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 90
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mqfwu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5h6n"]
+atlas = ExtResource("3_pw578")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7o3r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
+"texture": SubResource("AtlasTexture_t5h6n")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("sprite") groups=["Player"]]
+[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("weapon_container", "sword", "turret", "weapons", "sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")
+weapon_container = NodePath("Weapons")
+sword = NodePath("Weapons/sword")
+turret = NodePath("Weapons/turret")
+weapons = [NodePath("Weapons/sword"), NodePath("Weapons/turret")]
 _health = SubResource("Resource_dqkch")
-sprite = NodePath("Weapons/Turret/AnimatedSprite2D")
+sprite = NodePath("visuals/dome_sprite")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,39 +56,21 @@ shape = SubResource("CapsuleShape2D_x3mc5")
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="Turret" type="Node2D" parent="Weapons" node_paths=PackedStringArray("_shooting")]
-script = ExtResource("2_xhnkd")
-_shooting = NodePath("AnimatedSprite2D/shoot")
+[node name="turret" parent="Weapons" instance=ExtResource("3_t5h6n")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapons/Turret"]
-position = Vector2(0, -156.99998)
-scale = Vector2(2.1587303, 2.1960785)
-sprite_frames = SubResource("SpriteFrames_mqfwu")
-
-[node name="shadow" type="Sprite2D" parent="Weapons/Turret/AnimatedSprite2D"]
-modulate = Color(0, 0, 0, 0.5372549)
-z_index = -100
-position = Vector2(-4.4703484e-08, 1.8214284)
-scale = Vector2(1.0445462, 1.0705532)
-texture = ExtResource("2_pp6j5")
-
-[node name="shoot" parent="Weapons/Turret/AnimatedSprite2D" instance=ExtResource("3_6fjxm")]
-position = Vector2(0, -26.866074)
-rotation = -1.5707964
-scale = Vector2(0.4553571, 0.46323526)
-bullet = ExtResource("4_dirdf")
-shoot_rate = 0.25
-
-[node name="reload" parent="Weapons/Turret/AnimatedSprite2D/shoot" index="0"]
-wait_time = 0.25
+[node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
+position = Vector2(0, -29)
+rot_limit = 70.0
+force_curve = SubResource("Curve_si0v0")
 
 [node name="visuals" type="Node2D" parent="."]
 
-[node name="dome_sprite" type="Sprite2D" parent="visuals"]
+[node name="dome_sprite" type="AnimatedSprite2D" parent="visuals"]
 z_index = -5
 position = Vector2(0, -149)
 scale = Vector2(2.2578125, 2.2578125)
-texture = ExtResource("3_pw578")
+sprite_frames = SubResource("SpriteFrames_l7o3r")
+autoplay = "default"
 
 [node name="GreenCrystal01" type="Sprite2D" parent="visuals"]
 position = Vector2(116, -52)
@@ -89,5 +81,3 @@ texture = ExtResource("7_r38io")
 position = Vector2(-128, -56)
 scale = Vector2(2.1666667, 2.1666667)
 texture = ExtResource("8_pmijb")
-
-[editable path="Weapons/Turret/AnimatedSprite2D/shoot"]

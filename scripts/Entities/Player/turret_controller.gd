@@ -1,4 +1,4 @@
-extends Node2D
+extends DomeWeapon
 class_name Turret
 
 @export var _shooting: Shooting

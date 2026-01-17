@@ -21,6 +21,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     state.linear_velocity = state.linear_velocity.limit_length(speed)
 
 func _physics_process(_delta):
+    if !target:
+        return
+        
     var dir = global_position.distance_to(target.position)
     if dir > min_distance:
         apply_force(direction() * speed)

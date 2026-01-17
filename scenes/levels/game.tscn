@@ -1,7 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/sprites/player/Dome.png" id="3_limtx"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="6_oi2tv"]
@@ -18,6 +17,14 @@ resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
+[sub_resource type="Curve" id="Curve_f5j6v"]
+resource_local_to_scene = true
+_limits = [0.0, 10.0, 0.0, 25.0]
+_data = [Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.5, 0, 0, Vector2(25, 10), 0.5, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 90
+
 [sub_resource type="LabelSettings" id="LabelSettings_xmnyv"]
 font = ExtResource("7_uk881")
 
@@ -31,12 +38,10 @@ turret = NodePath("../Dome")
 position = Vector2(1, 103)
 _health = SubResource("Resource_oi2tv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-z_index = -5
-position = Vector2(417.99997, -87.00001)
-scale = Vector2(2.2578125, 2.2578125)
-texture = ExtResource("3_limtx")
+[node name="sword" parent="Dome/Weapons" index="1" node_paths=PackedStringArray("cam")]
+position = Vector2(0, -27.999998)
+cam = NodePath("../../../Camera2D")
+force_curve = SubResource("Curve_f5j6v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -155,3 +160,5 @@ spawn_range = 400.0
 [node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(0, -768)
 spawn_range = 400.0
+
+[editable path="Dome"]

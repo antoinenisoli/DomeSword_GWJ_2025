@@ -6,7 +6,6 @@ class_name Enemy
 @export var _shooting: Shooting
 @export var speed: float = 100
 @export var max_speed: float = 1000
-@export var min_distance: float = 200
 @export var target: Node2D
 @export var push_cooldown: Timer
 
@@ -21,7 +20,6 @@ func _ready():
 
 func reset() -> void:
     sprite.play("idle")
-    follow.stop()
 
 func shoot():
     if !target:
@@ -30,24 +28,17 @@ func shoot():
     _shooting.look_at(target.position)
     _shooting.shoot()
 
-func _physics_process(_delta: float):
-    if !target:
-        reset()
-        return
-
-    var dir = global_position.distance_to(target.position)
-    if dir > min_distance:
-        sprite.play("move")
-        follow.follow_target(_delta)
-    elif follow.linear_velocity.length() > 0.1:
-        reset()
-        shoot()
-    
 func _process(_delta):
     if !target:
+        reset()
         return
 
     sprite.flip_h = target.position.x < global_position.x
+    if follow.enemy_state == Enums.ENEMY_STATE.MOVING:
+        sprite.play("move")
+    else:
+        reset()
+        shoot()
 
 func death() -> void:
     FxManager.spawn_fx("blood_explode", global_position)

@@ -1,24 +1,18 @@
-[gd_scene load_steps=34 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=32 format=3 uid="uid://byxfdf0x8un4k"]
 
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
-[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_5uy6h"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_c4w8v"]
-
-[sub_resource type="Resource" id="Resource_5uy6h"]
-resource_local_to_scene = true
-resource_name = "stats"
-script = ExtResource("2_4ra3w")
-move_speed = 100.0
-min_distance = 300.0
-metadata/_custom_type_script = "uid://pmgwglta8bfr"
 
 [sub_resource type="Resource" id="Resource_c4w8v"]
 resource_local_to_scene = true
 script = ExtResource("3_5uy6h")
 max_hp = 5
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
+radius = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("3_4ra3w")
@@ -201,31 +195,32 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
-radius = 16.0
-
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("_shooting", "sprite") groups=["Enemies"]]
-scale = Vector2(2, 2)
+[node name="Frog" type="RigidBody2D" node_paths=PackedStringArray("_shooting", "push_cooldown", "sprite") groups=["Enemies"]]
+gravity_scale = 0.0
 script = ExtResource("1_md0e3")
 _shooting = NodePath("shoot")
-_stats = SubResource("Resource_5uy6h")
+push_cooldown = NodePath("pushedCooldown")
 _health = SubResource("Resource_c4w8v")
-sprite = NodePath("AnimatedSprite2D")
+sprite = NodePath("CollisionShape2D/AnimatedSprite2D")
 hitColor = Color(4.6165767, 0, 0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_4ra3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.13401365
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4ra3w")
-
 [node name="shoot" parent="." instance=ExtResource("5_c4w8v")]
 position = Vector2(8.5, -1)
 _team = 1
 shoot_rate = 1.0
+
+[node name="pushedCooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="damage_taken" from="." to="." method="_on_damage_taken"]
 

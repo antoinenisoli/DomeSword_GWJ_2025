@@ -1,13 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://ubw14t1aqsrk"]
+[gd_scene load_steps=9 format=3 uid="uid://ubw14t1aqsrk"]
 
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="1_y0mr8"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/enemy.tscn" id="2_38len"]
 [ext_resource type="PackedScene" uid="uid://cdb2g7iw4tamu" path="res://scenes/weapons/sword.tscn" id="2_y0mr8"]
-[ext_resource type="Script" uid="uid://bq3x82w2376c8" path="res://scripts/Entities/Enemies/Stats.gd" id="3_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_232hh"]
 [ext_resource type="Script" uid="uid://cqqj71kmg0ke6" path="res://scripts/ease_test.gd" id="6_232hh"]
-[ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/follow.gd" id="7_fhl1k"]
-[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="7_okoxa"]
 
 [sub_resource type="Curve" id="Curve_232hh"]
 resource_local_to_scene = true
@@ -17,215 +14,17 @@ point_count = 2
 metadata/_snap_enabled = true
 metadata/_snap_count = 50
 
-[sub_resource type="Resource" id="Resource_okoxa"]
-resource_local_to_scene = true
-resource_name = "stats"
-script = ExtResource("3_y0mr8")
-move_speed = 100.0
-metadata/_custom_type_script = "uid://pmgwglta8bfr"
-
 [sub_resource type="Resource" id="Resource_fhl1k"]
 resource_local_to_scene = true
 script = ExtResource("4_232hh")
 max_hp = 10
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
-[sub_resource type="Resource" id="Resource_232hh"]
-resource_local_to_scene = true
-resource_name = "stats"
-script = ExtResource("3_y0mr8")
-move_speed = 100.0
-metadata/_custom_type_script = "uid://pmgwglta8bfr"
-
 [sub_resource type="Resource" id="Resource_h05mg"]
 resource_local_to_scene = true
 script = ExtResource("4_232hh")
 max_hp = 10
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(0, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(72, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(144, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(216, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(288, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(360, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(432, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(504, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(576, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(648, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(720, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(792, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(864, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shcg2"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(936, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ile5s"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(1008, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x4g4"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(1080, 34, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(0, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pwtc"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(72, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rogs8"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(144, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wrm80"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(216, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6awcb"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(288, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjec0"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(360, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4rgx"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(432, 102, 72, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mchx"]
-atlas = ExtResource("7_okoxa")
-region = Rect2(504, 102, 72, 34)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fhl1k"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5uy6h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4w8v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwavj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nenq2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_md484")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ipns3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8qclf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8i8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_otmr2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtq4b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0cyh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0wcc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s1ycm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_shcg2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ile5s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1x4g4")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ra3w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pwtc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rogs8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wrm80")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6awcb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wjec0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i4rgx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mchx")
-}],
-"loop": true,
-"name": &"move",
-"speed": 15.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_okoxa"]
-radius = 16.0
 
 [node name="SwordProto" type="Node2D"]
 
@@ -235,18 +34,17 @@ position = Vector2(0, -248)
 [node name="sword" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("2_y0mr8")]
 position = Vector2(-0.99999994, 0)
 power = 100.0
+push_force = 25.0
 cam = NodePath("../Camera2D")
 force_curve = SubResource("Curve_232hh")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
 position = Vector2(-422, -373)
-_stats = SubResource("Resource_okoxa")
 target = NodePath("../sword")
 _health = SubResource("Resource_fhl1k")
 
 [node name="Frog2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
 position = Vector2(376, -373)
-_stats = SubResource("Resource_232hh")
 target = NodePath("../sword")
 _health = SubResource("Resource_h05mg")
 
@@ -259,17 +57,3 @@ timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="Node2D"]
 wait_time = 2.0
 one_shot = true
-
-[node name="enemy_test" type="RigidBody2D" parent="."]
-position = Vector2(-288, -552)
-gravity_scale = 0.0
-script = ExtResource("7_fhl1k")
-speed = 5.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy_test"]
-sprite_frames = SubResource("SpriteFrames_fhl1k")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_test"]
-shape = SubResource("CircleShape2D_okoxa")

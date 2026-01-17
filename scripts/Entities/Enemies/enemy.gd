@@ -1,8 +1,11 @@
 extends Entity
 
 @export var _shooting: Shooting
-@export var _stats: Stats
+@export var speed: float = 100
+@export var max_speed: float = 1000
+@export var min_distance: float = 200
 @export var target: Node2D
+@export var push_cooldown: Timer
 
 var player: Turret
 var _target: Node2D: get = get_target
@@ -14,6 +17,9 @@ func _ready():
     if !group.is_empty():
         player = get_tree().get_nodes_in_group("Player")[0]
 
+func direction() -> Vector2:
+    return (_target.position - position).normalized()
+
 func get_target() -> Node2D:
     if player:
         return player
@@ -22,7 +28,10 @@ func get_target() -> Node2D:
 
 func reset() -> void:
     sprite.play("idle")
-    velocity = Vector2.ZERO
+    stop()
+
+func stop() -> void:
+    linear_velocity = Vector2.ZERO
 
 func shoot():
     if !_target:
@@ -38,12 +47,10 @@ func _physics_process(_delta: float):
 
     var dir = position.distance_to(_target.position)
     #print(dir)
-    if dir > _stats.min_distance:
+    if dir > min_distance:
         sprite.play("move")
-        var direction: Vector2 = (_target.position - position).normalized()
-        velocity = direction * _stats.move_speed
-        move_and_slide()
-    else:
+        apply_force(direction() * speed)
+    elif linear_velocity.length() > 0.1:
         reset()
         shoot()
     
@@ -52,6 +59,15 @@ func _process(_delta):
         return
 
     sprite.flip_h = _target.position.x < position.x
+
+func push_back(force: float) -> void:
+    if !push_cooldown.is_stopped():
+        return
+
+    print("push back")
+    push_cooldown.start()
+    stop()
+    apply_impulse(-direction() * force)
 
 func death() -> void:
     FxManager.spawn_fx("blood_explode", position)

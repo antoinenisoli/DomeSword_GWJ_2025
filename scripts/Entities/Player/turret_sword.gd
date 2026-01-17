@@ -6,6 +6,7 @@ signal on_enemy_hit
 @export_range(0, 360) var rot_limit: float = 70
 @export var power: float = 10
 @export var max_power: float = 1000
+@export var push_force: float = 50
 
 @export var sword: Node2D
 @export var cam: Camera2D
@@ -26,7 +27,7 @@ func _ready():
 func start_slash() -> void:
     timer.start()
     target_velocity = force_slider.value
-    print("slash!!" + str(target_velocity))
+    print("slash!! " + str(target_velocity))
     force_slider.value = 0
 
 func get_weight() -> float:
@@ -84,8 +85,9 @@ func attack_enemy(body: Node2D) -> void:
         on_enemy_hit.emit(body)
         cam.shake()
         body.takeDmg(dmg)
+        body.push_back(absf(velocity) * push_force)
 
 func _on_body_entered(body: Node2D) -> void:
     if body.is_in_group("Enemies"):
-        #print(str(velocity) + " hit:" + str(body))
+        print(str(velocity) + " hit:" + str(body))
         attack_enemy(body)

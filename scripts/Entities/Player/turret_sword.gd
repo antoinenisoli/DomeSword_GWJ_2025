@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 signal on_enemy_hit
 
@@ -7,26 +7,27 @@ signal on_enemy_hit
 @export var power: float = 10
 @export var max_power: float = 1000
 
+@export var sword: Node2D
+@export var cam: Camera2D
 @export var timer: Timer
 @export var txt: Label
-@export var cam: Camera2D
-@export var slider: HSlider
+@export var force_slider: HSlider
 @export var deceleration_curve: Curve
 @export var force_curve: Curve
 
-var force: float
 var velocity: float
 var target_velocity: float
 
 func _ready():
-    slider.min_value = - max_power
-    slider.max_value = max_power
+    force_slider.value = 0
+    force_slider.min_value = - max_power
+    force_slider.max_value = max_power
 
 func start_slash() -> void:
     timer.start()
-    target_velocity = force
+    target_velocity = force_slider.value
     print("slash!!" + str(target_velocity))
-    force = 0
+    force_slider.value = 0
 
 func get_weight() -> float:
     var t = 1 - (timer.time_left / timer.wait_time)
@@ -39,28 +40,27 @@ func compute_velocity_curve(delta) -> void:
 
     velocity = (target_velocity * w) * delta
     #print(velocity)
-    rotation_degrees += velocity
+    sword.rotation_degrees += velocity
 
 func compute_velocity(delta) -> void:
     target_velocity = lerpf(target_velocity, 0, 5 * delta)
-    rotation_degrees += target_velocity * delta
+    sword.rotation_degrees += target_velocity * delta
 
 func slash(delta) -> void:
     compute_velocity_curve(delta)
-    if rotation_degrees > rot_limit || rotation_degrees < -rot_limit:
+    if sword.rotation_degrees > rot_limit || sword.rotation_degrees < -rot_limit:
         target_velocity = - target_velocity
 
-    rotation_degrees = clampf(rotation_degrees, -rot_limit, rot_limit)
+    sword.rotation_degrees = clampf(sword.rotation_degrees, -rot_limit, rot_limit)
 
 func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
         var axis: float = Input.get_axis("move_left", "move_right")
-        force += axis * power
-        force = clampf(force, -max_power, max_power)
-        print("force: " + str(force))
+        force_slider.value += axis * power
+        print("force: " + str(force_slider.value))
     pass
 
-    if Input.is_action_just_pressed("fire") && force != 0:
+    if Input.is_action_just_pressed("fire") && force_slider.value != 0:
         start_slash()
 
 func compute_damage() -> int:
@@ -70,9 +70,7 @@ func compute_damage() -> int:
 func _process(_delta: float):
     move_sword()
     slash(_delta)
-    txt.text = str(roundf(rotation_degrees))
-    if slider:
-        slider.value = force
+    txt.text = str(roundf(sword.rotation_degrees))
 
 func play_vfx(body) -> void:
     var fx = FxManager.spawn_fx("blood_stream", body.position)

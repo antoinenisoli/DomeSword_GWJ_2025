@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://pmgwglta8bfr"
 [sub_resource type="Resource" id="Resource_c4w8v"]
 resource_local_to_scene = true
 script = ExtResource("3_5uy6h")
-max_hp = 10
+max_hp = 5
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]

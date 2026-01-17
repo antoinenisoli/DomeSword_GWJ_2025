@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy14rgfa1m4ql"
-path="res://.godot/imported/Dome.png-f6b8ee539996bb9a08f61d7d62200278.ctex"
+uid="uid://b35k0c63xgmtt"
+path="res://.godot/imported/GreenCrystal_02.png-f93acb834df8b6b6c1cb4e2c94e33cb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Dome.png"
-dest_files=["res://.godot/imported/Dome.png-f6b8ee539996bb9a08f61d7d62200278.ctex"]
+source_file="res://assets/sprites/player/GreenCrystal_02.png"
+dest_files=["res://.godot/imported/GreenCrystal_02.png-f93acb834df8b6b6c1cb4e2c94e33cb5.ctex"]
 
 [params]
 

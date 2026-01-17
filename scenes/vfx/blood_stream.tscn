@@ -1,50 +1,47 @@
 [gd_scene load_steps=13 format=3 uid="uid://cplgp60jm7ofw"]
 
 [ext_resource type="Script" uid="uid://dmt32mip85esf" path="res://scripts/autodestroy_fx.gd" id="1_obqis"]
-[ext_resource type="Texture2D" uid="uid://04s5b1j3fhpe" path="res://assets/sprites/fx/bldfx1_blood_stream_C_large_violet/spritesheet.png" id="1_uap2l"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_obqis"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(0, 0, 64, 64)
+[ext_resource type="Texture2D" uid="uid://cuqhe01ag8xjd" path="res://assets/sprites/fx/bldfx1_blood_stream_C_large_orange/spritesheet.png" id="2_obqis"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxycb"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(64, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i74xy"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(128, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymxtl"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(192, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evrcq"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(256, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b71l0"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(320, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx702"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(384, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jywj"]
-atlas = ExtResource("1_uap2l")
-region = Rect2(448, 0, 64, 64)
+atlas = ExtResource("2_obqis")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kngng"]
-atlas = ExtResource("1_uap2l")
+atlas = ExtResource("2_obqis")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gthp"]
+atlas = ExtResource("2_obqis")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0gthp"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_obqis")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oxycb")
 }, {
@@ -68,6 +65,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kngng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gthp")
 }],
 "loop": true,
 "name": &"idle",
@@ -82,7 +82,6 @@ script = ExtResource("1_obqis")
 sprite_frames = SubResource("SpriteFrames_0gthp")
 animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.09081359
+frame_progress = 0.8941144
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]

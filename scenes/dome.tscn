@@ -1,20 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyleivx7ywp7m"]
+[gd_scene load_steps=13 format=3 uid="uid://cyleivx7ywp7m"]
 
-[ext_resource type="Texture2D" uid="uid://cy14rgfa1m4ql" path="res://assets/sprites/Dome.png" id="1_x3mc5"]
-[ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/sprites/1.png" id="2_pp6j5"]
+[ext_resource type="Texture2D" uid="uid://v6mg8ycgdq55" path="res://assets/sprites/player/1.png" id="2_pp6j5"]
 [ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="2_xhnkd"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_6fjxm"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
+[ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/player/Dome2.png" id="3_pw578"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="4_dirdf"]
+[ext_resource type="Texture2D" uid="uid://c3rv2r2h01koa" path="res://assets/sprites/player/GreenCrystal_01.png" id="7_r38io"]
+[ext_resource type="Texture2D" uid="uid://b35k0c63xgmtt" path="res://assets/sprites/player/GreenCrystal_02.png" id="8_pmijb"]
 
 [sub_resource type="Resource" id="Resource_dqkch"]
 resource_local_to_scene = true
 script = ExtResource("3_bstcn")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3mc5"]
-radius = 141.0
-height = 326.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_pp6j5")
@@ -31,6 +29,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3mc5"]
+radius = 141.0
+height = 326.0
+
 [node name="Dome" type="CharacterBody2D" node_paths=PackedStringArray("turret_body", "_shooting", "sprite") groups=["Player"]]
 script = ExtResource("2_xhnkd")
 turret_body = NodePath("Turret")
@@ -38,16 +40,6 @@ _shooting = NodePath("Turret/AnimatedSprite2D/shoot")
 _health = SubResource("Resource_dqkch")
 sprite = NodePath("Turret/AnimatedSprite2D")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(0, -149)
-scale = Vector2(2.2578125, 2.2578125)
-texture = ExtResource("1_x3mc5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
-shape = SubResource("CapsuleShape2D_x3mc5")
 
 [node name="Turret" type="Node2D" parent="."]
 
@@ -72,5 +64,27 @@ shoot_rate = 0.25
 
 [node name="reload" parent="Turret/AnimatedSprite2D/shoot" index="0"]
 wait_time = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_x3mc5")
+
+[node name="visuals" type="Node2D" parent="."]
+
+[node name="dome_sprite" type="Sprite2D" parent="visuals"]
+z_index = -5
+position = Vector2(0, -149)
+scale = Vector2(2.2578125, 2.2578125)
+texture = ExtResource("3_pw578")
+
+[node name="GreenCrystal01" type="Sprite2D" parent="visuals"]
+position = Vector2(116, -52)
+scale = Vector2(1.8333334, 1.8333334)
+texture = ExtResource("7_r38io")
+
+[node name="GreenCrystal02" type="Sprite2D" parent="visuals"]
+position = Vector2(-128, -56)
+scale = Vector2(2.1666667, 2.1666667)
+texture = ExtResource("8_pmijb")
 
 [editable path="Turret/AnimatedSprite2D/shoot"]

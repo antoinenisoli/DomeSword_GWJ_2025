@@ -19,7 +19,7 @@ func hit_flash() -> void:
 	sprite.self_modulate = Color.WHITE # reset to default
 
 func takeDmg(dmg: int) -> void:
-	print(str(dmg) + " damage received!")
+	#print(str(dmg) + " damage received!")
 	_health.current_hp -= dmg
 	damage_taken.emit(health_value())
 	hit_flash()

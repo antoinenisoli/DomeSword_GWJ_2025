@@ -1,14 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=33 format=3 uid="uid://byxfdf0x8un4k"]
 
+[ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_jr1g6"]
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_5uy6h"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_c4w8v"]
 
-[sub_resource type="Resource" id="Resource_c4w8v"]
+[sub_resource type="Resource" id="Resource_jr1g6"]
 resource_local_to_scene = true
 script = ExtResource("3_5uy6h")
-max_hp = 5
+max_hp = 10
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
@@ -195,13 +196,17 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Frog" type="RigidBody2D" node_paths=PackedStringArray("_shooting", "push_cooldown", "sprite") groups=["Enemies"]]
+[node name="Frog" type="RigidBody2D" node_paths=PackedStringArray("enemy") groups=["Enemies"]]
 gravity_scale = 0.0
+script = ExtResource("1_jr1g6")
+enemy = NodePath("Frog_Entity")
+
+[node name="Frog_Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "push_cooldown", "sprite") groups=["Enemies"]]
 script = ExtResource("1_md0e3")
-_shooting = NodePath("shoot")
-push_cooldown = NodePath("pushedCooldown")
-_health = SubResource("Resource_c4w8v")
-sprite = NodePath("CollisionShape2D/AnimatedSprite2D")
+_shooting = NodePath("../shoot")
+push_cooldown = NodePath("../pushedCooldown")
+_health = SubResource("Resource_jr1g6")
+sprite = NodePath("../CollisionShape2D/AnimatedSprite2D")
 hitColor = Color(4.6165767, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -222,6 +227,6 @@ shoot_rate = 1.0
 [node name="pushedCooldown" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="damage_taken" from="." to="." method="_on_damage_taken"]
+[connection signal="damage_taken" from="Frog_Entity" to="Frog_Entity" method="_on_damage_taken"]
 
 [editable path="shoot"]

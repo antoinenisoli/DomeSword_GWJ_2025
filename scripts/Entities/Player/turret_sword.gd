@@ -58,7 +58,7 @@ func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
         var axis: float = Input.get_axis("move_left", "move_right")
         force_slider.value += axis * power
-        print("force: " + str(force_slider.value))
+        #print("force: " + str(force_slider.value))
     pass
 
     if Input.is_action_just_pressed("fire") && force_slider.value != 0:
@@ -79,15 +79,18 @@ func play_vfx(body) -> void:
 
 func attack_enemy(body: Node2D) -> void:
     var dmg = compute_damage()
-    if dmg > 0:
-        TimeManager.slow_motion(slowMo)
-        play_vfx(body)
-        on_enemy_hit.emit(body)
-        cam.shake()
-        body.takeDmg(dmg)
-        body.push_back(absf(velocity) * push_force)
+    print(str(velocity) + " converted to damages: " + str(dmg))
+    if dmg <= 0:
+        return
+
+    TimeManager.slow_motion(slowMo)
+    play_vfx(body)
+    on_enemy_hit.emit(body)
+    cam.shake()
+    body.takeDmg(dmg)
+    body.push_back(absf(velocity) * push_force)
 
 func _on_body_entered(body: Node2D) -> void:
     if body.is_in_group("Enemies"):
-        print(str(velocity) + " hit:" + str(body))
+        #print(str(velocity) + " hit:" + str(body))
         attack_enemy(body)

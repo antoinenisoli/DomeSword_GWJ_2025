@@ -1,4 +1,7 @@
 extends Entity
+class_name Enemy
+
+@onready var follow = get_parent() as Follow
 
 @export var _shooting: Shooting
 @export var speed: float = 100
@@ -7,72 +10,50 @@ extends Entity
 @export var target: Node2D
 @export var push_cooldown: Timer
 
-var player: Turret
-var _target: Node2D: get = get_target
-
 func _ready():
     super ()
     var group = get_tree().get_nodes_in_group("Player")
-    #print(group.is_empty())
     if !group.is_empty():
-        player = get_tree().get_nodes_in_group("Player")[0]
-
-func direction() -> Vector2:
-    return (_target.position - position).normalized()
-
-func get_target() -> Node2D:
-    if player:
-        return player
-    else:
-        return target
+        target = get_tree().get_nodes_in_group("Player")[0]
+        follow.target = target
+    elif !follow.target:
+        follow.target = target
 
 func reset() -> void:
     sprite.play("idle")
-    stop()
-
-func stop() -> void:
-    linear_velocity = Vector2.ZERO
+    follow.stop()
 
 func shoot():
-    if !_target:
+    if !target:
         return
         
-    _shooting.look_at(_target.position)
+    _shooting.look_at(target.position)
     _shooting.shoot()
 
 func _physics_process(_delta: float):
-    if !_target:
+    if !target:
         reset()
         return
 
-    var dir = position.distance_to(_target.position)
-    #print(dir)
+    var dir = global_position.distance_to(target.position)
     if dir > min_distance:
         sprite.play("move")
-        apply_force(direction() * speed)
-    elif linear_velocity.length() > 0.1:
+        follow.follow_target(_delta)
+    elif follow.linear_velocity.length() > 0.1:
         reset()
         shoot()
     
 func _process(_delta):
-    if !_target:
+    if !target:
         return
 
-    sprite.flip_h = _target.position.x < position.x
-
-func push_back(force: float) -> void:
-    if !push_cooldown.is_stopped():
-        return
-
-    print("push back")
-    push_cooldown.start()
-    stop()
-    apply_impulse(-direction() * force)
+    sprite.flip_h = target.position.x < global_position.x
 
 func death() -> void:
-    FxManager.spawn_fx("blood_explode", position)
-    super ()
+    FxManager.spawn_fx("blood_explode", global_position)
+    await get_tree().process_frame
+    get_parent().queue_free()
 
 func _on_damage_taken(_hp) -> void:
     pass
-    #FxManager.spawn_fx("blood_slash", position)
+    #FxManager.spawn_fx("blood_slash", global_position)

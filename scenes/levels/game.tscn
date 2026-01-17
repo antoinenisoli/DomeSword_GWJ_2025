@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="6_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://cyleivx7ywp7m" path="res://scenes/dome.tscn" id="7_7rg7d"]
+[ext_resource type="PackedScene" uid="uid://cyleivx7ywp7m" path="res://scenes/entities/dome.tscn" id="7_7rg7d"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_uk881"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
 [ext_resource type="Texture2D" uid="uid://dkt3nukb772pa" path="res://assets/sprites/UI/icons/blue/cash_coin_B.png" id="8_r0gsk"]

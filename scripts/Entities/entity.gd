@@ -7,11 +7,11 @@ signal damage_taken
 @export var sprite: AnimatedSprite2D
 @export var hitColor: Color
 
-func health_value() -> float:
-    return _health.current_hp as float / _health.max_hp as float
-
 func _ready() -> void:
     _health.on_death.connect(death)
+
+func health_value() -> float:
+    return _health.current_hp as float / _health.max_hp as float
 
 func hit_flash() -> void:
     sprite.self_modulate = hitColor

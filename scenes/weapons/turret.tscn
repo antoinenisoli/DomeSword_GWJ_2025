@@ -1,10 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://kksfipc358r0"]
+[gd_scene load_steps=15 format=3 uid="uid://kksfipc358r0"]
 
-[ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/turret_controller.gd" id="1_83w2q"]
+[ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/weapons/turret_controller.gd" id="1_83w2q"]
+[ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="2_487ac"]
 [ext_resource type="Texture2D" uid="uid://du6od362500ps" path="res://assets/sprites/player/Turret.png" id="2_538jk"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_538jk"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="4_487ac"]
 [ext_resource type="Texture2D" uid="uid://b2urny3hrkixh" path="res://assets/sprites/player/Turret_light.png" id="5_we0nl"]
+
+[sub_resource type="Gradient" id="Gradient_538jk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.01, 0.33, 0.66)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.6117647, 0, 1, 1, 0.8901186, 0, 1, 0, 1, 0.41140202, 1)
+
+[sub_resource type="Resource" id="Resource_kh6qd"]
+resource_local_to_scene = true
+script = ExtResource("2_487ac")
+max_ammo = 10
+metadata/_custom_type_script = "uid://15t3ts3yvwg7"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we0nl"]
 atlas = ExtResource("2_538jk")
@@ -54,10 +66,14 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting", "sprite")]
+[node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting", "sprite", "light")]
 script = ExtResource("1_83w2q")
 _shooting = NodePath("AnimatedSprite2D2/shoot")
 sprite = NodePath("AnimatedSprite2D2")
+light = NodePath("AnimatedSprite2D2/light")
+grad = SubResource("Gradient_538jk")
+ammo_container = SubResource("Resource_kh6qd")
+blink = Color(18.892157, 0, 0, 1)
 match_enemies = Array[int]([0, 1])
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]

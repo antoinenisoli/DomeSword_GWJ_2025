@@ -11,6 +11,7 @@ class_name Enemy
 func _ready():
     sprite.get_parent().scale = Vector2.ZERO
     super ()
+    
     find_target()
     await get_tree().process_frame # wait for the position to be set
     grow_effect()

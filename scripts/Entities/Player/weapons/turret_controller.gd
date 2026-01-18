@@ -1,20 +1,39 @@
 extends DomeWeapon
 class_name Turret
 
+@export_category("Shooting")
 @export var _shooting: Shooting
 @export var sprite: AnimatedSprite2D
+@export var light: Sprite2D
+@export var grad: Gradient
+@export var ammo_container: AmmoContainer
+
+@export_category("Rotation")
 @export var rotate_speed: float = 0.8
-@export var rot_limit: float = 70
+@export_range(0, 360) var rot_limit: float = 80
+
+@export_category("Low Ammo Blink")
+@export_range(0, 1) var low_ammo: float = 0.5
+@export var blink: Color = Color.RED
+@export var blink_rate: int = 32
 
 func _ready():
     super ()
     _shooting.on_bullet_shot.connect(on_bullet_shot)
+
+func update_light() -> void:
+    var i = ammo_container.ammo_quantity()
+    var color: Color = grad.sample(i)
+    light.self_modulate = color
+    if i <= low_ammo && i > 0:
+        light.self_modulate = color if Engine.get_process_frames() % blink_rate else blink
 
 func on_bullet_shot(bullet) -> void:
     if !sprite.is_playing():
         sprite.play("shoot")
     
     bullet.init(self)
+    ammo_container.shoot()
 
 func look_mouse(_delta: float) -> void:
     var mousePos = get_global_mouse_position()
@@ -39,8 +58,7 @@ func rotate_turret(_delta: float) -> void:
     rotation = clamp(rotation, -limit, limit)
 
 func _process(_delta: float):
-    #print(reload_timer.is_stopped())
-    #look_mouse(_delta)
     rotate_turret(_delta)
-    if Input.is_action_pressed("fire"):
+    update_light()
+    if Input.is_action_pressed("fire") && ammo_container.can_shoot:
         _shooting.shoot()

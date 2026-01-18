@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyleivx7ywp7m"]
+[gd_scene load_steps=19 format=3 uid="uid://cyleivx7ywp7m"]
 
 [ext_resource type="Script" uid="uid://cb8y4fhtikaj7" path="res://scripts/Entities/Player/player_dome.gd" id="1_si0v0"]
+[ext_resource type="Script" uid="uid://bm32vcb33up3j" path="res://scripts/Entities/Player/weapons/weapon_inventory.gd" id="3_16ise"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
 [ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/player/Dome2.png" id="3_pw578"]
 [ext_resource type="PackedScene" uid="uid://kksfipc358r0" path="res://scenes/weapons/turret.tscn" id="3_t5h6n"]
@@ -19,7 +20,7 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 radius = 65.0
 height = 158.0
 
-[sub_resource type="Resource" id="Resource_f5j6v"]
+[sub_resource type="Resource" id="Resource_16ise"]
 resource_local_to_scene = true
 script = ExtResource("4_si0v0")
 max_ammo = 100
@@ -54,9 +55,8 @@ bg_color = Color(0, 0, 0, 0.57254905)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfv3k"]
 bg_color = Color(1, 0, 0.016666412, 0.22352941)
 
-[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("weapons", "sprite") groups=["Player"]]
+[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")
-weapons = [NodePath("Weapons/turret"), NodePath("Weapons/sword")]
 _health = SubResource("Resource_dqkch")
 sprite = NodePath("Weapons/turret/AnimatedSprite2D")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
@@ -66,10 +66,12 @@ visible = false
 position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_x3mc5")
 
-[node name="Weapons" type="Node2D" parent="."]
+[node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("weapons")]
+script = ExtResource("3_16ise")
+turret_ammo = SubResource("Resource_16ise")
+weapons = [NodePath("turret"), NodePath("sword")]
 
 [node name="turret" parent="Weapons" instance=ExtResource("3_t5h6n")]
-ammo_container = SubResource("Resource_f5j6v")
 
 [node name="AnimatedSprite2D" parent="Weapons/turret" index="0"]
 position = Vector2(0, -87)
@@ -77,9 +79,6 @@ position = Vector2(0, -87)
 [node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
 position = Vector2(0, -29)
 force_curve = SubResource("Curve_si0v0")
-
-[node name="anchor" parent="Weapons/sword" index="0"]
-visible = false
 
 [node name="Control" parent="Weapons/sword" index="2"]
 offset_top = -77.63164

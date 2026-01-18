@@ -6,7 +6,6 @@ class_name Turret
 @export var sprite: AnimatedSprite2D
 @export var light: Sprite2D
 @export var grad: Gradient
-@export var ammo_container: AmmoContainer
 
 @export_category("Rotation")
 @export var rotate_speed: float = 0.8
@@ -24,7 +23,7 @@ func _ready():
     EventManager.on_enemy_killed.connect(ammo_from_sword)
 
 func update_light() -> void:
-    var i = ammo_container.ammo_quantity()
+    var i = weapons.turret_ammo.ammo_quantity()
     var color: Color = grad.sample(i)
     light.self_modulate = color
     if i <= low_ammo && i > 0:
@@ -35,14 +34,14 @@ func ammo_from_sword(dmg: int) -> void:
         return
 
     print("get " + str(dmg) + " ammos !!")
-    ammo_container.add_ammo(dmg)
+    weapons.turret_ammo.add_ammo(dmg)
 
 func on_bullet_shot(bullet) -> void:
     if !sprite.is_playing():
         sprite.play("shoot")
     
     bullet.init(self)
-    ammo_container.shoot()
+    weapons.turret_ammo.shoot()
 
 func look_mouse(_delta: float) -> void:
     var mousePos = get_global_mouse_position()
@@ -69,5 +68,5 @@ func rotate_turret(_delta: float) -> void:
 func _process(_delta: float):
     rotate_turret(_delta)
     update_light()
-    if Input.is_action_pressed("fire") && ammo_container.can_shoot:
+    if Input.is_action_pressed("fire") && weapons.turret_ammo.can_shoot:
         _shooting.shoot()

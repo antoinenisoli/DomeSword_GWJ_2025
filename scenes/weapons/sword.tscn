@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdb2g7iw4tamu"]
+[gd_scene load_steps=11 format=3 uid="uid://cdb2g7iw4tamu"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/weapons/sword_controller.gd" id="1_o616w"]
 [ext_resource type="Curve" uid="uid://bhy33dv46yc6t" path="res://resources/sword_force_curve.tres" id="2_3pnln"]
@@ -10,13 +10,6 @@
 _data = [Vector2(0, 0), 0.0, -5.097836, 0, 0, Vector2(0.5, 1), -5.425904, -5.425904, 0, 0, Vector2(0.8, 0.1), -1.2075583, -1.2075583, 0, 0, Vector2(1, 0), -0.35753322, 0.0, 0, 0]
 point_count = 4
 metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_qlg0r"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1l7jo"]
-gradient = SubResource("Gradient_qlg0r")
-width = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
 size = Vector2(9.227221, 14.049628)
@@ -49,15 +42,6 @@ match_enemies = Array[int]([0])
 position = Vector2(0, -55.263206)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Sprite2D" type="Sprite2D" parent="anchor"]
-visible = false
-modulate = Color(1, 1, 1, 0.31764707)
-z_index = -1
-position = Vector2(-2.2737366e-13, 0)
-scale = Vector2(8.67, 599.99994)
-texture = SubResource("GradientTexture1D_1l7jo")
-offset = Vector2(9.3132265e-08, -1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="anchor"]
 position = Vector2(0, -161.18437)
 scale = Vector2(8.669998, 22.945)
@@ -67,6 +51,20 @@ shape = SubResource("RectangleShape2D_0ph48")
 position = Vector2(-2.2737368e-13, -154.09682)
 scale = Vector2(13.09524, 20.743664)
 texture = ExtResource("3_58ehi")
+
+[node name="Weapon_support" type="Sprite2D" parent="anchor"]
+z_index = 50
+position = Vector2(-8.940697e-07, -1.3157845)
+scale = Vector2(1.7857144, 1.315791)
+texture = ExtResource("4_11jj1")
+region_enabled = true
+region_rect = Rect2(2, 30, 44, 18)
+
+[node name="light" type="Sprite2D" parent="anchor/Weapon_support"]
+self_modulate = Color(0.1333332, 1, 0, 1)
+z_index = 50
+position = Vector2(0, -15)
+texture = ExtResource("5_dx2j5")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -100,17 +98,5 @@ offset_bottom = 33.47368
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_58ehi")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gwb47")
 value = 50.0
-
-[node name="Weapon_support" type="Sprite2D" parent="."]
-position = Vector2(-8.940697e-07, -56.578995)
-scale = Vector2(1.7857143, 1.3157909)
-texture = ExtResource("4_11jj1")
-region_enabled = true
-region_rect = Rect2(2, 30, 44, 18)
-
-[node name="light" type="Sprite2D" parent="Weapon_support"]
-self_modulate = Color(0.1333332, 1, 0, 1)
-position = Vector2(0, -15)
-texture = ExtResource("5_dx2j5")
 
 [connection signal="body_entered" from="anchor" to="." method="_on_body_entered"]

@@ -32,7 +32,7 @@ resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
-[sub_resource type="Resource" id="Resource_fojqs"]
+[sub_resource type="Resource" id="Resource_d2m8s"]
 resource_local_to_scene = true
 script = ExtResource("4_6370d")
 max_ammo = 100
@@ -68,8 +68,10 @@ shakers = Dictionary[String, ExtResource("2_fojqs")]({
 position = Vector2(1, 103)
 _health = SubResource("Resource_oi2tv")
 
+[node name="Weapons" parent="Dome" index="1"]
+turret_ammo = SubResource("Resource_d2m8s")
+
 [node name="turret" parent="Dome/Weapons" index="0"]
-ammo_container = SubResource("Resource_fojqs")
 blink_rate = 30
 
 [node name="AnimatedSprite2D" parent="Dome/Weapons/turret" index="0"]

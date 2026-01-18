@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready():
     anim.animation_looped.connect(queue_free)
+    anim.animation_finished.connect(queue_free)
 
 func compensate_timeScale() -> void:
     if Engine.time_scale < 1:

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://tdmt7g1f3hnm"]
+
+[ext_resource type="Script" uid="uid://bmyoijxikv66" path="res://scripts/Entities/Enemies/explosion.gd" id="1_tqulw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wcjb"]
+radius = 100.0
+
+[node name="Explosion" type="Area2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_tqulw")
+damages = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0wcjb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -265,7 +265,7 @@ sprite = NodePath("../CollisionShape2D/AnimatedSprite2D")
 hitColor = Color(4.6165767, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]

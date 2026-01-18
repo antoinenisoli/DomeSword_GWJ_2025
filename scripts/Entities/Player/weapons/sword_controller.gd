@@ -27,6 +27,7 @@ func reset() -> void:
     force_slider.value = 0
     force_slider.min_value = - max_power
     force_slider.max_value = max_power
+    charge_sword(0)
 
 func start_slash() -> void:
     timer.start()

@@ -58,6 +58,12 @@ position = Vector2(-458, -48)
 cooldown_range = Vector2(5, 15)
 spawn_range = 50.0
 
+[node name="EnemySpawner5" parent="Spawners" instance=ExtResource("6_p57ef")]
+position = Vector2(-350, -66)
+cooldown_range = Vector2(5, 15)
+spawn_range = 50.0
+enemy = ExtResource("8_6370d")
+
 [node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(-478, -474)
 cooldown_range = Vector2(15, 30)
@@ -92,6 +98,3 @@ position = Vector2(1.0000001, 69.999985)
 scale = Vector2(1.325, 1.3333334)
 texture = ExtResource("9_oi2tv")
 metadata/_edit_lock_ = true
-
-[node name="Frog" parent="." instance=ExtResource("8_6370d")]
-position = Vector2(-217, -331)

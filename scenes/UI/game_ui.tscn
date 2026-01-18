@@ -15,6 +15,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_hvehc"]
 font = ExtResource("4_5038c")
+font_size = 12
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbbca"]
 texture = ExtResource("10_jqo5s")
@@ -137,18 +138,20 @@ layout_mode = 2
 [node name="enemy_count" type="Label" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2"]
 layout_mode = 0
 offset_left = -7.0
-offset_right = 57.0
+offset_right = 69.0
 offset_bottom = 42.0
-text = "0"
+theme_override_font_sizes/font_size = 16
+text = "1000"
 label_settings = SubResource("LabelSettings_hvehc")
 horizontal_alignment = 2
 vertical_alignment = 1
+uppercase = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2"]
 layout_mode = 0
-offset_left = 5.0
+offset_left = -2.0
 offset_top = 4.0
-offset_right = 36.999825
+offset_right = 29.999825
 offset_bottom = 35.999966
 texture = ExtResource("6_mbbca")
 stretch_mode = 4

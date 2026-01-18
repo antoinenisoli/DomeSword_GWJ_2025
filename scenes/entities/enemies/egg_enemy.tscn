@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://b5k4wrsldj08p"]
+[gd_scene load_steps=41 format=3 uid="uid://b5k4wrsldj08p"]
 
 [ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_kx0bx"]
-[ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="2_j5g5f"]
+[ext_resource type="Script" uid="uid://cd505nhclc85d" path="res://scripts/Entities/Enemies/enemy_exploding.gd" id="2_kx0bx"]
+[ext_resource type="PackedScene" uid="uid://tdmt7g1f3hnm" path="res://scenes/entities/enemies/explosion.tscn" id="3_j5g5f"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_nbl50"]
 [ext_resource type="Texture2D" uid="uid://dd4oa6g0cmoqf" path="res://assets/sprites/enemies/egg.png" id="4_j5g5f"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_e1s6s"]
@@ -368,12 +369,13 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_kx0bx")
 speed = 25.0
-min_distance = 50.0
+min_distance = 100.0
 enemy = NodePath("Entity")
 push_cooldown = NodePath("pushedCooldown")
 
 [node name="Entity" type="Node2D" parent="." node_paths=PackedStringArray("shadow", "anim", "sprite") groups=["Enemies"]]
-script = ExtResource("2_j5g5f")
+script = ExtResource("2_kx0bx")
+explosion = ExtResource("3_j5g5f")
 shadow = NodePath("../CollisionShape2D/AnimatedSprite2D/shadow")
 anim = NodePath("../AnimationPlayer")
 ammo_value = 5
@@ -391,7 +393,7 @@ position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.19685051
+frame_progress = 0.78255546
 
 [node name="shadow" type="Sprite2D" parent="CollisionShape2D/AnimatedSprite2D"]
 visible = false

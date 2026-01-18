@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="domeShelter"
+config/name="DomeSword"
 run/main_scene="uid://pmrhth1mkfnr"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://s3grxe55xgi0"
 
 [autoload]
 

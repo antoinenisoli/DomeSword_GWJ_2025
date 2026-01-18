@@ -28,7 +28,7 @@ func spawn_ammo_text(ammo_value: int, pos: Vector2) -> void:
         text.set_text(str(ammo_value))
 
 func game_over() -> void:
-    pause_screen.visible = true
+    gameover_screen.visible = true
     TimeManager.set_time(0.1)
 
     await get_tree().create_timer(2, true, true, true).timeout

@@ -7,6 +7,8 @@ func scan_enemy(entity) -> void:
     if entity.is_in_group("Enemies"):
         FxManager.spawn_fx("blood_slash", entity.position)
         entity.enemy.takeDmg(damages)
+    elif entity is Entity:
+        (entity as Entity).takeDmg(damages)
 
 func _on_body_entered(_body: Node2D) -> void:
     FxManager.spawn_fx("egg_explosion", position)

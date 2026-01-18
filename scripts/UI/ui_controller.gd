@@ -4,6 +4,7 @@ extends Control
 @export var flame_txt: Label
 @export var pause_screen: Control
 @export var gameover_screen: Control
+@export var floating_txt: PackedScene
 var enemy_killed: int
 
 func _ready() -> void:
@@ -11,11 +12,20 @@ func _ready() -> void:
     flame_txt.text = str(0)
     pause_screen.visible = false
     gameover_screen.visible = false
+    EventManager.collect_ammo.connect(spawn_ammo_text)
     EventManager.on_player_killed.connect(game_over)
     EventManager.on_enemy_killed.connect(func f(_args) -> void:
         enemy_killed += 1
         enemy_txt.text = str(enemy_killed)
         )
+
+func spawn_ammo_text(ammo_value: int, pos: Vector2) -> void:
+    if floating_txt:
+        #print("ammo txt!")
+        var text = floating_txt.instantiate()
+        get_tree().current_scene.add_child(text)
+        text.global_position = pos
+        text.set_text(str(ammo_value))
 
 func game_over() -> void:
     pause_screen.visible = true

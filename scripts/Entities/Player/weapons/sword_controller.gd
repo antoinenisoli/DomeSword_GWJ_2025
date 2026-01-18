@@ -90,8 +90,12 @@ func attack_enemy(enemy: Enemy) -> void:
     TimeManager.slow_motion(slowMo)
     play_vfx(enemy)
     EventManager.on_sword_hit.emit(dmg)
+
     enemy.takeDmg(dmg)
     enemy.get_parent().push_back(absf(velocity) * push_force)
+    if collect_enabled && enemy.ammo_value > 0 && enemy.health_value() == 0: # the enemy has been killed
+        EventManager.collect_ammo.emit(enemy.ammo_value, enemy.global_position)
+        pass
 
 func _on_body_entered(body: Node2D) -> void:
     if !body.is_in_group("Enemies"):

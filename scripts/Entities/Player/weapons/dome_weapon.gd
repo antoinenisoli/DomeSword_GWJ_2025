@@ -1,6 +1,7 @@
 extends Node2D
 class_name DomeWeapon
 
+@export var collect_enabled: bool
 @export var match_enemies: Array[Enums.ENEMY_TYPE] = []
 var weapons: WeaponInventory
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://crkwkw4c7tgkv"]
+[gd_scene load_steps=14 format=3 uid="uid://crkwkw4c7tgkv"]
 
 [ext_resource type="Script" uid="uid://uqaw0biwnuv2" path="res://scripts/UI/ui_controller.gd" id="1_d8ncw"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="2_owrpm"]
+[ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="2_r4w1u"]
 [ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="3_r4w1u"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_5038c"]
 [ext_resource type="Texture2D" uid="uid://dkt3nukb772pa" path="res://assets/sprites/UI/icons/blue/cash_coin_B.png" id="5_jqo5s"]
@@ -43,6 +44,7 @@ enemy_txt = NodePath("CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2
 flame_txt = NodePath("CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control3/flame_count")
 pause_screen = NodePath("CanvasLayer/Screens/PauseScreen")
 gameover_screen = NodePath("CanvasLayer/Screens/GameOverScreen")
+floating_txt = ExtResource("2_r4w1u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

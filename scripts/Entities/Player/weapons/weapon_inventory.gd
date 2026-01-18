@@ -1,5 +1,4 @@
 extends Node2D
-
 class_name WeaponInventory
 
 @export var switch_cooldown: Timer
@@ -10,13 +9,16 @@ var weaponIndex: int = 0
 func _ready():
     equip_weapon(weapons[weaponIndex])
 
+func active_weapon() -> DomeWeapon:
+    return weapons[weaponIndex]
+
 func next_weapon() -> void:
     if !switch_cooldown.is_stopped():
         return
 
     weaponIndex += 1
     weaponIndex %= weapons.size()
-    equip_weapon(weapons[weaponIndex])
+    equip_weapon(active_weapon())
     switch_cooldown.start()
 
 func equip_weapon(weapon: DomeWeapon) -> void:

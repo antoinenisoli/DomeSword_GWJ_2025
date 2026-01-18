@@ -76,4 +76,5 @@ volume_db = -10.0
 autoplay = true
 
 [node name="FloatingText" parent="." instance=ExtResource("6_r0gsk")]
+visible = false
 position = Vector2(-269, -135)

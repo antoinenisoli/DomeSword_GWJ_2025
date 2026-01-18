@@ -41,6 +41,7 @@ txt = NodePath("Control/Label")
 force_slider = NodePath("Control/HSlider")
 deceleration_curve = SubResource("Curve_232hh")
 force_curve = ExtResource("2_3pnln")
+collect_enabled = true
 match_enemies = Array[int]([0])
 
 [node name="hitbox" type="Area2D" parent="."]

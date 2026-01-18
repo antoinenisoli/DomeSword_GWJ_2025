@@ -12,19 +12,15 @@ class_name Turret
 func _ready():
     super ()
     _shooting.on_bullet_shot.connect(on_bullet_shot)
-    #EventManager.on_sword_hit.connect(ammo_from_sword)
-    EventManager.on_enemy_killed.connect(ammo_from_sword)
+    EventManager.collect_ammo.connect(ammo_from_sword)
 
 func reset() -> void:
     rotation_degrees = 0
 
-func ammo_from_sword(dmg: int) -> void:
-    if is_visible_in_tree(): # only earn ammo if the sword is equiped
-        return
-
-    print("get " + str(dmg) + " ammos !!")
+func ammo_from_sword(ammo_value: int, _pos: Vector2) -> void:
+    print("turret get " + str(ammo_value) + " ammos !!")
     AudioManager.play_sound("ammo_earned")
-    weapons.turret_ammo.add_ammo(dmg)
+    weapons.turret_ammo.add_ammo(ammo_value)
 
 func on_bullet_shot(bullet) -> void:
     if !sprite.is_playing():

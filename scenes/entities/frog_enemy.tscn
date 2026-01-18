@@ -196,55 +196,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="Animation" id="Animation_jr1g6"]
-resource_name = "death_jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.2831855]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D/AnimatedSprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(1, 0),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, 200, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(1, 2),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, -199.5, -0.32555836, -47.438503, 0.4666667, 68),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="Animation" id="Animation_hlb8m"]
 length = 0.001
 tracks/0/type = "value"
@@ -294,6 +245,55 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_jr1g6"]
+resource_name = "death_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(1, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 200, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(1, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -199.5, -0.32555836, -47.438503, 0.4666667, 68),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4fpkd"]
 _data = {
 &"RESET": SubResource("Animation_hlb8m"),
@@ -313,6 +313,7 @@ push_cooldown = NodePath("pushedCooldown")
 script = ExtResource("2_v8emy")
 _shooting = NodePath("../shoot")
 anim = NodePath("../AnimationPlayer")
+ammo_value = 5
 grow_duration = 5.0
 _health = SubResource("Resource_jr1g6")
 sprite = NodePath("../CollisionShape2D/AnimatedSprite2D")

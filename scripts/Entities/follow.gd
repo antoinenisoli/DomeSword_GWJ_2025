@@ -1,10 +1,10 @@
 extends RigidBody2D
 class_name Follow
 
-@export var enemy: Enemy
-@export var target: Node2D
 @export var speed: float = 100
 @export var min_distance: float = 300
+@export var target: Node2D
+@export var enemy: Enemy
 @export var push_cooldown: Timer
 var enemy_state: Enums.ENEMY_STATE
 
@@ -12,7 +12,7 @@ func direction() -> Vector2:
     if !target:
         return Vector2.ZERO
 
-    return (enemy.target.position - position).normalized()
+    return (target.position - position).normalized()
 
 func stop() -> void:
     enemy_state = Enums.ENEMY_STATE.IDLE

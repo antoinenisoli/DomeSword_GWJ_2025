@@ -7,8 +7,8 @@ class_name Enemy
 @export var anim: AnimationPlayer
 @export var ammo_value: int = 10
 @export var grow_duration: float = 1.2
-@export var target: Node2D
 @export var type: Enums.ENEMY_TYPE
+var player: Node2D
 
 func _ready():
     sprite.get_parent().scale = Vector2.ZERO
@@ -21,23 +21,21 @@ func _ready():
 func find_target() -> void:
     var group = get_tree().get_nodes_in_group("Player")
     if !group.is_empty():
-        target = get_tree().get_nodes_in_group("Player")[0]
-        follow.target = target
-    elif !follow.target:
-        follow.target = target
+        player = get_tree().get_nodes_in_group("Player")[0]
+        follow.target = player
 
 func reset() -> void:
     sprite.play("idle")
 
 func shoot():
-    if !target:
+    if !player:
         return
         
-    _shooting.look_at(target.position)
+    _shooting.look_at(player.position)
     _shooting.shoot()
 
 func grow_effect() -> void:
-    var x: float = -1 if target.position.x < global_position.x else 1
+    var x: float = -1 if player.position.x < global_position.x else 1
     var newScale = Vector2(x, 1)
 
     var tween := create_tween()
@@ -45,7 +43,7 @@ func grow_effect() -> void:
     tween.play()
 
 func _process(_delta):
-    if !target:
+    if !player:
         reset()
         return
 
@@ -57,6 +55,7 @@ func _process(_delta):
 
 func death() -> void:
     FxManager.spawn_fx("blood_explode", global_position)
+    AudioManager.play_sound("enemy_death")
     EventManager.on_enemy_killed.emit(ammo_value)
 
     anim.play("death_jump")
@@ -69,5 +68,5 @@ func death() -> void:
     get_parent().queue_free()
 
 func _on_damage_taken(_hp) -> void:
-    pass
+    AudioManager.play_sound("tap", Vector2(0.8, 1.2))
     #FxManager.spawn_fx("blood_slash", global_position)

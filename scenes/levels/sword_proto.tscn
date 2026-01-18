@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="1_y0mr8"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/frog_enemy.tscn" id="2_38len"]
-[ext_resource type="PackedScene" uid="uid://cdb2g7iw4tamu" path="res://scenes/weapons/sword.tscn" id="2_y0mr8"]
+[ext_resource type="PackedScene" uid="uid://c65y8t1ijq160" path="res://scenes/weapons/sword.tscn" id="2_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_y0mr8"]
 [ext_resource type="Script" uid="uid://cqqj71kmg0ke6" path="res://scripts/ease_test.gd" id="6_232hh"]
 
@@ -31,11 +31,10 @@ force_curve = SubResource("Curve_y0mr8")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
 position = Vector2(510, -532)
-target = NodePath("../sword")
 speed = 150.0
+target = NodePath("../sword")
 
-[node name="Frog_Entity" parent="Frog" index="0" node_paths=PackedStringArray("target")]
-target = NodePath("../../sword")
+[node name="Frog_Entity" parent="Frog" index="0"]
 _health = SubResource("Resource_232hh")
 
 [node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("timer")]

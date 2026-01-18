@@ -23,12 +23,14 @@ func ammo_from_sword(dmg: int) -> void:
         return
 
     print("get " + str(dmg) + " ammos !!")
+    AudioManager.play_sound("ammo_earned")
     weapons.turret_ammo.add_ammo(dmg)
 
 func on_bullet_shot(bullet) -> void:
     if !sprite.is_playing():
         sprite.play("shoot")
     
+    AudioManager.play_sound("jump", Vector2(0.8, 1.2))
     bullet.init(self)
     weapons.turret_ammo.shoot()
 

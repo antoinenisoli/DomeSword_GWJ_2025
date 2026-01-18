@@ -7,4 +7,5 @@ func death() -> void:
 
 func takeDmg(dmg: int) -> void:
     super (dmg)
+    AudioManager.play_sound("player_hit")
     EventManager.on_player_damaged.emit()

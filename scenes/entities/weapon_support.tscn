@@ -19,6 +19,7 @@ region_rect = Rect2(2, 30, 44, 18)
 script = ExtResource("2_o0ygl")
 light = NodePath("light")
 grad = SubResource("Gradient_538jk")
+blink = Color(18.892157, 0, 0, 1)
 
 [node name="light" type="Sprite2D" parent="."]
 self_modulate = Color(0.1333332, 1, 0, 1)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvx3u7sxix88b"]
+
+[ext_resource type="Script" uid="uid://d3vy2vhsju4io" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://bm7qum65ds8kb" path="res://assets/sounds/hurt.wav" id="2_kq7b2"]
+[ext_resource type="AudioStream" uid="uid://dfun0qb6h3dfp" path="res://assets/sounds/power_up.wav" id="3_02gw7"]
+[ext_resource type="AudioStream" uid="uid://3rvp7ekom8d0" path="res://assets/sounds/coin.wav" id="4_ujhup"]
+[ext_resource type="AudioStream" uid="uid://dyle1bvcj5qa0" path="res://assets/sounds/explosion.wav" id="5_064dn"]
+[ext_resource type="AudioStream" uid="uid://b1306xsycrtwg" path="res://assets/sounds/tap.wav" id="6_ic5jq"]
+[ext_resource type="AudioStream" uid="uid://djsu3wr3kutxu" path="res://assets/sounds/jump.wav" id="7_if78k"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_8qd8g")
+volume = -20.0
+list = Dictionary[String, AudioStream]({
+"ammo_earned": ExtResource("4_ujhup"),
+"enemy_death": ExtResource("5_064dn"),
+"jump": ExtResource("7_if78k"),
+"player_hit": ExtResource("2_kq7b2"),
+"switch_weapon": ExtResource("3_02gw7"),
+"tap": ExtResource("6_ic5jq")
+})

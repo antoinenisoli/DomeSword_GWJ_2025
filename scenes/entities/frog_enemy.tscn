@@ -325,7 +325,7 @@ shape = SubResource("CircleShape2D_4ra3w")
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.67107415
+frame_progress = 0.47324473
 
 [node name="shadow" type="Sprite2D" parent="CollisionShape2D/AnimatedSprite2D"]
 self_modulate = Color(0, 0, 0, 0.7254902)
@@ -349,6 +349,7 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_4fpkd")
 }
+speed_scale = 2.0
 
 [connection signal="damage_taken" from="Frog_Entity" to="Frog_Entity" method="_on_damage_taken"]
 

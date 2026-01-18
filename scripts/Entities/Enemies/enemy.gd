@@ -5,6 +5,7 @@ class_name Enemy
 
 @export var _shooting: Shooting
 @export var anim: AnimationPlayer
+@export var ammo_value: int = 10
 @export var grow_duration: float = 1.2
 @export var target: Node2D
 @export var type: Enums.ENEMY_TYPE
@@ -56,7 +57,7 @@ func _process(_delta):
 
 func death() -> void:
     FxManager.spawn_fx("blood_explode", global_position)
-    EventManager.on_enemy_killed.emit()
+    EventManager.on_enemy_killed.emit(ammo_value)
 
     anim.play("death_jump")
     var shadow = sprite.get_children()[0]

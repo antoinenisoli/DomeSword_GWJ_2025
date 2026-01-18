@@ -68,36 +68,35 @@ animations = [{
 
 [node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting", "sprite", "light")]
 script = ExtResource("1_83w2q")
-_shooting = NodePath("AnimatedSprite2D2/shoot")
-sprite = NodePath("AnimatedSprite2D2")
-light = NodePath("AnimatedSprite2D2/light")
+_shooting = NodePath("AnimatedSprite2D/shoot")
+sprite = NodePath("AnimatedSprite2D")
+light = NodePath("AnimatedSprite2D/light")
 grad = SubResource("Gradient_538jk")
 ammo_container = SubResource("Resource_kh6qd")
 blink = Color(18.892157, 0, 0, 1)
 match_enemies = Array[int]([0, 1])
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 50
 position = Vector2(0, -25)
-scale = Vector2(0.983, 1)
 sprite_frames = SubResource("SpriteFrames_mqfwu")
 animation = &"shoot"
 autoplay = "idle"
 frame = 3
 frame_progress = 1.0
 
-[node name="shoot" parent="AnimatedSprite2D2" instance=ExtResource("3_538jk")]
+[node name="shoot" parent="AnimatedSprite2D" instance=ExtResource("3_538jk")]
 position = Vector2(0, -19)
 rotation = -1.5707964
 scale = Vector2(0.4553571, 0.46323526)
 bullet = ExtResource("4_487ac")
 shoot_rate = 0.25
 
-[node name="reload" parent="AnimatedSprite2D2/shoot" index="0"]
+[node name="reload" parent="AnimatedSprite2D/shoot" index="0"]
 wait_time = 0.25
 
-[node name="light" type="Sprite2D" parent="AnimatedSprite2D2"]
+[node name="light" type="Sprite2D" parent="AnimatedSprite2D"]
 position = Vector2(0, 6.948198e-06)
 texture = ExtResource("5_we0nl")
 
-[editable path="AnimatedSprite2D2/shoot"]
+[editable path="AnimatedSprite2D/shoot"]

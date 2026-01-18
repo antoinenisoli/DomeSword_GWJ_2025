@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=24 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
@@ -49,6 +49,11 @@ metadata/_snap_count = 90
 [sub_resource type="LabelSettings" id="LabelSettings_xmnyv"]
 font = ExtResource("7_uk881")
 
+[sub_resource type="LabelSettings" id="LabelSettings_eiv1w"]
+paragraph_spacing = 13.57
+font = ExtResource("7_uk881")
+font_size = 20
+
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" parent="." instance=ExtResource("7_xmnyv")]
@@ -66,6 +71,9 @@ _health = SubResource("Resource_oi2tv")
 [node name="turret" parent="Dome/Weapons" index="0"]
 ammo_container = SubResource("Resource_fojqs")
 blink_rate = 30
+
+[node name="AnimatedSprite2D" parent="Dome/Weapons/turret" index="0"]
+position = Vector2(0, -88)
 
 [node name="sword" parent="Dome/Weapons" index="1"]
 position = Vector2(0, -27.999998)
@@ -185,6 +193,26 @@ offset_bottom = 35.999966
 texture = ExtResource("9_6370d")
 stretch_mode = 4
 
+[node name="tuto" type="Control" parent="CanvasLayer/HUD"]
+anchors_preset = 0
+offset_right = 1270.0
+offset_bottom = 324.0
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/tuto"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 16.0
+offset_right = 1098.0
+offset_bottom = 233.0
+text = "- Press E to switch weapon
+- Press arrow keys: move the turret / charge the sword in a direction
+- Press Space: fire with the turret / unleash the sword
+- Killing enemies with the sword grants you ammos for the turret
+- amuse toi bien nukulu !!!"
+label_settings = SubResource("LabelSettings_eiv1w")
+autowrap_mode = 2
+justification_flags = 161
+
 [node name="GameManager" parent="." node_paths=PackedStringArray("canvas") instance=ExtResource("5_p57ef")]
 canvas = NodePath("../CanvasLayer")
 
@@ -192,9 +220,11 @@ canvas = NodePath("../CanvasLayer")
 
 [node name="EnemySpawner1" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(450, -101)
+cooldown_range = Vector2(8, 20)
 
 [node name="EnemySpawner2" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(-458, -162)
+cooldown_range = Vector2(8, 20)
 
 [node name="BG" type="Sprite2D" parent="."]
 z_index = -4096
@@ -207,5 +237,5 @@ position = Vector2(-260, -145)
 
 [editable path="Dome"]
 [editable path="Dome/Weapons/turret"]
-[editable path="Dome/Weapons/turret/AnimatedSprite2D2/shoot"]
+[editable path="Dome/Weapons/turret/AnimatedSprite2D/shoot"]
 [editable path="Dome/Weapons/sword"]

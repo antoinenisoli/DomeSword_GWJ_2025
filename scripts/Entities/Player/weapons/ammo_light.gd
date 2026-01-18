@@ -11,6 +11,9 @@ class_name AmmoLight
 @export var blink_rate: int = 32
 
 func update_light() -> void:
+    if !my_weapon:
+        return
+
     var i = my_weapon.weapons.turret_ammo.ammo_quantity()
     var color: Color = grad.sample(i)
     light.self_modulate = color

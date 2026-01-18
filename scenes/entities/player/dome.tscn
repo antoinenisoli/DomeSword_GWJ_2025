@@ -80,9 +80,12 @@ weapons = [NodePath("sword"), NodePath("turret")]
 [node name="turret" parent="Weapons" instance=ExtResource("3_t5h6n")]
 
 [node name="AnimatedSprite2D" parent="Weapons/turret" index="0"]
-position = Vector2(0, -90)
+position = Vector2(0, -94)
+frame = 2
+frame_progress = 0.0
 
 [node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
+visible = false
 force_curve = SubResource("Curve_si0v0")
 
 [node name="Control" parent="Weapons/sword" index="2"]

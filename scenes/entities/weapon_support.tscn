@@ -1,28 +1,220 @@
-[gd_scene load_steps=5 format=3 uid="uid://c66tdqqqa4low"]
+[gd_scene load_steps=18 format=3 uid="uid://c66tdqqqa4low"]
 
-[ext_resource type="Texture2D" uid="uid://du6od362500ps" path="res://assets/sprites/dome/Turret.png" id="1_leg1a"]
+[ext_resource type="Texture2D" uid="uid://d0qklanlrytos" path="res://assets/sprites/dome/Turret2.png" id="2_leg1a"]
 [ext_resource type="Script" uid="uid://bgelaal4mskqu" path="res://scripts/Entities/Player/weapons/ammo_light.gd" id="2_o0ygl"]
-[ext_resource type="Texture2D" uid="uid://b2urny3hrkixh" path="res://assets/sprites/dome/Turret_light.png" id="3_snj2o"]
 
 [sub_resource type="Gradient" id="Gradient_538jk"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.01, 0.33, 0.66)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.6117647, 0, 1, 1, 0.8901186, 0, 1, 0, 1, 0.41140202, 1)
 
-[node name="Weapon_support" type="Sprite2D" node_paths=PackedStringArray("light")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj5w8"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5hkb"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ac"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_538jk"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we0nl"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh6qd"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afr54"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ejf5"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5v22"]
+atlas = ExtResource("2_leg1a")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0ygl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj5w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5hkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_538jk")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we0nl")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_538jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5hkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj5w8")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh6qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afr54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ejf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5v22")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_kagac"]
+resource_name = "show_sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sword_base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 232), Vector2(0, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_leg1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sword_base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_o0ygl"]
+resource_name = "hide_sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sword_base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -24), Vector2(0, 232)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_leg1a"]
+_data = {
+&"RESET": SubResource("Animation_leg1a"),
+&"hide_sword": SubResource("Animation_o0ygl"),
+&"show_sword": SubResource("Animation_kagac")
+}
+
+[node name="Weapon_support" type="Node2D" node_paths=PackedStringArray("light")]
 z_index = 50
-position = Vector2(0, -4.578941)
-scale = Vector2(1.7857144, 1.8245621)
-texture = ExtResource("1_leg1a")
-region_enabled = true
-region_rect = Rect2(2, 30, 44, 18)
 script = ExtResource("2_o0ygl")
-light = NodePath("light")
+light = NodePath("support/light")
 grad = SubResource("Gradient_538jk")
 blink = Color(18.892157, 0, 0, 1)
 
-[node name="light" type="Sprite2D" parent="."]
+[node name="support" type="AnimatedSprite2D" parent="."]
+z_index = 50
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_o0ygl")
+animation = &"close"
+autoplay = "close"
+
+[node name="light" type="Sprite2D" parent="support"]
 self_modulate = Color(0.1333332, 1, 0, 1)
 z_index = 50
-position = Vector2(0, -15)
-texture = ExtResource("3_snj2o")
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_leg1a")
+region_enabled = true
+region_rect = Rect2(0, 192, 64, 64)
+
+[node name="sword_base" type="Node2D" parent="."]
+position = Vector2(0, -24)
+
+[node name="bottom" type="Sprite2D" parent="sword_base"]
+position = Vector2(0, -32)
+texture = ExtResource("2_leg1a")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(192, 64, 64, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="sword_base"]
+position = Vector2(0, -68)
+texture = ExtResource("2_leg1a")
+region_enabled = true
+region_rect = Rect2(0, 128, 64, 64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="sword_base"]
+position = Vector2(0, -124)
+texture = ExtResource("2_leg1a")
+region_enabled = true
+region_rect = Rect2(64, 128, 64, 64)
+
+[node name="Sprite2D3" type="Sprite2D" parent="sword_base"]
+position = Vector2(0, -188)
+texture = ExtResource("2_leg1a")
+region_enabled = true
+region_rect = Rect2(128, 128, 64, 64)
+
+[node name="top" type="Sprite2D" parent="sword_base"]
+position = Vector2(0, -252)
+texture = ExtResource("2_leg1a")
+region_enabled = true
+region_rect = Rect2(192, 128, 64, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_leg1a")
+}

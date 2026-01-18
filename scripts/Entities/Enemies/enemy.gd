@@ -4,6 +4,7 @@ class_name Enemy
 @onready var follow = get_parent() as Follow
 
 @export var _shooting: Shooting
+@export var anim: AnimationPlayer
 @export var grow_duration: float = 1.2
 @export var target: Node2D
 @export var type: Enums.ENEMY_TYPE
@@ -56,7 +57,14 @@ func _process(_delta):
 func death() -> void:
     FxManager.spawn_fx("blood_explode", global_position)
     EventManager.on_enemy_killed.emit()
-    await get_tree().process_frame
+
+    anim.play("death_jump")
+    var shadow = sprite.get_children()[0]
+    if shadow:
+        shadow.queue_free()
+
+    follow.process_mode = Node.PROCESS_MODE_DISABLED
+    await anim.animation_finished
     get_parent().queue_free()
 
 func _on_damage_taken(_hp) -> void:

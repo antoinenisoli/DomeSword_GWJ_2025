@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ubw14t1aqsrk"]
 
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="1_y0mr8"]
-[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/enemy.tscn" id="2_38len"]
+[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/frog_enemy.tscn" id="2_38len"]
 [ext_resource type="PackedScene" uid="uid://cdb2g7iw4tamu" path="res://scenes/weapons/sword.tscn" id="2_y0mr8"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="4_y0mr8"]
 [ext_resource type="Script" uid="uid://cqqj71kmg0ke6" path="res://scripts/ease_test.gd" id="6_232hh"]
@@ -25,9 +25,8 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 [node name="Camera2D" parent="." instance=ExtResource("1_y0mr8")]
 position = Vector2(0, -248)
 
-[node name="sword" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("2_y0mr8")]
+[node name="sword" parent="." instance=ExtResource("2_y0mr8")]
 position = Vector2(-0.99999994, 0)
-cam = NodePath("../Camera2D")
 force_curve = SubResource("Curve_y0mr8")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]

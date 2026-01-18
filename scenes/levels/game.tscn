@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=23 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
@@ -15,15 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://pnv0vj2xn81r" path="res://assets/sprites/UI/icons/blue/power_B.png" id="9_6370d"]
 [ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="9_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://ccbisbkqt1r3c" path="res://assets/sprites/background_placeholder.png" id="12_oi2tv"]
-
-[sub_resource type="Resource" id="Resource_bgnkb"]
-script = ExtResource("2_fojqs")
-shake_duration = 0.3
-metadata/_custom_type_script = "uid://b3sjd2wth0hut"
+[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/frog_enemy.tscn" id="13_eiv1w"]
 
 [sub_resource type="Resource" id="Resource_eiv1w"]
 script = ExtResource("2_fojqs")
 shake_amount = 7
+metadata/_custom_type_script = "uid://b3sjd2wth0hut"
+
+[sub_resource type="Resource" id="Resource_bgnkb"]
+script = ExtResource("2_fojqs")
+shake_duration = 0.3
 metadata/_custom_type_script = "uid://b3sjd2wth0hut"
 
 [sub_resource type="Resource" id="Resource_oi2tv"]
@@ -200,6 +201,9 @@ z_index = -4096
 position = Vector2(1.00001, -134.5)
 scale = Vector2(1.325, 1.3194445)
 texture = ExtResource("12_oi2tv")
+
+[node name="Frog" parent="." instance=ExtResource("13_eiv1w")]
+position = Vector2(-260, -145)
 
 [editable path="Dome"]
 [editable path="Dome/Weapons/turret"]

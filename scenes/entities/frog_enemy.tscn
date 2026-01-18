@@ -1,14 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=36 format=3 uid="uid://byxfdf0x8un4k"]
 
-[ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_jr1g6"]
-[ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="3_4ra3w"]
-[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_5uy6h"]
-[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_c4w8v"]
+[ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_nwdrs"]
+[ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="2_v8emy"]
+[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_48xsq"]
+[ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="4_56ym0"]
+[ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_wn8hl"]
 
 [sub_resource type="Resource" id="Resource_jr1g6"]
 resource_local_to_scene = true
-script = ExtResource("3_5uy6h")
+script = ExtResource("3_48xsq")
 max_hp = 5
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
@@ -16,99 +16,99 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 radius = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jr1g6"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(0, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlb8m"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(72, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fpkd"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(144, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqw0c"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(216, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onntj"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(288, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7bdk"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(360, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kl1a"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(432, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3y0q"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(504, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ln8om"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(576, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14tws"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(648, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owm76"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(720, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkgbd"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(792, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pt174"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(864, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ynut"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(936, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nv3ol"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(1008, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td7os"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(1080, 34, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(0, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2pwtc"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(72, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rogs8"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(144, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrm80"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(216, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6awcb"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(288, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjec0"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(360, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4rgx"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(432, 102, 72, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mchx"]
-atlas = ExtResource("3_4ra3w")
+atlas = ExtResource("4_56ym0")
 region = Rect2(504, 102, 72, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
@@ -196,18 +196,123 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="Animation" id="Animation_jr1g6"]
+resource_name = "death_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(1, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 200, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(1, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -199.5, -0.32555836, -47.438503, 0.4666667, 68),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_hlb8m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(1),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(1),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4fpkd"]
+_data = {
+&"RESET": SubResource("Animation_hlb8m"),
+&"death_jump": SubResource("Animation_jr1g6")
+}
+
 [node name="Frog" type="RigidBody2D" node_paths=PackedStringArray("enemy", "push_cooldown") groups=["Enemies"]]
 gravity_scale = 0.0
 lock_rotation = true
-script = ExtResource("1_jr1g6")
+script = ExtResource("1_nwdrs")
 enemy = NodePath("Frog_Entity")
 speed = 40.0
 min_distance = 150.0
 push_cooldown = NodePath("pushedCooldown")
 
-[node name="Frog_Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "sprite") groups=["Enemies"]]
-script = ExtResource("1_md0e3")
+[node name="Frog_Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "anim", "sprite") groups=["Enemies"]]
+script = ExtResource("2_v8emy")
 _shooting = NodePath("../shoot")
+anim = NodePath("../AnimationPlayer")
 grow_duration = 5.0
 _health = SubResource("Resource_jr1g6")
 sprite = NodePath("../CollisionShape2D/AnimatedSprite2D")
@@ -220,24 +325,30 @@ shape = SubResource("CircleShape2D_4ra3w")
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.1278152
+frame_progress = 0.67107415
 
-[node name="shadow" type="Sprite2D" parent="CollisionShape2D"]
+[node name="shadow" type="Sprite2D" parent="CollisionShape2D/AnimatedSprite2D"]
 self_modulate = Color(0, 0, 0, 0.7254902)
 z_index = -1
 position = Vector2(-1, 18)
 scale = Vector2(1, 0.206)
-texture = ExtResource("3_4ra3w")
+texture = ExtResource("4_56ym0")
 flip_v = true
 region_enabled = true
 region_rect = Rect2(12.333119, 34.769592, 44.502964, 32.977043)
 
-[node name="shoot" parent="." instance=ExtResource("5_c4w8v")]
+[node name="shoot" parent="." instance=ExtResource("5_wn8hl")]
 position = Vector2(8.5, -1)
 shoot_rate = 1.0
 
 [node name="pushedCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_4fpkd")
+}
 
 [connection signal="damage_taken" from="Frog_Entity" to="Frog_Entity" method="_on_damage_taken"]
 

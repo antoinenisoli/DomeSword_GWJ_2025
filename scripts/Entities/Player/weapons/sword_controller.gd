@@ -59,13 +59,15 @@ func hit_bound() -> void:
 
 func slash(delta) -> void:
     compute_velocity_curve(delta)
+    if target_velocity == 0:
+        return
+
     if weapon_support.anchor.global_rotation_degrees > rot_limit || weapon_support.anchor.global_rotation_degrees < -rot_limit:
         hit_bound()
 
 func charge_sword(axis: float) -> void:
     weapon_support.add_rot(-axis * preview_angle)
     var v = absf(force_slider.value) / max_power
-    print(v)
     for spr in weapon_support.sword_sprites:
         spr.self_modulate = charge_color.sample(v)
 
@@ -76,7 +78,6 @@ func move_sword() -> void:
         if target_velocity == 0 && force_slider.value < force_slider.max_value && force_slider.value > force_slider.min_value:
             charge_sword(axis)
 
-        #weapon_support.add_rot(axis * power)
         #print("force: " + str(force_slider.value))
     pass
 

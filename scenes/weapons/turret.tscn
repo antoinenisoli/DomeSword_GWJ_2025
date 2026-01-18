@@ -8,6 +8,7 @@
 script = ExtResource("1_83w2q")
 _shooting = NodePath("shoot")
 rotate_speed = 50.0
+rot_limit = 80.0
 match_enemies = Array[int]([0, 1])
 
 [node name="shoot" parent="." instance=ExtResource("3_538jk")]

@@ -13,7 +13,7 @@ max_hp = 8
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
-radius = 16.0
+radius = 22.022715
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jr1g6"]
 atlas = ExtResource("4_56ym0")

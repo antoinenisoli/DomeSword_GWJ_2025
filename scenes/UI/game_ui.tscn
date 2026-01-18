@@ -209,14 +209,19 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 51.0
-offset_top = 124.0
 offset_right = -36.0
-offset_bottom = 268.0
+offset_bottom = 296.0
 grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("8_owrpm")
+theme_override_fonts/bold_font = ExtResource("4_5038c")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "- [b]WASD / Arrow keys[/b] for controlling the active weapon
+
 - [b]Left Click / Space[/b] to use the active weapon
+
 - [b]E[/b] to switch active weapon
+
 - [b]Tab[/b] to pause the game"
 autowrap_mode = 2
 horizontal_alignment = 1

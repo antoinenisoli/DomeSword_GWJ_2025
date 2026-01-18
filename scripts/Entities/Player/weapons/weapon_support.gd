@@ -5,6 +5,7 @@ class_name WeaponSupport
 @export var sprite: AnimatedSprite2D
 @export var anim: AnimationPlayer
 @export var weapons: WeaponInventory
+@export var sword_sprites: Array[Sprite2D]
 
 @export_category("Low Ammo Blink")
 @export var light: Sprite2D

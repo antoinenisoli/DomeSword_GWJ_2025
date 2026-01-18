@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=16 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="6_r0gsk"]
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
+[ext_resource type="Texture2D" uid="uid://d0oe0ioiyxgar" path="res://assets/sprites/dome/enviro/Foreground_01.png" id="9_oi2tv"]
 [ext_resource type="AudioStream" uid="uid://3ro1xk81esn2" path="res://assets/sounds/Parabola.mp3" id="10_uk881"]
 [ext_resource type="Texture2D" uid="uid://ccbisbkqt1r3c" path="res://assets/sprites/dome/enviro/background_placeholder.png" id="12_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/frog_enemy.tscn" id="13_eiv1w"]
@@ -49,18 +50,11 @@ _health = SubResource("Resource_oi2tv")
 
 [node name="EnemySpawner1" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(450, -101)
-cooldown_range = Vector2(8, 20)
+cooldown_range = Vector2(5, 15)
 
 [node name="EnemySpawner2" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(-458, -162)
-cooldown_range = Vector2(8, 20)
-
-[node name="BG" type="Sprite2D" parent="."]
-z_index = -4096
-position = Vector2(1.00001, -132.00002)
-scale = Vector2(1.325, 1.3333334)
-texture = ExtResource("12_oi2tv")
-metadata/_edit_lock_ = true
+cooldown_range = Vector2(5, 15)
 
 [node name="Frog" parent="." instance=ExtResource("13_eiv1w")]
 position = Vector2(-260, -326)
@@ -78,3 +72,19 @@ autoplay = true
 [node name="FloatingText" parent="." instance=ExtResource("6_r0gsk")]
 visible = false
 position = Vector2(-269, -135)
+
+[node name="_ART" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="_ART"]
+z_index = -4096
+position = Vector2(1.00001, -132.00002)
+scale = Vector2(1.325, 1.3333334)
+texture = ExtResource("12_oi2tv")
+metadata/_edit_lock_ = true
+
+[node name="Foreground" type="Sprite2D" parent="_ART"]
+z_index = -4096
+position = Vector2(1.0000001, 69.999985)
+scale = Vector2(1.325, 1.3333334)
+texture = ExtResource("9_oi2tv")
+metadata/_edit_lock_ = true

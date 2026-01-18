@@ -1,16 +1,15 @@
-[gd_scene load_steps=37 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=36 format=3 uid="uid://byxfdf0x8un4k"]
 
 [ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_nwdrs"]
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="2_v8emy"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_48xsq"]
-[ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="3_v8emy"]
 [ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="4_56ym0"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_wn8hl"]
 
 [sub_resource type="Resource" id="Resource_jr1g6"]
 resource_local_to_scene = true
 script = ExtResource("3_48xsq")
-max_hp = 5
+max_hp = 8
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
@@ -314,7 +313,6 @@ push_cooldown = NodePath("pushedCooldown")
 script = ExtResource("2_v8emy")
 _shooting = NodePath("../shoot")
 anim = NodePath("../AnimationPlayer")
-floating_txt = ExtResource("3_v8emy")
 ammo_value = 5
 grow_duration = 5.0
 _health = SubResource("Resource_jr1g6")

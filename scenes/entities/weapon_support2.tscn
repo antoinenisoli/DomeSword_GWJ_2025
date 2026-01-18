@@ -166,7 +166,7 @@ _data = {
 resource_local_to_scene = true
 script = ExtResource("4_itk3i")
 start_ammo = 25
-max_ammo = 100
+max_ammo = 75
 metadata/_custom_type_script = "uid://15t3ts3yvwg7"
 
 [sub_resource type="Curve" id="Curve_6xt84"]
@@ -181,12 +181,13 @@ metadata/_snap_count = 90
 resource_local_to_scene = true
 font_size = 10
 
-[node name="Weapon_support" type="Node2D" node_paths=PackedStringArray("sprite", "anim", "weapons", "light")]
+[node name="Weapon_support" type="Node2D" node_paths=PackedStringArray("sprite", "anim", "weapons", "sword_sprites", "light")]
 z_index = 50
 script = ExtResource("1_6rd3f")
 sprite = NodePath("support")
 anim = NodePath("AnimationPlayer")
 weapons = NodePath("weapons_inventory")
+sword_sprites = [NodePath("sword_base/bottom"), NodePath("sword_base/Sprite2D"), NodePath("sword_base/Sprite2D2"), NodePath("sword_base/Sprite2D3"), NodePath("sword_base/top")]
 light = NodePath("support/light")
 grad = SubResource("Gradient_538jk")
 blink = Color(18.892157, 0, 0, 1)
@@ -223,7 +224,6 @@ one_shot = true
 ignore_time_scale = true
 
 [node name="turret" parent="weapons_inventory" instance=ExtResource("5_16mq0")]
-collect_enabled = null
 
 [node name="sword" parent="weapons_inventory" instance=ExtResource("6_ikkyr")]
 force_curve = SubResource("Curve_6xt84")

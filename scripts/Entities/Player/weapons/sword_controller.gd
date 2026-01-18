@@ -2,10 +2,12 @@ extends DomeWeapon
 class_name Sword
 
 @export_range(0, 1) var slowMo: float = 0.1
+@export var preview_angle: float = 10
 @export var power: float = 10
 @export var max_power: float = 1000
 @export var push_force: float = 50
 
+@export var charge_color: Gradient
 @export var timer: Timer
 @export var txt: Label
 @export var force_slider: HSlider
@@ -14,6 +16,7 @@ class_name Sword
 
 var velocity: float
 var target_velocity: float
+var base_rot: float
 
 func _ready():
     reset()
@@ -30,6 +33,7 @@ func start_slash() -> void:
     target_velocity = force_slider.value
     print("slash!! " + str(target_velocity))
     force_slider.value = 0
+    charge_sword(0)
 
 func get_weight() -> float:
     var t = 1 - (timer.time_left / timer.wait_time)
@@ -58,10 +62,21 @@ func slash(delta) -> void:
     if weapon_support.anchor.global_rotation_degrees > rot_limit || weapon_support.anchor.global_rotation_degrees < -rot_limit:
         hit_bound()
 
+func charge_sword(axis: float) -> void:
+    weapon_support.add_rot(-axis * preview_angle)
+    var v = absf(force_slider.value) / max_power
+    print(v)
+    for spr in weapon_support.sword_sprites:
+        spr.self_modulate = charge_color.sample(v)
+
 func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
         var axis: float = Input.get_axis("move_left", "move_right")
         force_slider.value += axis * power
+        if target_velocity == 0 && force_slider.value < force_slider.max_value && force_slider.value > force_slider.min_value:
+            charge_sword(axis)
+
+        #weapon_support.add_rot(axis * power)
         #print("force: " + str(force_slider.value))
     pass
 
@@ -104,3 +119,7 @@ func _on_body_entered(body: Node2D) -> void:
     if can_hit(body.enemy):
         #print(str(velocity) + " hit:" + str(body))
         attack_enemy(body.enemy)
+
+func _on_swing_timer_timeout() -> void:
+    reset()
+    base_rot = weapon_support.anchor.global_rotation_degrees

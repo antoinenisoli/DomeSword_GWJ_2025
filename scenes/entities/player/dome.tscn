@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cb8y4fhtikaj7" path="res://scripts/Entities/Player/player_dome.gd" id="1_si0v0"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
-[ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/dome/Dome2.png" id="3_pw578"]
+[ext_resource type="Texture2D" uid="uid://boq5dcu4xid3x" path="res://assets/sprites/dome/Dome3.png" id="4_t5h6n"]
 [ext_resource type="Script" uid="uid://bwsckparmx13i" path="res://scripts/UI/healthbar.gd" id="7_16ise"]
 [ext_resource type="Texture2D" uid="uid://c3rv2r2h01koa" path="res://assets/sprites/dome/enviro/GreenCrystal_01.png" id="7_r38io"]
 [ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support2.tscn" id="7_t5h6n"]
@@ -17,15 +17,15 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 radius = 65.0
 height = 158.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t5h6n"]
-atlas = ExtResource("3_pw578")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7o3r"]
+atlas = ExtResource("4_t5h6n")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l7o3r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t5h6n")
+"texture": SubResource("AtlasTexture_l7o3r")
 }],
 "loop": true,
 "name": &"default",
@@ -36,7 +36,7 @@ animations = [{
 bg_color = Color(0, 0, 0, 0.57254905)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfv3k"]
-bg_color = Color(1, 0, 0.016666412, 0.22352941)
+bg_color = Color(1, 0, 0.015686275, 0.31764707)
 
 [node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")

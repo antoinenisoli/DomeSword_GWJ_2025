@@ -79,12 +79,10 @@ position = Vector2(0, -90)
 [node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
 force_curve = SubResource("Curve_si0v0")
 
-[node name="pivot" parent="Weapons/sword/anchor" index="1"]
-position = Vector2(0, -75.00001)
-
 [node name="Control" parent="Weapons/sword" index="2"]
-offset_top = 30.263176
-offset_bottom = 70.263176
+offset_top = -42.0
+offset_right = 0.0
+offset_bottom = -42.0
 
 [node name="visuals" type="Node2D" parent="."]
 

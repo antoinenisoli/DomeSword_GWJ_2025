@@ -37,7 +37,7 @@ font = ExtResource("7_uk881")
 [sub_resource type="LabelSettings" id="LabelSettings_eiv1w"]
 paragraph_spacing = 13.57
 font = ExtResource("7_uk881")
-font_size = 20
+font_size = 15
 
 [node name="Game" type="Node2D"]
 
@@ -171,7 +171,7 @@ stretch_mode = 4
 [node name="tuto" type="Control" parent="CanvasLayer/HUD"]
 anchors_preset = 0
 offset_right = 1270.0
-offset_bottom = 324.0
+offset_bottom = 261.0
 
 [node name="Label" type="Label" parent="CanvasLayer/HUD/tuto"]
 layout_mode = 0

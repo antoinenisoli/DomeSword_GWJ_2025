@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=16 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="6_r0gsk"]
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
+[ext_resource type="PackedScene" uid="uid://d352piharubl" path="res://scenes/entities/enemies/fly_enemy.tscn" id="8_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://d0oe0ioiyxgar" path="res://assets/sprites/dome/enviro/Foreground_01.png" id="9_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://by7wkobibgtv7" path="res://assets/sprites/dome/enviro/background_placeholder3.png" id="10_r0gsk"]
 [ext_resource type="AudioStream" uid="uid://3ro1xk81esn2" path="res://assets/sounds/Parabola.mp3" id="10_uk881"]
@@ -56,6 +57,18 @@ spawn_range = 50.0
 position = Vector2(-458, -48)
 cooldown_range = Vector2(5, 15)
 spawn_range = 50.0
+
+[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
+position = Vector2(-478, -474)
+cooldown_range = Vector2(10, 20)
+spawn_range = 200.0
+enemy = ExtResource("8_oi2tv")
+
+[node name="EnemySpawner4" parent="Spawners" instance=ExtResource("6_p57ef")]
+position = Vector2(337, -474)
+cooldown_range = Vector2(10, 20)
+spawn_range = 200.0
+enemy = ExtResource("8_oi2tv")
 
 [node name="Sounds" type="Node2D" parent="."]
 

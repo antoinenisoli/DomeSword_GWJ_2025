@@ -4,6 +4,7 @@ class_name Enemy
 @onready var follow = get_parent() as Follow
 
 @export var _shooting: Shooting
+@export var shadow: Sprite2D
 @export var anim: AnimationPlayer
 
 @export var ammo_value: int = 10
@@ -12,12 +13,13 @@ class_name Enemy
 var player: Dome
 
 func _ready():
+    var start_scale = sprite.get_parent().scale
     sprite.get_parent().scale = Vector2.ZERO
     super ()
     
     find_target()
     await get_tree().process_frame # wait for the position to be set
-    grow_effect()
+    grow_effect(start_scale)
 
 func find_target() -> void:
     var group = get_tree().get_nodes_in_group("Player")
@@ -35,9 +37,9 @@ func shoot():
     _shooting.look_at(player.position)
     _shooting.shoot()
 
-func grow_effect() -> void:
+func grow_effect(start_scale: Vector2) -> void:
     var x: float = -1 if player.position.x < global_position.x else 1
-    var newScale = Vector2(x, 1)
+    var newScale = Vector2(start_scale.x * x, start_scale.x)
 
     var tween := create_tween()
     tween.tween_property(sprite.get_parent(), "scale", newScale, grow_duration)
@@ -60,7 +62,6 @@ func death() -> void:
     EventManager.on_enemy_killed.emit(ammo_value)
 
     anim.play("death_jump")
-    var shadow = sprite.get_children()[0]
     if shadow:
         shadow.queue_free()
 

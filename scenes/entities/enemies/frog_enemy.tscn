@@ -309,9 +309,10 @@ min_distance = 200.0
 enemy = NodePath("Frog_Entity")
 push_cooldown = NodePath("pushedCooldown")
 
-[node name="Frog_Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "anim", "sprite") groups=["Enemies"]]
+[node name="Frog_Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "shadow", "anim", "sprite") groups=["Enemies"]]
 script = ExtResource("2_v8emy")
 _shooting = NodePath("../shoot")
+shadow = NodePath("../CollisionShape2D/AnimatedSprite2D/shadow")
 anim = NodePath("../AnimationPlayer")
 ammo_value = 5
 grow_duration = 5.0
@@ -340,7 +341,7 @@ region_rect = Rect2(12.333119, 34.769592, 44.502964, 32.977043)
 
 [node name="shoot" parent="." instance=ExtResource("5_wn8hl")]
 position = Vector2(8.5, -1)
-shoot_rate = 1.0
+shoot_rate = 2.0
 
 [node name="pushedCooldown" type="Timer" parent="."]
 one_shot = true

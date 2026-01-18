@@ -36,10 +36,7 @@ func update_light() -> void:
         light.self_modulate = color if Engine.get_process_frames() % blink_rate else blink
 
 func add_rot(degrees: float) -> void:
-    anchor.rotation_degrees += degrees
-
-func anchor_rot() -> float:
-    return anchor.rotation_degrees
+    anchor.global_rotation_degrees += degrees
 
 func _on_turret_equiped() -> void:
     print("equip turret")

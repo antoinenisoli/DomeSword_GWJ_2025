@@ -44,11 +44,14 @@ func compute_velocity_curve(delta) -> void:
     #print(velocity)
     weapon_support.add_rot(velocity)
 
+func hit_bound() -> void:
+    AudioManager.play_sound("enemy_death", Vector2(1.5, 4))
+    target_velocity *= -1
+
 func slash(delta) -> void:
     compute_velocity_curve(delta)
-    print(weapon_support.anchor.rotation_degrees)
-    if weapon_support.anchor.rotation_degrees > rot_limit || weapon_support.anchor.rotation_degrees < -rot_limit:
-        target_velocity = - target_velocity
+    if weapon_support.anchor.global_rotation_degrees > rot_limit || weapon_support.anchor.global_rotation_degrees < -rot_limit:
+        hit_bound()
 
 func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
@@ -67,7 +70,7 @@ func compute_damage() -> int:
 func _process(_delta: float):
     move_sword()
     slash(_delta)
-    txt.text = str(roundf(weapon_support.anchor.rotation_degrees))
+    txt.text = str(roundf(weapon_support.anchor.global_rotation_degrees))
 
 func play_vfx(body) -> void:
     var fx = FxManager.spawn_fx("blood_stream", body.position)

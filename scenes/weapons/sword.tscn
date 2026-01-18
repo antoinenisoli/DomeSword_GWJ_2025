@@ -32,7 +32,6 @@ corner_radius_bottom_left = 5
 z_index = -5
 script = ExtResource("1_o616w")
 power = 100.0
-push_force = 35.0
 timer = NodePath("swing_timer")
 txt = NodePath("Control/Label")
 force_slider = NodePath("Control/HSlider")

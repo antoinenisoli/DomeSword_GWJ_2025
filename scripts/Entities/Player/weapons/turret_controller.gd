@@ -26,7 +26,7 @@ func on_bullet_shot(bullet) -> void:
 func rotate_turret(_delta: float) -> void:
     var m = Input.get_axis("move_left", "move_right")
     weapon_support.add_rot(m * rotate_speed * _delta)
-    weapon_support.anchor.rotation_degrees = clamp(weapon_support.anchor.rotation_degrees, -rot_limit, rot_limit)
+    weapon_support.anchor.global_rotation_degrees = clamp(weapon_support.anchor.global_rotation_degrees, -rot_limit, rot_limit)
 
 func _process(_delta: float):
     rotate_turret(_delta)

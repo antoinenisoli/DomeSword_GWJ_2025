@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddxbw3be3fyr3"]
+[gd_scene load_steps=4 format=3 uid="uid://cmd35lvohi54s"]
 
-[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/frog_enemy.tscn" id="3_lx5c4"]
+[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="3_44ycl"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="3_tfau5"]
 [ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/dome/Dome2.png" id="4_mml5a"]
 
@@ -15,5 +15,5 @@ position = Vector2(0, -149)
 scale = Vector2(2.2578125, 2.2578125)
 texture = ExtResource("4_mml5a")
 
-[node name="Frog" parent="." instance=ExtResource("3_lx5c4")]
-position = Vector2(-444, -327)
+[node name="Weapon_support" parent="." instance=ExtResource("3_44ycl")]
+position = Vector2(-248, 60)

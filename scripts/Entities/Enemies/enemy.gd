@@ -55,6 +55,7 @@ func _process(_delta):
 
 func death() -> void:
     FxManager.spawn_fx("blood_explode", global_position)
+    EventManager.on_enemy_killed.emit()
     await get_tree().process_frame
     get_parent().queue_free()
 

@@ -32,9 +32,9 @@ bg_color = Color(0.6, 0.27, 0.27, 1)
 z_index = -5
 scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_o616w")
-rot_limit = 85.0
+rot_limit = 100.0
 power = 100.0
-push_force = 25.0
+push_force = 35.0
 sword = NodePath("anchor")
 timer = NodePath("Timer")
 txt = NodePath("Control/Label")
@@ -44,7 +44,7 @@ force_curve = ExtResource("2_3pnln")
 match_enemies = Array[int]([0])
 
 [node name="anchor" type="Area2D" parent="."]
-position = Vector2(0, -63.157948)
+position = Vector2(0, -55.263206)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Sprite2D" type="Sprite2D" parent="anchor"]
@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_0ph48")
 
 [node name="Sword" type="Sprite2D" parent="anchor"]
 position = Vector2(-2.2737368e-13, -154.09682)
-scale = Vector2(23.49603, 20.743664)
+scale = Vector2(13.09524, 20.743664)
 texture = ExtResource("3_58ehi")
 
 [node name="Timer" type="Timer" parent="."]

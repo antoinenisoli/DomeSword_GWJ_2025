@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=22 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="4_6370d"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
+[ext_resource type="Script" uid="uid://uqaw0biwnuv2" path="res://scripts/UI/ui_controller.gd" id="6_bgnkb"]
 [ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="6_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cyleivx7ywp7m" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
@@ -71,42 +72,54 @@ force_curve = SubResource("Curve_f5j6v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("5_iywne")]
+[node name="HUD" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("enemy_txt", "flame_txt")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_bgnkb")
+enemy_txt = NodePath("TextureRect/VBoxContainer/Control2/enemy_count")
+flame_txt = NodePath("TextureRect/VBoxContainer/Control3/flame_count")
+
+[node name="Healthbar" parent="CanvasLayer/HUD" instance=ExtResource("5_iywne")]
 visible = false
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -9.0
+offset_top = 671.0
 offset_right = 0.0
-offset_bottom = -0.8200073
+offset_bottom = 679.18
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -170.0
+offset_left = 1070.0
 offset_top = 9.0
-offset_right = -10.0
+offset_right = 1230.0
 offset_bottom = 169.0
 grow_horizontal = 0
 texture = ExtResource("6_oi2tv")
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD/TextureRect"]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 28.0
 offset_right = 124.0
 offset_bottom = 126.0
 
-[node name="Control" type="Control" parent="CanvasLayer/TextureRect/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/HUD/TextureRect/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 30.835)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/Control"]
+[node name="Label" type="Label" parent="CanvasLayer/HUD/TextureRect/VBoxContainer/Control"]
 layout_mode = 0
 offset_left = -7.0
 offset_right = 66.99982
@@ -116,7 +129,7 @@ label_settings = SubResource("LabelSettings_xmnyv")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/VBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/TextureRect/VBoxContainer/Control"]
 layout_mode = 0
 offset_left = -17.0
 offset_top = 4.0
@@ -125,11 +138,11 @@ offset_bottom = 35.999966
 texture = ExtResource("8_r0gsk")
 stretch_mode = 4
 
-[node name="Control2" type="Control" parent="CanvasLayer/TextureRect/VBoxContainer"]
+[node name="Control2" type="Control" parent="CanvasLayer/HUD/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30.835)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/Control2"]
+[node name="enemy_count" type="Label" parent="CanvasLayer/HUD/TextureRect/VBoxContainer/Control2"]
 layout_mode = 0
 offset_left = -7.0
 offset_right = 66.99982
@@ -139,7 +152,7 @@ label_settings = SubResource("LabelSettings_xmnyv")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/VBoxContainer/Control2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/TextureRect/VBoxContainer/Control2"]
 layout_mode = 0
 offset_left = -17.0
 offset_top = 4.0
@@ -148,11 +161,11 @@ offset_bottom = 35.999966
 texture = ExtResource("9_oi2tv")
 stretch_mode = 4
 
-[node name="Control3" type="Control" parent="CanvasLayer/TextureRect/VBoxContainer"]
+[node name="Control3" type="Control" parent="CanvasLayer/HUD/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30.835)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer/Control3"]
+[node name="flame_count" type="Label" parent="CanvasLayer/HUD/TextureRect/VBoxContainer/Control3"]
 layout_mode = 0
 offset_left = -7.0
 offset_right = 66.99982
@@ -162,7 +175,7 @@ label_settings = SubResource("LabelSettings_xmnyv")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/VBoxContainer/Control3"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/TextureRect/VBoxContainer/Control3"]
 layout_mode = 0
 offset_left = -17.0
 offset_top = 4.0
@@ -191,3 +204,4 @@ texture = ExtResource("12_oi2tv")
 [editable path="Dome"]
 [editable path="Dome/Weapons/turret"]
 [editable path="Dome/Weapons/turret/AnimatedSprite2D2/shoot"]
+[editable path="Dome/Weapons/sword"]

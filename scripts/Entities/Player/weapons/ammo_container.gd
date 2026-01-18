@@ -29,5 +29,8 @@ func shoot(amount: int = 1) -> void:
     ammo -= amount
     #print(ammo)
 
+func add_ammo(amount: int = 1) -> void:
+    ammo += amount
+
 func ammo_quantity() -> float:
     return (ammo as float) / (max_ammo as float)

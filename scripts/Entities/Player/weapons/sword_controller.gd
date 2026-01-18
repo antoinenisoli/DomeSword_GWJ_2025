@@ -1,8 +1,6 @@
 extends DomeWeapon
 class_name Sword
 
-signal on_enemy_hit
-
 @export_range(0, 1) var slowMo: float = 0.1
 @export_range(0, 360) var rot_limit: float = 70
 @export var power: float = 10
@@ -87,9 +85,10 @@ func attack_enemy(enemy: Enemy) -> void:
 
     TimeManager.slow_motion(slowMo)
     play_vfx(enemy)
-    on_enemy_hit.emit(enemy)
+    EventManager.on_sword_hit.emit(dmg)
     cam.shake()
     enemy.takeDmg(dmg)
+    enemy.get_parent().push_back(absf(velocity) * push_force)
 
 func _on_body_entered(body: Node2D) -> void:
     if !body.is_in_group("Enemies"):
@@ -97,5 +96,4 @@ func _on_body_entered(body: Node2D) -> void:
 
     if can_hit(body.enemy):
         #print(str(velocity) + " hit:" + str(body))
-        body.push_back(absf(velocity) * push_force)
         attack_enemy(body.enemy)

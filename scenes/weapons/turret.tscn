@@ -15,7 +15,7 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0.6117647, 0, 1, 1, 0.8901186, 0, 1, 0,
 [sub_resource type="Resource" id="Resource_kh6qd"]
 resource_local_to_scene = true
 script = ExtResource("2_487ac")
-max_ammo = 10
+max_ammo = 100
 metadata/_custom_type_script = "uid://15t3ts3yvwg7"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we0nl"]

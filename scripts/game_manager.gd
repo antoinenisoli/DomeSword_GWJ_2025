@@ -3,10 +3,8 @@ extends Node2D
 @export var canvas: CanvasLayer
 @export var gameover_screen: PackedScene
 
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
-
 func _ready():
-    player._health.on_death.connect(game_over)
+    EventManager.on_player_killed.connect(game_over)
 
 func game_over() -> void:
     var screen = gameover_screen.instantiate()

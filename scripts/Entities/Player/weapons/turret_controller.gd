@@ -20,6 +20,7 @@ class_name Turret
 func _ready():
     super ()
     _shooting.on_bullet_shot.connect(on_bullet_shot)
+    EventManager.on_sword_hit.connect(ammo_from_sword)
 
 func update_light() -> void:
     var i = ammo_container.ammo_quantity()
@@ -27,6 +28,9 @@ func update_light() -> void:
     light.self_modulate = color
     if i <= low_ammo && i > 0:
         light.self_modulate = color if Engine.get_process_frames() % blink_rate else blink
+
+func ammo_from_sword(dmg: int) -> void:
+    ammo_container.add_ammo(dmg)
 
 func on_bullet_shot(bullet) -> void:
     if !sprite.is_playing():

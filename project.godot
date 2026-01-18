@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TimeManager="*res://scenes/time_manager.tscn"
 FxManager="*res://scenes/fx_manager.tscn"
+EventManager="*res://scripts/event_manager.gd"
 
 [display]
 

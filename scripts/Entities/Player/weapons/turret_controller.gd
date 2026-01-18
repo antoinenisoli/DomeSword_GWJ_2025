@@ -4,30 +4,16 @@ class_name Turret
 @export_category("Shooting")
 @export var _shooting: Shooting
 @export var sprite: AnimatedSprite2D
-@export var light: Sprite2D
-@export var grad: Gradient
 
 @export_category("Rotation")
 @export var rotate_speed: float = 0.8
 @export_range(0, 360) var rot_limit: float = 80
-
-@export_category("Low Ammo Blink")
-@export_range(0, 1) var low_ammo: float = 0.5
-@export var blink: Color = Color.RED
-@export var blink_rate: int = 32
 
 func _ready():
     super ()
     _shooting.on_bullet_shot.connect(on_bullet_shot)
     #EventManager.on_sword_hit.connect(ammo_from_sword)
     EventManager.on_enemy_killed.connect(ammo_from_sword)
-
-func update_light() -> void:
-    var i = weapons.turret_ammo.ammo_quantity()
-    var color: Color = grad.sample(i)
-    light.self_modulate = color
-    if i <= low_ammo && i > 0:
-        light.self_modulate = color if Engine.get_process_frames() % blink_rate else blink
 
 func ammo_from_sword(dmg: int) -> void:
     if is_visible_in_tree(): # only earn ammo if the sword is equiped
@@ -67,6 +53,5 @@ func rotate_turret(_delta: float) -> void:
 
 func _process(_delta: float):
     rotate_turret(_delta)
-    update_light()
     if Input.is_action_pressed("fire") && weapons.turret_ammo.can_shoot:
         _shooting.shoot()

@@ -1,15 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://kksfipc358r0"]
+[gd_scene load_steps=12 format=3 uid="uid://kksfipc358r0"]
 
 [ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/weapons/turret_controller.gd" id="1_83w2q"]
 [ext_resource type="Texture2D" uid="uid://du6od362500ps" path="res://assets/sprites/player/Turret.png" id="2_538jk"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_538jk"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="4_487ac"]
-[ext_resource type="Texture2D" uid="uid://b2urny3hrkixh" path="res://assets/sprites/player/Turret_light.png" id="5_we0nl"]
-
-[sub_resource type="Gradient" id="Gradient_538jk"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.01, 0.33, 0.66)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.6117647, 0, 1, 1, 0.8901186, 0, 1, 0, 1, 0.41140202, 1)
+[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="6_538jk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we0nl"]
 atlas = ExtResource("2_538jk")
@@ -59,13 +54,10 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting", "sprite", "light")]
+[node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting", "sprite")]
 script = ExtResource("1_83w2q")
 _shooting = NodePath("AnimatedSprite2D/shoot")
 sprite = NodePath("AnimatedSprite2D")
-light = NodePath("AnimatedSprite2D/light")
-grad = SubResource("Gradient_538jk")
-blink = Color(18.892157, 0, 0, 1)
 match_enemies = Array[int]([0, 1])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -77,6 +69,11 @@ autoplay = "idle"
 frame = 3
 frame_progress = 1.0
 
+[node name="Weapon_support" parent="AnimatedSprite2D" node_paths=PackedStringArray("my_weapon") instance=ExtResource("6_538jk")]
+position = Vector2(7.1525574e-07, 14.999999)
+scale = Vector2(1, 0.9999998)
+my_weapon = NodePath("../..")
+
 [node name="shoot" parent="AnimatedSprite2D" instance=ExtResource("3_538jk")]
 position = Vector2(0, -19)
 rotation = -1.5707964
@@ -86,9 +83,5 @@ shoot_rate = 0.25
 
 [node name="reload" parent="AnimatedSprite2D/shoot" index="0"]
 wait_time = 0.25
-
-[node name="light" type="Sprite2D" parent="AnimatedSprite2D"]
-position = Vector2(0, 6.948198e-06)
-texture = ExtResource("5_we0nl")
 
 [editable path="AnimatedSprite2D/shoot"]

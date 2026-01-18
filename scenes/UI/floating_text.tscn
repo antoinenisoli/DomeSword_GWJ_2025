@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1eu2jc3tnqsy"]
+
+[ext_resource type="Script" uid="uid://dxy21mwprena5" path="res://scripts/UI/floating_text.gd" id="1_0htfi"]
+[ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_38qr0"]
+
+[node name="FloatingText" type="Node2D" node_paths=PackedStringArray("txt")]
+script = ExtResource("1_0htfi")
+txt = NodePath("RichTextLabel")
+up_offset = Vector2(0, -100)
+tween_duration = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_38qr0")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "+10"
+horizontal_alignment = 1
+vertical_alignment = 1

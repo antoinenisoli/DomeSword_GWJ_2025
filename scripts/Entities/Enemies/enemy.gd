@@ -5,6 +5,8 @@ class_name Enemy
 
 @export var _shooting: Shooting
 @export var anim: AnimationPlayer
+@export var floating_txt: PackedScene
+
 @export var ammo_value: int = 10
 @export var grow_duration: float = 1.2
 @export var type: Enums.ENEMY_TYPE
@@ -17,6 +19,14 @@ func _ready():
     find_target()
     await get_tree().process_frame # wait for the position to be set
     grow_effect()
+
+func spawn_ammo_text() -> void:
+    if floating_txt:
+        print("ammo txt!")
+        var text = floating_txt.instantiate()
+        get_tree().current_scene.add_child(text)
+        text.global_position = global_position
+        text.set_text(str(ammo_value))
 
 func find_target() -> void:
     var group = get_tree().get_nodes_in_group("Player")
@@ -57,6 +67,8 @@ func death() -> void:
     FxManager.spawn_fx("blood_explode", global_position)
     AudioManager.play_sound("enemy_death")
     EventManager.on_enemy_killed.emit(ammo_value)
+    if ammo_value > 0:
+        spawn_ammo_text()
 
     anim.play("death_jump")
     var shadow = sprite.get_children()[0]

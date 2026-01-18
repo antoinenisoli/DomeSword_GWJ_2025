@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://byxfdf0x8un4k"]
+[gd_scene load_steps=37 format=3 uid="uid://byxfdf0x8un4k"]
 
 [ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_nwdrs"]
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="2_v8emy"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_48xsq"]
+[ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="3_v8emy"]
 [ext_resource type="Texture2D" uid="uid://c8sky4a6sdifx" path="res://assets/sprites/enemies/frog.png" id="4_56ym0"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="5_wn8hl"]
 
@@ -304,15 +305,16 @@ _data = {
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_nwdrs")
-enemy = NodePath("Frog_Entity")
 speed = 40.0
 min_distance = 150.0
+enemy = NodePath("Frog_Entity")
 push_cooldown = NodePath("pushedCooldown")
 
 [node name="Frog_Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "anim", "sprite") groups=["Enemies"]]
 script = ExtResource("2_v8emy")
 _shooting = NodePath("../shoot")
 anim = NodePath("../AnimationPlayer")
+floating_txt = ExtResource("3_v8emy")
 ammo_value = 5
 grow_duration = 5.0
 _health = SubResource("Resource_jr1g6")

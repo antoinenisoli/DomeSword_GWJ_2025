@@ -48,6 +48,11 @@ func hit_bound() -> void:
     AudioManager.play_sound("enemy_death", Vector2(1.5, 4))
     target_velocity *= -1
 
+    #keep rotation in limits
+    var i = sign(weapon_support.anchor.global_rotation_degrees)
+    weapon_support.anchor.global_rotation_degrees = rot_limit * i
+    print(weapon_support.anchor.global_rotation_degrees)
+
 func slash(delta) -> void:
     compute_velocity_curve(delta)
     if weapon_support.anchor.global_rotation_degrees > rot_limit || weapon_support.anchor.global_rotation_degrees < -rot_limit:

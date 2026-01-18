@@ -4,13 +4,17 @@ class_name Enemy
 @onready var follow = get_parent() as Follow
 
 @export var _shooting: Shooting
-@export var speed: float = 100
-@export var max_speed: float = 1000
+@export var grow_duration: float = 1.2
 @export var target: Node2D
-@export var push_cooldown: Timer
 
 func _ready():
+    sprite.get_parent().scale = Vector2.ZERO
     super ()
+    find_target()
+    await get_tree().process_frame # wait for the position to be set
+    grow_effect()
+
+func find_target() -> void:
     var group = get_tree().get_nodes_in_group("Player")
     if !group.is_empty():
         target = get_tree().get_nodes_in_group("Player")[0]
@@ -28,12 +32,18 @@ func shoot():
     _shooting.look_at(target.position)
     _shooting.shoot()
 
+func grow_effect() -> void:
+    var x: float = -1 if target.position.x < global_position.x else 1
+    var newScale = Vector2(x, 1)
+    var tween := create_tween()
+    tween.tween_property(sprite.get_parent(), "scale", newScale, grow_duration)
+    tween.play()
+
 func _process(_delta):
     if !target:
         reset()
         return
 
-    sprite.flip_h = target.position.x < global_position.x
     if follow.enemy_state == Enums.ENEMY_STATE.MOVING:
         sprite.play("move")
     else:

@@ -1,6 +1,8 @@
 extends Node2D
 class_name Shooting
 
+signal on_bullet_shot
+
 @export var _team: Enums.TEAM
 @export var bullet: PackedScene
 @export var shoot_rate: float = 0.5
@@ -18,6 +20,7 @@ func shoot() -> void:
 		get_tree().current_scene.add_child(newB)
 		newB.position = shootPos.global_position
 		newB.rotation = shootPos.global_rotation
+		on_bullet_shot.emit(newB)
 		reload_timer.start()
 
 func _ready() -> void:

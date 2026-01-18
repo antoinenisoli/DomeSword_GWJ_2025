@@ -2,8 +2,17 @@ extends DomeWeapon
 class_name Turret
 
 @export var _shooting: Shooting
+@export var sprite: AnimatedSprite2D
 @export var rotate_speed: float = 0.8
 @export var rot_limit: float = 70
+
+func _ready():
+    super ()
+    _shooting.on_bullet_shot.connect(
+    func shoot_anim(_bullet):
+        if !sprite.is_playing():
+            sprite.play("shoot")
+    )
 
 func look_mouse(_delta: float) -> void:
     var mousePos = get_global_mouse_position()

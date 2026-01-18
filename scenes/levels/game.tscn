@@ -152,10 +152,10 @@ canvas = NodePath("../CanvasLayer")
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="EnemySpawner1" parent="Spawners" instance=ExtResource("6_p57ef")]
-position = Vector2(455, -218)
+position = Vector2(425, -101)
 
 [node name="EnemySpawner2" parent="Spawners" instance=ExtResource("6_p57ef")]
-position = Vector2(-461, -218)
+position = Vector2(-423, -162)
 
 [node name="BG" type="Sprite2D" parent="."]
 z_index = -4096

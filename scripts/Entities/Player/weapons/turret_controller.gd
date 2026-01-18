@@ -1,21 +1,16 @@
 extends DomeWeapon
 class_name Turret
 
-@export_category("Shooting")
 @export var _shooting: Shooting
-@export var sprite: AnimatedSprite2D
-
-@export_category("Rotation")
 @export var rotate_speed: float = 0.8
-@export_range(0, 360) var rot_limit: float = 80
 
 func _ready():
-    super ()
+    print(owner)
     _shooting.on_bullet_shot.connect(on_bullet_shot)
     EventManager.collect_ammo.connect(ammo_from_sword)
 
 func reset() -> void:
-    rotation_degrees = 0
+    pass
 
 func ammo_from_sword(ammo_value: int, _pos: Vector2) -> void:
     print("turret get " + str(ammo_value) + " ammos !!")
@@ -23,34 +18,15 @@ func ammo_from_sword(ammo_value: int, _pos: Vector2) -> void:
     weapons.turret_ammo.add_ammo(ammo_value)
 
 func on_bullet_shot(bullet) -> void:
-    if !sprite.is_playing():
-        sprite.play("shoot")
-    
+    print("shoot anim!!")
     AudioManager.play_sound("jump", Vector2(0.8, 1.2))
     bullet.init(self)
     weapons.turret_ammo.shoot()
 
-func look_mouse(_delta: float) -> void:
-    var mousePos = get_global_mouse_position()
-    var v = mousePos - global_position
-    var angle = v.angle()
-    var r = global_rotation
-
-    #lerp angle towards the mouse
-    var angle_delta = rotate_speed * _delta
-    angle = lerp_angle(r, angle + deg_to_rad(90), 1.0)
-    angle = clamp(angle, r - angle_delta, r + angle_delta)
-    global_rotation = angle
-
-    #limit the rotation
-    var limit = deg_to_rad(rot_limit)
-    global_rotation = clamp(global_rotation, -limit, limit)
-
 func rotate_turret(_delta: float) -> void:
     var m = Input.get_axis("move_left", "move_right")
-    rotation += m * rotate_speed * _delta
-    var limit = deg_to_rad(rot_limit)
-    rotation = clamp(rotation, -limit, limit)
+    weapon_support.add_rot(m * rotate_speed * _delta)
+    weapon_support.anchor.rotation_degrees = clamp(weapon_support.anchor.rotation_degrees, -rot_limit, rot_limit)
 
 func _process(_delta: float):
     rotate_turret(_delta)

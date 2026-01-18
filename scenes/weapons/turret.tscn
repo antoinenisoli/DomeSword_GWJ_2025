@@ -1,120 +1,23 @@
-[gd_scene load_steps=16 format=3 uid="uid://kksfipc358r0"]
+[gd_scene load_steps=4 format=3 uid="uid://kksfipc358r0"]
 
 [ext_resource type="Script" uid="uid://c57nnnwe38uvv" path="res://scripts/Entities/Player/weapons/turret_controller.gd" id="1_83w2q"]
-[ext_resource type="Texture2D" uid="uid://d0qklanlrytos" path="res://assets/sprites/dome/Turret2.png" id="3_487ac"]
 [ext_resource type="PackedScene" uid="uid://cdxn5allwtq1u" path="res://scenes/weapons/shoot.tscn" id="3_538jk"]
 [ext_resource type="PackedScene" uid="uid://gxdobt1xhysw" path="res://scenes/bullets/bullet2.tscn" id="4_487ac"]
-[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="6_538jk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_we0nl"]
-atlas = ExtResource("3_487ac")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kh6qd"]
-atlas = ExtResource("3_487ac")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_afr54"]
-atlas = ExtResource("3_487ac")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ejf5"]
-atlas = ExtResource("3_487ac")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5v22"]
-atlas = ExtResource("3_487ac")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_538jk"]
-atlas = ExtResource("3_487ac")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_487ac"]
-atlas = ExtResource("3_487ac")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5hkb"]
-atlas = ExtResource("3_487ac")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mj5w8"]
-atlas = ExtResource("3_487ac")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mqfwu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_we0nl")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kh6qd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_afr54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ejf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c5v22")
-}],
-"loop": false,
-"name": &"shoot",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_538jk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_487ac")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5hkb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mj5w8")
-}],
-"loop": true,
-"name": &"switch",
-"speed": 10.0
-}]
-
-[node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting", "sprite")]
+[node name="turret" type="Node2D" node_paths=PackedStringArray("_shooting")]
 script = ExtResource("1_83w2q")
-_shooting = NodePath("AnimatedSprite2D/shoot")
-sprite = NodePath("AnimatedSprite2D")
+_shooting = NodePath("shoot")
+rotate_speed = 50.0
 match_enemies = Array[int]([0, 1])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 50
-position = Vector2(0, -32)
-sprite_frames = SubResource("SpriteFrames_mqfwu")
-animation = &"shoot"
-autoplay = "idle"
-frame = 3
-frame_progress = 1.0
-
-[node name="Weapon_support" parent="AnimatedSprite2D" node_paths=PackedStringArray("my_weapon") instance=ExtResource("6_538jk")]
-position = Vector2(0, 23)
-scale = Vector2(1, 0.9999998)
-my_weapon = NodePath("../..")
-
-[node name="shoot" parent="AnimatedSprite2D" instance=ExtResource("3_538jk")]
-position = Vector2(0, -19)
+[node name="shoot" parent="." instance=ExtResource("3_538jk")]
+position = Vector2(0, -51)
 rotation = -1.5707964
 scale = Vector2(0.4553571, 0.46323526)
 bullet = ExtResource("4_487ac")
 shoot_rate = 0.25
 
-[node name="reload" parent="AnimatedSprite2D/shoot" index="0"]
+[node name="reload" parent="shoot" index="0"]
 wait_time = 0.25
 
-[editable path="AnimatedSprite2D/shoot"]
+[editable path="shoot"]

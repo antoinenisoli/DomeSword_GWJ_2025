@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmd35lvohi54s"]
 
-[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="3_44ycl"]
+[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support2.tscn" id="3_44ycl"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="3_tfau5"]
 [ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/dome/Dome2.png" id="4_mml5a"]
 

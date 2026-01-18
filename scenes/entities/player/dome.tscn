@@ -1,14 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://hmo0bngnvdqj"]
+[gd_scene load_steps=14 format=3 uid="uid://hmo0bngnvdqj"]
 
 [ext_resource type="Script" uid="uid://cb8y4fhtikaj7" path="res://scripts/Entities/Player/player_dome.gd" id="1_si0v0"]
-[ext_resource type="Script" uid="uid://bm32vcb33up3j" path="res://scripts/Entities/Player/weapons/weapon_inventory.gd" id="3_16ise"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
 [ext_resource type="Texture2D" uid="uid://bx7hagu0hslxr" path="res://assets/sprites/dome/Dome2.png" id="3_pw578"]
-[ext_resource type="PackedScene" uid="uid://kksfipc358r0" path="res://scenes/weapons/turret.tscn" id="3_t5h6n"]
-[ext_resource type="PackedScene" uid="uid://c65y8t1ijq160" path="res://scenes/weapons/sword.tscn" id="4_l7o3r"]
-[ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="4_si0v0"]
 [ext_resource type="Script" uid="uid://bwsckparmx13i" path="res://scripts/UI/healthbar.gd" id="7_16ise"]
 [ext_resource type="Texture2D" uid="uid://c3rv2r2h01koa" path="res://assets/sprites/dome/enviro/GreenCrystal_01.png" id="7_r38io"]
+[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support2.tscn" id="7_t5h6n"]
 [ext_resource type="Texture2D" uid="uid://b35k0c63xgmtt" path="res://assets/sprites/dome/enviro/GreenCrystal_02.png" id="8_pmijb"]
 
 [sub_resource type="Resource" id="Resource_dqkch"]
@@ -19,25 +16,6 @@ metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3mc5"]
 radius = 65.0
 height = 158.0
-
-[sub_resource type="Resource" id="Resource_16ise"]
-resource_local_to_scene = true
-script = ExtResource("4_si0v0")
-start_ammo = 25
-max_ammo = 100
-metadata/_custom_type_script = "uid://15t3ts3yvwg7"
-
-[sub_resource type="Curve" id="Curve_si0v0"]
-resource_local_to_scene = true
-_limits = [0.0, 10.0, 0.0, 25.0]
-_data = [Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.5, 0, 0, Vector2(25, 10), 0.5, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-metadata/_snap_count = 90
-
-[sub_resource type="LabelSettings" id="LabelSettings_16ise"]
-resource_local_to_scene = true
-font_size = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5h6n"]
 atlas = ExtResource("3_pw578")
@@ -63,7 +41,7 @@ bg_color = Color(1, 0, 0.016666412, 0.22352941)
 [node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")
 _health = SubResource("Resource_dqkch")
-sprite = NodePath("Weapons/turret/AnimatedSprite2D")
+sprite = NodePath("visuals/dome_sprite")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -71,41 +49,19 @@ visible = false
 position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_x3mc5")
 
-[node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("switch_cooldown", "weapons")]
-script = ExtResource("3_16ise")
-switch_cooldown = NodePath("switch_cooldown")
-turret_ammo = SubResource("Resource_16ise")
-weapons = [NodePath("sword"), NodePath("turret")]
+[node name="turret_base" type="Node2D" parent="."]
 
-[node name="turret" parent="Weapons" instance=ExtResource("3_t5h6n")]
-
-[node name="AnimatedSprite2D" parent="Weapons/turret" index="0"]
-position = Vector2(0, -94)
-frame = 2
-frame_progress = 0.0
-
-[node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
-visible = false
-force_curve = SubResource("Curve_si0v0")
-
-[node name="Control" parent="Weapons/sword" index="2"]
-offset_right = 0.0
-offset_bottom = -42.0
-
-[node name="Label" parent="Weapons/sword/Control" index="0"]
-label_settings = SubResource("LabelSettings_16ise")
-
-[node name="switch_cooldown" type="Timer" parent="Weapons"]
-wait_time = 0.5
-one_shot = true
-ignore_time_scale = true
+[node name="Weapon_support" parent="turret_base" node_paths=PackedStringArray("anchor") instance=ExtResource("7_t5h6n")]
+z_index = 0
+position = Vector2(0, -59)
+anchor = NodePath("..")
 
 [node name="visuals" type="Node2D" parent="."]
 
 [node name="dome_sprite" type="AnimatedSprite2D" parent="visuals"]
 clip_children = 2
 z_index = -5
-position = Vector2(0, -66)
+position = Vector2(0, -62)
 sprite_frames = SubResource("SpriteFrames_l7o3r")
 autoplay = "default"
 
@@ -129,13 +85,11 @@ show_percentage = false
 script = ExtResource("7_16ise")
 
 [node name="GreenCrystal01" type="Sprite2D" parent="visuals"]
+z_index = 10
 position = Vector2(50, -23)
 texture = ExtResource("7_r38io")
 
 [node name="GreenCrystal02" type="Sprite2D" parent="visuals"]
+z_index = 10
 position = Vector2(-56, -25)
 texture = ExtResource("8_pmijb")
-
-[editable path="Weapons/turret"]
-[editable path="Weapons/turret/AnimatedSprite2D/shoot"]
-[editable path="Weapons/sword"]

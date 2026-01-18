@@ -2,12 +2,10 @@ extends DomeWeapon
 class_name Sword
 
 @export_range(0, 1) var slowMo: float = 0.1
-@export_range(0, 360) var rot_limit: float = 70
 @export var power: float = 10
 @export var max_power: float = 1000
 @export var push_force: float = 50
 
-@export var sword: Node2D
 @export var timer: Timer
 @export var txt: Label
 @export var force_slider: HSlider
@@ -18,15 +16,14 @@ var velocity: float
 var target_velocity: float
 
 func _ready():
-    super ()
+    reset()
+
+func reset() -> void:
+    target_velocity = 0
+    force_slider.value = 0
     force_slider.value = 0
     force_slider.min_value = - max_power
     force_slider.max_value = max_power
-
-func reset() -> void:
-    sword.rotation_degrees = 0
-    target_velocity = 0
-    force_slider.value = 0
 
 func start_slash() -> void:
     timer.start()
@@ -45,18 +42,13 @@ func compute_velocity_curve(delta) -> void:
 
     velocity = (target_velocity * w) * delta
     #print(velocity)
-    sword.rotation_degrees += velocity
-
-func compute_velocity(delta) -> void:
-    target_velocity = lerpf(target_velocity, 0, 5 * delta)
-    sword.rotation_degrees += target_velocity * delta
+    weapon_support.add_rot(velocity)
 
 func slash(delta) -> void:
     compute_velocity_curve(delta)
-    if sword.rotation_degrees > rot_limit || sword.rotation_degrees < -rot_limit:
+    print(weapon_support.anchor.rotation_degrees)
+    if weapon_support.anchor.rotation_degrees > rot_limit || weapon_support.anchor.rotation_degrees < -rot_limit:
         target_velocity = - target_velocity
-
-    sword.rotation_degrees = clampf(sword.rotation_degrees, -rot_limit, rot_limit)
 
 func move_sword() -> void:
     if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
@@ -75,7 +67,7 @@ func compute_damage() -> int:
 func _process(_delta: float):
     move_sword()
     slash(_delta)
-    txt.text = str(roundf(sword.rotation_degrees))
+    txt.text = str(roundf(weapon_support.anchor.rotation_degrees))
 
 func play_vfx(body) -> void:
     var fx = FxManager.spawn_fx("blood_stream", body.position)

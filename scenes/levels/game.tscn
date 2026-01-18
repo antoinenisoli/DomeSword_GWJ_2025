@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=15 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
 [ext_resource type="AudioStream" uid="uid://3ro1xk81esn2" path="res://assets/sounds/Parabola.mp3" id="10_uk881"]
-[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="12_6370d"]
 [ext_resource type="Texture2D" uid="uid://ccbisbkqt1r3c" path="res://assets/sprites/dome/enviro/background_placeholder.png" id="12_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/frog_enemy.tscn" id="13_eiv1w"]
 
@@ -39,7 +38,7 @@ shakers = Dictionary[String, ExtResource("2_fojqs")]({
 })
 
 [node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
-position = Vector2(1, 103)
+position = Vector2(1, 108)
 _health = SubResource("Resource_oi2tv")
 
 [node name="GameUI" parent="." instance=ExtResource("5_cx7qy")]
@@ -79,6 +78,3 @@ autoplay = true
 [node name="FloatingText" parent="." instance=ExtResource("6_r0gsk")]
 visible = false
 position = Vector2(-269, -135)
-
-[node name="Weapon_support" parent="." instance=ExtResource("12_6370d")]
-position = Vector2(-248, 60)

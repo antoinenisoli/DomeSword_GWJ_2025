@@ -8,6 +8,14 @@ func _ready():
     super ()
     equip_weapon(weapons[weaponIndex])
 
+func death() -> void:
+    EventManager.on_player_killed.emit()
+    super ()
+
+func takeDmg(dmg: int) -> void:
+    super (dmg)
+    EventManager.on_player_damaged.emit()
+
 func equip_weapon(weapon: DomeWeapon) -> void:
     for w in weapons:
         w.set_active(false)

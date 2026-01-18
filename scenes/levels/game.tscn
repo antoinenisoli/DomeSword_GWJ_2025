@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=18 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="4_6370d"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="6_oi2tv"]
@@ -18,6 +19,12 @@ resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
+[sub_resource type="Resource" id="Resource_fojqs"]
+resource_local_to_scene = true
+script = ExtResource("4_6370d")
+max_ammo = 100
+metadata/_custom_type_script = "uid://15t3ts3yvwg7"
+
 [sub_resource type="Curve" id="Curve_f5j6v"]
 resource_local_to_scene = true
 _limits = [0.0, 10.0, 0.0, 25.0]
@@ -31,26 +38,26 @@ font = ExtResource("7_uk881")
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" parent="." node_paths=PackedStringArray("turret") instance=ExtResource("7_xmnyv")]
+[node name="Camera2D" parent="." instance=ExtResource("7_xmnyv")]
 position = Vector2(0, -132)
 zoom = Vector2(1.51, 1.51)
-turret = NodePath("../Dome")
 
 [node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
 position = Vector2(1, 103)
 _health = SubResource("Resource_oi2tv")
 
 [node name="turret" parent="Dome/Weapons" index="0"]
+ammo_container = SubResource("Resource_fojqs")
 blink_rate = 30
 
-[node name="sword" parent="Dome/Weapons" index="1" node_paths=PackedStringArray("cam")]
+[node name="sword" parent="Dome/Weapons" index="1"]
 position = Vector2(0, -27.999998)
-cam = NodePath("../../../Camera2D")
 force_curve = SubResource("Curve_f5j6v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Healthbar" parent="CanvasLayer" instance=ExtResource("5_iywne")]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

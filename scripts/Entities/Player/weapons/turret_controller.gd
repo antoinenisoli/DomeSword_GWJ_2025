@@ -30,6 +30,7 @@ func update_light() -> void:
         light.self_modulate = color if Engine.get_process_frames() % blink_rate else blink
 
 func ammo_from_sword(dmg: int) -> void:
+    print("get " + str(dmg) + " ammos !!")
     ammo_container.add_ammo(dmg)
 
 func on_bullet_shot(bullet) -> void:

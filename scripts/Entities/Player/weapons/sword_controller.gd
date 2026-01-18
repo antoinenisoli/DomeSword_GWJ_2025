@@ -8,7 +8,6 @@ class_name Sword
 @export var push_force: float = 50
 
 @export var sword: Node2D
-@export var cam: Camera2D
 @export var timer: Timer
 @export var txt: Label
 @export var force_slider: HSlider
@@ -86,7 +85,6 @@ func attack_enemy(enemy: Enemy) -> void:
     TimeManager.slow_motion(slowMo)
     play_vfx(enemy)
     EventManager.on_sword_hit.emit(dmg)
-    cam.shake()
     enemy.takeDmg(dmg)
     enemy.get_parent().push_back(absf(velocity) * push_force)
 

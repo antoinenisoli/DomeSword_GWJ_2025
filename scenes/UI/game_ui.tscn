@@ -1,35 +1,40 @@
-[gd_scene load_steps=14 format=3 uid="uid://crkwkw4c7tgkv"]
+[gd_scene load_steps=18 format=3 uid="uid://crkwkw4c7tgkv"]
 
 [ext_resource type="Script" uid="uid://uqaw0biwnuv2" path="res://scripts/UI/ui_controller.gd" id="1_d8ncw"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="2_owrpm"]
 [ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="2_r4w1u"]
-[ext_resource type="Texture2D" uid="uid://br5pu3661st7y" path="res://assets/sprites/UI/window_theme/window_theme_blue/message_box_A.png" id="3_r4w1u"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_5038c"]
+[ext_resource type="Texture2D" uid="uid://cym110ttbull3" path="res://assets/sprites/UI/window_theme/window_theme_green/message_box_B.png" id="4_mbbca"]
 [ext_resource type="Texture2D" uid="uid://dkt3nukb772pa" path="res://assets/sprites/UI/icons/blue/cash_coin_B.png" id="5_jqo5s"]
 [ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="6_mbbca"]
 [ext_resource type="Texture2D" uid="uid://pnv0vj2xn81r" path="res://assets/sprites/UI/icons/blue/power_B.png" id="7_7klwy"]
 [ext_resource type="FontFile" uid="uid://cs0kjgt1ymay3" path="res://assets/fonts/PixelOperator8.ttf" id="8_owrpm"]
+[ext_resource type="Texture2D" uid="uid://8dkvi2n8441q" path="res://assets/sprites/UI/window_theme/window_theme_green/window_undecorated.png" id="10_5038c"]
+[ext_resource type="Texture2D" uid="uid://bk2s3hxn8utyk" path="res://assets/sprites/UI/window_theme/window_theme_green/button_default.png" id="10_jqo5s"]
+[ext_resource type="Texture2D" uid="uid://o6bjndjcyxyf" path="res://assets/sprites/UI/window_theme/window_theme_green/button_pressed.png" id="11_mbbca"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hvehc"]
 font = ExtResource("4_5038c")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8ncw"]
-bg_color = Color(0, 0.30588236, 0.09411765, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbbca"]
+texture = ExtResource("10_jqo5s")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1qdn"]
-bg_color = Color(0.80741894, 0.48736864, 0.606584, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0, 0, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7klwy"]
+texture = ExtResource("11_mbbca")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqo5s"]
+texture = ExtResource("10_5038c")
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1qdn"]
-font = ExtResource("8_owrpm")
+font = ExtResource("4_5038c")
 font_size = 41
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("enemy_txt", "flame_txt", "pause_screen", "gameover_screen")]
@@ -85,7 +90,7 @@ offset_top = 9.0
 offset_right = 1230.0
 offset_bottom = 105.0
 grow_horizontal = 0
-texture = ExtResource("3_r4w1u")
+texture = ExtResource("4_mbbca")
 stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Screens/HUD/TextureRect"]
@@ -236,7 +241,8 @@ offset_right = 341.0
 offset_bottom = 376.0
 theme_override_fonts/font = ExtResource("4_5038c")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_d8ncw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mbbca")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7klwy")
 text = "RESUME"
 
 [node name="quit_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto"]
@@ -247,7 +253,8 @@ offset_right = 341.0
 offset_bottom = 480.0
 theme_override_fonts/font = ExtResource("4_5038c")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_d8ncw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mbbca")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7klwy")
 text = "QUIT"
 
 [node name="GameOverScreen" type="Control" parent="CanvasLayer/Screens"]
@@ -275,11 +282,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -215.04004
-offset_top = -92.20801
-offset_right = 215.95996
-offset_bottom = 91.79199
-theme_override_styles/panel = SubResource("StyleBoxFlat_h1qdn")
+offset_left = -288.0
+offset_top = -184.0
+offset_right = 277.0
+offset_bottom = 216.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jqo5s")
 
 [node name="Label" type="Label" parent="CanvasLayer/Screens/GameOverScreen/Panel"]
 layout_mode = 1

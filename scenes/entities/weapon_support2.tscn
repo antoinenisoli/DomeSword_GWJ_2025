@@ -196,7 +196,7 @@ blink = Color(18.892157, 0, 0, 1)
 z_index = 50
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_o0ygl")
-animation = &"idle"
+animation = &"shoot"
 speed_scale = 2.0
 
 [node name="light" type="Sprite2D" parent="support"]
@@ -224,6 +224,7 @@ one_shot = true
 ignore_time_scale = true
 
 [node name="turret" parent="weapons_inventory" instance=ExtResource("5_16mq0")]
+position = Vector2(0, -34)
 
 [node name="sword" parent="weapons_inventory" instance=ExtResource("6_ikkyr")]
 force_curve = SubResource("Curve_6xt84")

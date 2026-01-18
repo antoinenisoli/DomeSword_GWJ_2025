@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2prflq4kr3yx" path="res://assets/sprites/UI/icons/blue/arrow_right.png" id="6_dx2j5"]
 
 [sub_resource type="Gradient" id="Gradient_gwb47"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 18.892157, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.44832852, 1.6553112, 0, 1)
 
 [sub_resource type="Curve" id="Curve_232hh"]
 _data = [Vector2(0, 0), 0.0, -5.097836, 0, 0, Vector2(0.5, 1), -5.425904, -5.425904, 0, 0, Vector2(0.8, 0.1), -1.2075583, -1.2075583, 0, 0, Vector2(1, 0), -0.35753322, 0.0, 0, 0]

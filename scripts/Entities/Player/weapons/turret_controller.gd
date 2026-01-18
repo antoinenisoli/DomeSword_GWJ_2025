@@ -19,6 +19,7 @@ func ammo_from_sword(ammo_value: int, _pos: Vector2) -> void:
 
 func on_bullet_shot(bullet) -> void:
     print("shoot anim!!")
+    weapon_support.sprite.play("shoot")
     AudioManager.play_sound("jump", Vector2(0.8, 1.2))
     bullet.init(self)
     weapons.turret_ammo.shoot()

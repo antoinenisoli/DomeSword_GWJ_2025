@@ -31,7 +31,7 @@ corner_radius_bottom_left = 50
 font = ExtResource("8_owrpm")
 font_size = 41
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("enemy_txt", "flame_txt", "pause_screen", "hud_screen")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("enemy_txt", "flame_txt", "pause_screen", "gameover_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +42,7 @@ script = ExtResource("1_d8ncw")
 enemy_txt = NodePath("CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2/enemy_count")
 flame_txt = NodePath("CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control3/flame_count")
 pause_screen = NodePath("CanvasLayer/Screens/PauseScreen")
-hud_screen = NodePath("CanvasLayer/Screens/HUD")
+gameover_screen = NodePath("CanvasLayer/Screens/GameOverScreen")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -78,20 +78,26 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1070.0
+offset_left = 1134.0
 offset_top = 9.0
 offset_right = 1230.0
-offset_bottom = 169.0
+offset_bottom = 105.0
 grow_horizontal = 0
 texture = ExtResource("3_r4w1u")
 stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Screens/HUD/TextureRect"]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 28.0
-offset_right = 124.0
-offset_bottom = 126.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = -26.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer"]
 visible = false
@@ -124,23 +130,24 @@ layout_mode = 2
 [node name="enemy_count" type="Label" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2"]
 layout_mode = 0
 offset_left = -7.0
-offset_right = 66.99982
+offset_right = 57.0
 offset_bottom = 42.0
-text = "500"
+text = "0"
 label_settings = SubResource("LabelSettings_hvehc")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2"]
 layout_mode = 0
-offset_left = -17.0
+offset_left = 5.0
 offset_top = 4.0
-offset_right = 14.999825
+offset_right = 36.999825
 offset_bottom = 35.999966
 texture = ExtResource("6_mbbca")
 stretch_mode = 4
 
 [node name="Control3" type="Control" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 30.835)
 layout_mode = 2
 
@@ -156,9 +163,9 @@ vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control3"]
 layout_mode = 0
-offset_left = -17.0
+offset_left = -7.0
 offset_top = 4.0
-offset_right = 14.999825
+offset_right = 24.999825
 offset_bottom = 35.999966
 texture = ExtResource("7_7klwy")
 stretch_mode = 4
@@ -190,7 +197,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -189.0
 offset_top = -307.0
-offset_right = 210.0
+offset_right = 192.0
 offset_bottom = 285.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -199,8 +206,10 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 92.0
-offset_bottom = 236.0
+offset_left = 51.0
+offset_top = 124.0
+offset_right = -36.0
+offset_bottom = 268.0
 grow_horizontal = 2
 bbcode_enabled = true
 text = "- [b]WASD / Arrow keys[/b] for controlling the active weapon
@@ -208,14 +217,16 @@ text = "- [b]WASD / Arrow keys[/b] for controlling the active weapon
 - [b]E[/b] to switch active weapon
 - [b]Tab[/b] to pause the game"
 autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 justification_flags = 161
 
 [node name="resume_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto"]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 291.0
+offset_top = 323.0
 offset_right = 341.0
-offset_bottom = 344.0
+offset_bottom = 376.0
 theme_override_fonts/font = ExtResource("4_5038c")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_d8ncw")
@@ -224,9 +235,9 @@ text = "RESUME"
 [node name="quit_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto"]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 395.0
+offset_top = 427.0
 offset_right = 341.0
-offset_bottom = 448.0
+offset_bottom = 480.0
 theme_override_fonts/font = ExtResource("4_5038c")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_d8ncw")
@@ -274,3 +285,6 @@ text = "GAME OVER !"
 label_settings = SubResource("LabelSettings_h1qdn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Screens/PauseScreen/tuto/resume_Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Screens/PauseScreen/tuto/quit_Button" to="." method="_on_quit_button_pressed"]

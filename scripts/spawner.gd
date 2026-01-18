@@ -1,4 +1,5 @@
 extends Node2D
+class_name Spawner
 
 @export var cooldown_range: Vector2
 @export var spawn_range: float = 100

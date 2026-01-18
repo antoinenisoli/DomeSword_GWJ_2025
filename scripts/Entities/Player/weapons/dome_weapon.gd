@@ -20,7 +20,11 @@ func unequip() -> void:
     if is_visible_in_tree():
         weapons.remove_child(self)
 
+func reset() -> void:
+    assert(false, "Please override `reset()` in the derived script.")
+
 func set_active(b: bool) -> void:
+    reset()
     if b:
         equip()
     else:

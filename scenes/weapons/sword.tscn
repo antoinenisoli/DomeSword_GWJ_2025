@@ -24,12 +24,10 @@ bg_color = Color(0.6, 0.27, 0.27, 1)
 
 [node name="sword" type="Node2D" node_paths=PackedStringArray("sword", "timer", "txt", "force_slider")]
 z_index = -5
-scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_o616w")
-rot_limit = 100.0
 power = 100.0
 push_force = 35.0
-sword = NodePath("anchor")
+sword = NodePath("hitbox")
 timer = NodePath("Timer")
 txt = NodePath("Control/Label")
 force_slider = NodePath("Control/HSlider")
@@ -37,23 +35,27 @@ deceleration_curve = SubResource("Curve_232hh")
 force_curve = ExtResource("2_3pnln")
 match_enemies = Array[int]([0])
 
-[node name="anchor" type="Area2D" parent="."]
-position = Vector2(0, -55.263206)
+[node name="hitbox" type="Area2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="anchor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, -161.18437)
 scale = Vector2(8.669998, 22.945)
 shape = SubResource("RectangleShape2D_0ph48")
 
-[node name="Sword" type="Sprite2D" parent="anchor"]
-position = Vector2(-2.2737368e-13, -154.09682)
-scale = Vector2(13.09524, 20.743664)
+[node name="anchor" type="Node2D" parent="hitbox"]
+position = Vector2(0, -75)
+scale = Vector2(0.99999994, 1)
+
+[node name="Sword" type="Sprite2D" parent="hitbox/anchor"]
+position = Vector2(-2.2737366e-13, -135.55272)
+scale = Vector2(7.1111126, 17.605259)
 texture = ExtResource("3_58ehi")
 
-[node name="Weapon_support" parent="anchor" node_paths=PackedStringArray("my_weapon") instance=ExtResource("4_gwb47")]
-position = Vector2(-8.940697e-07, -1.3157845)
-my_weapon = NodePath("../..")
+[node name="Weapon_support" parent="hitbox/anchor" node_paths=PackedStringArray("my_weapon") instance=ExtResource("4_gwb47")]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+my_weapon = NodePath("../../..")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -64,9 +66,9 @@ ignore_time_scale = true
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_top = -59.210567
+offset_top = -802.0
 offset_right = 40.0
-offset_bottom = -19.210567
+offset_bottom = -762.0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
@@ -88,4 +90,4 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_58ehi")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gwb47")
 value = 50.0
 
-[connection signal="body_entered" from="anchor" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_body_entered"]

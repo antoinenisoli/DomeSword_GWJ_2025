@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=21 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="4_6370d"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://uqaw0biwnuv2" path="res://scripts/UI/ui_controller.gd" id="6_bgnkb"]
@@ -32,20 +31,6 @@ resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
-[sub_resource type="Resource" id="Resource_d2m8s"]
-resource_local_to_scene = true
-script = ExtResource("4_6370d")
-max_ammo = 100
-metadata/_custom_type_script = "uid://15t3ts3yvwg7"
-
-[sub_resource type="Curve" id="Curve_f5j6v"]
-resource_local_to_scene = true
-_limits = [0.0, 10.0, 0.0, 25.0]
-_data = [Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.5, 0, 0, Vector2(25, 10), 0.5, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-metadata/_snap_count = 90
-
 [sub_resource type="LabelSettings" id="LabelSettings_xmnyv"]
 font = ExtResource("7_uk881")
 
@@ -68,16 +53,6 @@ shakers = Dictionary[String, ExtResource("2_fojqs")]({
 position = Vector2(1, 103)
 _health = SubResource("Resource_oi2tv")
 
-[node name="Weapons" parent="Dome" index="1"]
-turret_ammo = SubResource("Resource_d2m8s")
-
-[node name="AnimatedSprite2D" parent="Dome/Weapons/turret" index="0"]
-position = Vector2(0, -88)
-
-[node name="sword" parent="Dome/Weapons" index="1"]
-position = Vector2(0, -27.999998)
-force_curve = SubResource("Curve_f5j6v")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("enemy_txt", "flame_txt")]
@@ -88,6 +63,7 @@ offset_bottom = 40.0
 script = ExtResource("6_bgnkb")
 enemy_txt = NodePath("TextureRect/VBoxContainer/Control2/enemy_count")
 flame_txt = NodePath("TextureRect/VBoxContainer/Control3/flame_count")
+metadata/_edit_use_anchors_ = true
 
 [node name="Healthbar" parent="CanvasLayer/HUD" instance=ExtResource("5_iywne")]
 visible = false
@@ -227,14 +203,9 @@ cooldown_range = Vector2(8, 20)
 
 [node name="BG" type="Sprite2D" parent="."]
 z_index = -4096
-position = Vector2(1.00001, -134.5)
-scale = Vector2(1.325, 1.3194445)
+position = Vector2(1.00001, -132.00002)
+scale = Vector2(1.325, 1.3333334)
 texture = ExtResource("12_oi2tv")
 
 [node name="Frog" parent="." instance=ExtResource("13_eiv1w")]
 position = Vector2(-260, -145)
-
-[editable path="Dome"]
-[editable path="Dome/Weapons/turret"]
-[editable path="Dome/Weapons/turret/AnimatedSprite2D/shoot"]
-[editable path="Dome/Weapons/sword"]

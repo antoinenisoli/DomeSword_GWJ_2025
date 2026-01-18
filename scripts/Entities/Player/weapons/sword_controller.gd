@@ -23,6 +23,11 @@ func _ready():
     force_slider.min_value = - max_power
     force_slider.max_value = max_power
 
+func reset() -> void:
+    sword.rotation_degrees = 0
+    target_velocity = 0
+    force_slider.value = 0
+
 func start_slash() -> void:
     timer.start()
     target_velocity = force_slider.value

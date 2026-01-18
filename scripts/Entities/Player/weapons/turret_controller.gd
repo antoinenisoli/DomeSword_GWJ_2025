@@ -15,6 +15,9 @@ func _ready():
     #EventManager.on_sword_hit.connect(ammo_from_sword)
     EventManager.on_enemy_killed.connect(ammo_from_sword)
 
+func reset() -> void:
+    rotation_degrees = 0
+
 func ammo_from_sword(dmg: int) -> void:
     if is_visible_in_tree(): # only earn ammo if the sword is equiped
         return

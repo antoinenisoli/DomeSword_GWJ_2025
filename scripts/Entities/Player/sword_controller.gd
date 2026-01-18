@@ -79,20 +79,20 @@ func play_vfx(body) -> void:
     var fx = FxManager.spawn_fx("blood_stream", body.position)
     fx.anim.flip_h = target_velocity > 0
 
-func attack_enemy(body: Node2D) -> void:
+func attack_enemy(enemy: Enemy) -> void:
     var dmg = compute_damage()
     print(str(velocity) + " converted to damages: " + str(dmg))
     if dmg <= 0:
         return
 
     TimeManager.slow_motion(slowMo)
-    play_vfx(body)
-    on_enemy_hit.emit(body)
+    play_vfx(enemy)
+    on_enemy_hit.emit(enemy)
     cam.shake()
-    body.takeDmg(dmg)
-    body.push_back(absf(velocity) * push_force)
+    enemy.takeDmg(dmg)
 
 func _on_body_entered(body: Node2D) -> void:
-    if body.is_in_group("Enemies"):
+    if can_hit(body.enemy):
         #print(str(velocity) + " hit:" + str(body))
-        attack_enemy(body)
+        body.push_back(absf(velocity) * push_force)
+        attack_enemy(body.enemy)

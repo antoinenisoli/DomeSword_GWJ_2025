@@ -6,6 +6,7 @@ class_name Enemy
 @export var _shooting: Shooting
 @export var grow_duration: float = 1.2
 @export var target: Node2D
+@export var type: Enums.ENEMY_TYPE
 
 func _ready():
     sprite.get_parent().scale = Vector2.ZERO
@@ -35,6 +36,7 @@ func shoot():
 func grow_effect() -> void:
     var x: float = -1 if target.position.x < global_position.x else 1
     var newScale = Vector2(x, 1)
+
     var tween := create_tween()
     tween.tween_property(sprite.get_parent(), "scale", newScale, grow_duration)
     tween.play()

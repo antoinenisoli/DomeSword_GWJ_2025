@@ -20,7 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var canDamage = (_team == Enums.TEAM.ALLY && body.is_in_group("Enemies")) || (_team == Enums.TEAM.ENEMY && body.is_in_group("Player"))
 	if canDamage:
 		if body.is_in_group("Enemies"):
-			FxManager.spawn_fx("blood_slash", position)
+			FxManager.spawn_fx("blood_slash", body.position)
 			
 		body.takeDmg(dmg)
 		destroy()

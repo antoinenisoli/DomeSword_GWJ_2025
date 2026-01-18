@@ -33,6 +33,7 @@ force_curve = SubResource("Curve_y0mr8")
 [node name="Frog" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_38len")]
 position = Vector2(510, -532)
 target = NodePath("../sword")
+speed = 150.0
 
 [node name="Frog_Entity" parent="Frog" index="0" node_paths=PackedStringArray("target")]
 target = NodePath("../../sword")

@@ -75,7 +75,7 @@ animations = [{
 }]
 
 [node name="BloodExplode" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 script = ExtResource("1_yks2s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -40,6 +40,3 @@ func push_back(force: float) -> void:
     push_cooldown.start()
     linear_velocity = Vector2.ZERO
     apply_impulse(-direction() * force)
-
-func takeDmg(dmg: int) -> void:
-    enemy.takeDmg(dmg)

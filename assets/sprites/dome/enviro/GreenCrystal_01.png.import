@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du6od362500ps"
-path="res://.godot/imported/Turret.png-9f146700b49bb26c0e6c9a6cdeff5909.ctex"
+uid="uid://c3rv2r2h01koa"
+path="res://.godot/imported/GreenCrystal_01.png-44d1c6db9c0db5a19ea63e28a363859e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/Turret.png"
-dest_files=["res://.godot/imported/Turret.png-9f146700b49bb26c0e6c9a6cdeff5909.ctex"]
+source_file="res://assets/sprites/dome/enviro/GreenCrystal_01.png"
+dest_files=["res://.godot/imported/GreenCrystal_01.png-44d1c6db9c0db5a19ea63e28a363859e.ctex"]
 
 [params]
 

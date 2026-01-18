@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx7hagu0hslxr"
-path="res://.godot/imported/Dome2.png-d0607e061340e683b8e226eefcdcafec.ctex"
+uid="uid://ccbisbkqt1r3c"
+path="res://.godot/imported/background_placeholder.png-2bf2a630f0dd3eb42ae1ab680bdacbb8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/Dome2.png"
-dest_files=["res://.godot/imported/Dome2.png-d0607e061340e683b8e226eefcdcafec.ctex"]
+source_file="res://assets/sprites/dome/enviro/background_placeholder.png"
+dest_files=["res://.godot/imported/background_placeholder.png-2bf2a630f0dd3eb42ae1ab680bdacbb8.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b35k0c63xgmtt"
-path="res://.godot/imported/GreenCrystal_02.png-f93acb834df8b6b6c1cb4e2c94e33cb5.ctex"
+path="res://.godot/imported/GreenCrystal_02.png-8ad28bf19f9762e8cca562c7f88beb22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/GreenCrystal_02.png"
-dest_files=["res://.godot/imported/GreenCrystal_02.png-f93acb834df8b6b6c1cb4e2c94e33cb5.ctex"]
+source_file="res://assets/sprites/dome/enviro/GreenCrystal_02.png"
+dest_files=["res://.godot/imported/GreenCrystal_02.png-8ad28bf19f9762e8cca562c7f88beb22.ctex"]
 
 [params]
 

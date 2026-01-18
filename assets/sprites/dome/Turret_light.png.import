@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2urny3hrkixh"
-path="res://.godot/imported/Turret_light.png-97c8bfef797e2314d95f9491a1a69326.ctex"
+path="res://.godot/imported/Turret_light.png-fe9c36853384c35abbe5758ed24ed42d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/Turret_light.png"
-dest_files=["res://.godot/imported/Turret_light.png-97c8bfef797e2314d95f9491a1a69326.ctex"]
+source_file="res://assets/sprites/dome/Turret_light.png"
+dest_files=["res://.godot/imported/Turret_light.png-fe9c36853384c35abbe5758ed24ed42d.ctex"]
 
 [params]
 

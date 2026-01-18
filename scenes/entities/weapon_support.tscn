@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c66tdqqqa4low"]
 
-[ext_resource type="Texture2D" uid="uid://du6od362500ps" path="res://assets/sprites/player/Turret.png" id="1_leg1a"]
+[ext_resource type="Texture2D" uid="uid://du6od362500ps" path="res://assets/sprites/dome/Turret.png" id="1_leg1a"]
 [ext_resource type="Script" uid="uid://bgelaal4mskqu" path="res://scripts/Entities/Player/weapons/ammo_light.gd" id="2_o0ygl"]
-[ext_resource type="Texture2D" uid="uid://b2urny3hrkixh" path="res://assets/sprites/player/Turret_light.png" id="3_snj2o"]
+[ext_resource type="Texture2D" uid="uid://b2urny3hrkixh" path="res://assets/sprites/dome/Turret_light.png" id="3_snj2o"]
 
 [sub_resource type="Gradient" id="Gradient_538jk"]
 interpolation_mode = 1

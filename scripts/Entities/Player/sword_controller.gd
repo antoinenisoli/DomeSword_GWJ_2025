@@ -92,6 +92,9 @@ func attack_enemy(enemy: Enemy) -> void:
     enemy.takeDmg(dmg)
 
 func _on_body_entered(body: Node2D) -> void:
+    if !body.is_in_group("Enemies"):
+        return
+
     if can_hit(body.enemy):
         #print(str(velocity) + " hit:" + str(body))
         body.push_back(absf(velocity) * push_force)

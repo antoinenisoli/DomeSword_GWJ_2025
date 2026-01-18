@@ -8,11 +8,13 @@ class_name Turret
 
 func _ready():
     super ()
-    _shooting.on_bullet_shot.connect(
-    func shoot_anim(_bullet):
-        if !sprite.is_playing():
-            sprite.play("shoot")
-    )
+    _shooting.on_bullet_shot.connect(on_bullet_shot)
+
+func on_bullet_shot(bullet) -> void:
+    if !sprite.is_playing():
+        sprite.play("shoot")
+    
+    bullet.init(self)
 
 func look_mouse(_delta: float) -> void:
     var mousePos = get_global_mouse_position()

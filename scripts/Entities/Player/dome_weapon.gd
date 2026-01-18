@@ -8,8 +8,8 @@ func _ready():
     container = get_parent()
 
 func can_hit(target: Enemy) -> bool:
-    print(match_enemies.has(target.type))
     var match: bool = target.is_in_group("Enemies") && match_enemies.has(target.type)
+    #print(match)
     return match
 
 func equip() -> void:

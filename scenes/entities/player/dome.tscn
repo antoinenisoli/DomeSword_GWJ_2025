@@ -14,8 +14,8 @@ script = ExtResource("3_bstcn")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3mc5"]
-radius = 141.0
-height = 326.0
+radius = 65.0
+height = 158.0
 
 [sub_resource type="Curve" id="Curve_si0v0"]
 resource_local_to_scene = true
@@ -40,12 +40,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("weapon_container", "sword", "turret", "weapons", "sprite") groups=["Player"]]
+[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("weapons", "sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")
-weapon_container = NodePath("Weapons")
-sword = NodePath("Weapons/sword")
-turret = NodePath("Weapons/turret")
-weapons = [NodePath("Weapons/sword"), NodePath("Weapons/turret")]
+weapons = [NodePath("Weapons/turret"), NodePath("Weapons/sword")]
 _health = SubResource("Resource_dqkch")
 sprite = NodePath("visuals/dome_sprite")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
@@ -58,6 +55,10 @@ shape = SubResource("CapsuleShape2D_x3mc5")
 
 [node name="turret" parent="Weapons" instance=ExtResource("3_t5h6n")]
 
+[node name="AnimatedSprite2D2" parent="Weapons/turret" index="0"]
+z_index = -1
+position = Vector2(0, -87)
+
 [node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
 position = Vector2(0, -29)
 rot_limit = 70.0
@@ -67,17 +68,17 @@ force_curve = SubResource("Curve_si0v0")
 
 [node name="dome_sprite" type="AnimatedSprite2D" parent="visuals"]
 z_index = -5
-position = Vector2(0, -149)
-scale = Vector2(2.2578125, 2.2578125)
+position = Vector2(0, -66)
 sprite_frames = SubResource("SpriteFrames_l7o3r")
 autoplay = "default"
 
 [node name="GreenCrystal01" type="Sprite2D" parent="visuals"]
-position = Vector2(116, -52)
-scale = Vector2(1.8333334, 1.8333334)
+position = Vector2(50, -23)
 texture = ExtResource("7_r38io")
 
 [node name="GreenCrystal02" type="Sprite2D" parent="visuals"]
-position = Vector2(-128, -56)
-scale = Vector2(2.1666667, 2.1666667)
+position = Vector2(-56, -25)
 texture = ExtResource("8_pmijb")
+
+[editable path="Weapons/turret"]
+[editable path="Weapons/turret/AnimatedSprite2D2/shoot"]

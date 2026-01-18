@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene load_steps=16 format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="5_iywne"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dkt3nukb772pa" path="res://assets/sprites/UI/icons/blue/cash_coin_B.png" id="8_r0gsk"]
 [ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="9_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://hkmrvv70dn7o" path="res://assets/sprites/UI/icons/blue/battery.png" id="10_6370d"]
+[ext_resource type="Texture2D" uid="uid://ccbisbkqt1r3c" path="res://assets/sprites/background_placeholder.png" id="12_oi2tv"]
 
 [sub_resource type="Resource" id="Resource_oi2tv"]
 resource_local_to_scene = true
@@ -31,7 +32,8 @@ font = ExtResource("7_uk881")
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("turret") instance=ExtResource("7_xmnyv")]
-position = Vector2(0, -240)
+position = Vector2(0, -132)
+zoom = Vector2(1.51, 1.51)
 turret = NodePath("../Dome")
 
 [node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
@@ -150,15 +152,17 @@ canvas = NodePath("../CanvasLayer")
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="EnemySpawner1" parent="Spawners" instance=ExtResource("6_p57ef")]
-position = Vector2(929, -411)
-spawn_range = 400.0
+position = Vector2(455, -218)
 
 [node name="EnemySpawner2" parent="Spawners" instance=ExtResource("6_p57ef")]
-position = Vector2(-820, -506)
-spawn_range = 400.0
+position = Vector2(-461, -218)
 
-[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
-position = Vector2(0, -768)
-spawn_range = 400.0
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(1.00001, -134.5)
+scale = Vector2(1.325, 1.3194445)
+texture = ExtResource("12_oi2tv")
 
 [editable path="Dome"]
+[editable path="Dome/Weapons/turret"]
+[editable path="Dome/Weapons/turret/AnimatedSprite2D2/shoot"]

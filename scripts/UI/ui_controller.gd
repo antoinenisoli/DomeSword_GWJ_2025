@@ -10,7 +10,6 @@ var enemy_killed: int
 func _ready() -> void:
     enemy_txt.text = str(0)
     flame_txt.text = str(0)
-    pause_screen.visible = false
     gameover_screen.visible = false
     EventManager.collect_ammo.connect(spawn_ammo_text)
     EventManager.on_player_killed.connect(game_over)
@@ -18,6 +17,8 @@ func _ready() -> void:
         enemy_killed += 1
         enemy_txt.text = str(enemy_killed)
         )
+
+    set_paused(true)
 
 func spawn_ammo_text(ammo_value: int, pos: Vector2) -> void:
     if floating_txt:

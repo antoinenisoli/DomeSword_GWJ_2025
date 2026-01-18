@@ -196,7 +196,7 @@ blink = Color(18.892157, 0, 0, 1)
 z_index = 50
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_o0ygl")
-animation = &"shoot"
+animation = &"idle"
 speed_scale = 2.0
 
 [node name="light" type="Sprite2D" parent="support"]

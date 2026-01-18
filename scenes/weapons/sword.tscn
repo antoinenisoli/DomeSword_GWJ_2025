@@ -34,8 +34,7 @@ corner_radius_bottom_left = 5
 [node name="sword" type="Node2D" node_paths=PackedStringArray("timer", "txt", "force_slider")]
 z_index = -5
 script = ExtResource("1_o616w")
-preview_angle = 0.5
-power = 100.0
+preview_angle = 0.1
 push_force = 75.0
 charge_color = SubResource("Gradient_gwb47")
 timer = NodePath("swing_timer")

@@ -69,9 +69,10 @@ func charge_sword(axis: float) -> void:
     for spr in weapon_support.sword_sprites:
         spr.self_modulate = charge_color.sample(v)
 
-func move_sword() -> void:
-    if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
-        var axis: float = Input.get_axis("move_left", "move_right")
+func move_sword(_delta) -> void:
+    #if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
+    var axis: float = Input.get_axis("move_left", "move_right")
+    if axis != 0:
         force_slider.value += axis * power
         if target_velocity == 0 && force_slider.value < force_slider.max_value && force_slider.value > force_slider.min_value:
             charge_sword(axis)
@@ -90,7 +91,7 @@ func _process(_delta: float):
     if Engine.time_scale != 1:
         return
 
-    move_sword()
+    move_sword(_delta)
     slash(_delta)
     txt.text = str(roundf(weapon_support.anchor.global_rotation_degrees))
 

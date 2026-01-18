@@ -17,7 +17,7 @@ gradient = SubResource("Gradient_qlg0r")
 width = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
-size = Vector2(9.227221, 20.185589)
+size = Vector2(9.227221, 14.049628)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3pnln"]
 font_size = 20
@@ -29,6 +29,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.27, 0.27, 1)
 
 [node name="sword" type="Node2D" node_paths=PackedStringArray("sword", "timer", "txt", "force_slider")]
+z_index = -5
 scale = Vector2(0.56, 0.7599994)
 script = ExtResource("1_o616w")
 rot_limit = 85.0
@@ -43,6 +44,7 @@ force_curve = ExtResource("2_3pnln")
 match_enemies = Array[int]([0])
 
 [node name="anchor" type="Area2D" parent="."]
+position = Vector2(0, -63.157948)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Sprite2D" type="Sprite2D" parent="anchor"]
@@ -55,13 +57,13 @@ texture = SubResource("GradientTexture1D_1l7jo")
 offset = Vector2(9.3132265e-08, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="anchor"]
-position = Vector2(0, -231.57918)
-scale = Vector2(8.669999, 22.945)
+position = Vector2(0, -161.18437)
+scale = Vector2(8.669998, 22.945)
 shape = SubResource("RectangleShape2D_0ph48")
 
 [node name="Sword" type="Sprite2D" parent="anchor"]
-position = Vector2(-2.2737368e-13, -243.42126)
-scale = Vector2(23.49603, 30.668602)
+position = Vector2(-2.2737368e-13, -154.09682)
+scale = Vector2(23.49603, 20.743664)
 texture = ExtResource("3_58ehi")
 
 [node name="Timer" type="Timer" parent="."]
@@ -70,11 +72,12 @@ one_shot = true
 ignore_time_scale = true
 
 [node name="Control" type="Control" parent="."]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_top = -6.578952
+offset_top = -59.210567
 offset_right = 40.0
-offset_bottom = 33.421047
+offset_bottom = -19.210567
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0

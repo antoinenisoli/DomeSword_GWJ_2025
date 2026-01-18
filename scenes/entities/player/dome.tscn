@@ -76,10 +76,13 @@ z_index = -1
 position = Vector2(0, -87)
 
 [node name="sword" parent="Weapons" instance=ExtResource("4_l7o3r")]
-visible = false
 position = Vector2(0, -29)
 rot_limit = 70.0
 force_curve = SubResource("Curve_si0v0")
+
+[node name="Control" parent="Weapons/sword" index="2"]
+offset_top = -77.63164
+offset_bottom = -37.631638
 
 [node name="visuals" type="Node2D" parent="."]
 
@@ -119,3 +122,4 @@ texture = ExtResource("8_pmijb")
 
 [editable path="Weapons/turret"]
 [editable path="Weapons/turret/AnimatedSprite2D2/shoot"]
+[editable path="Weapons/sword"]

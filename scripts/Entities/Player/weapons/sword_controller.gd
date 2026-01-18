@@ -41,9 +41,6 @@ func get_weight() -> float:
 
 func compute_velocity_curve(delta) -> void:
     var w = get_weight()
-    #if !timer.is_stopped():
-        #print(w)
-
     velocity = (target_velocity * w) * delta
     #print(velocity)
     weapon_support.add_rot(velocity)
@@ -89,6 +86,9 @@ func compute_damage() -> int:
     return roundi(dmg)
 
 func _process(_delta: float):
+    if Engine.time_scale != 1:
+        return
+
     move_sword()
     slash(_delta)
     txt.text = str(roundf(weapon_support.anchor.global_rotation_degrees))

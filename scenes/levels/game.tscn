@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://crkwkw4c7tgkv" path="res://scenes/UI/game_ui.tscn" id="5_cx7qy"]
 [ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="6_r0gsk"]
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
+[ext_resource type="PackedScene" uid="uid://b5k4wrsldj08p" path="res://scenes/entities/enemies/egg_enemy.tscn" id="8_6370d"]
 [ext_resource type="PackedScene" uid="uid://d352piharubl" path="res://scenes/entities/enemies/fly_enemy.tscn" id="8_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://d0oe0ioiyxgar" path="res://assets/sprites/dome/enviro/Foreground_01.png" id="9_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://by7wkobibgtv7" path="res://assets/sprites/dome/enviro/background_placeholder3.png" id="10_r0gsk"]
@@ -60,13 +60,13 @@ spawn_range = 50.0
 
 [node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(-478, -474)
-cooldown_range = Vector2(10, 20)
+cooldown_range = Vector2(15, 30)
 spawn_range = 200.0
 enemy = ExtResource("8_oi2tv")
 
 [node name="EnemySpawner4" parent="Spawners" instance=ExtResource("6_p57ef")]
 position = Vector2(337, -474)
-cooldown_range = Vector2(10, 20)
+cooldown_range = Vector2(15, 30)
 spawn_range = 200.0
 enemy = ExtResource("8_oi2tv")
 
@@ -74,12 +74,8 @@ enemy = ExtResource("8_oi2tv")
 
 [node name="music" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("10_uk881")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
-
-[node name="FloatingText" parent="." instance=ExtResource("6_r0gsk")]
-visible = false
-position = Vector2(-269, -135)
 
 [node name="_ART" type="Node2D" parent="."]
 
@@ -96,3 +92,6 @@ position = Vector2(1.0000001, 69.999985)
 scale = Vector2(1.325, 1.3333334)
 texture = ExtResource("9_oi2tv")
 metadata/_edit_lock_ = true
+
+[node name="Frog" parent="." instance=ExtResource("8_6370d")]
+position = Vector2(-217, -331)

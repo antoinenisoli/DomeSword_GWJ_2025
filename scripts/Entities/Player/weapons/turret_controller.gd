@@ -30,6 +30,9 @@ func rotate_turret(_delta: float) -> void:
     weapon_support.anchor.global_rotation_degrees = clamp(weapon_support.anchor.global_rotation_degrees, -rot_limit, rot_limit)
 
 func _process(_delta: float):
+    if Engine.time_scale != 1:
+        return
+        
     rotate_turret(_delta)
     if Input.is_action_pressed("fire") && weapons.turret_ammo.can_shoot:
         _shooting.shoot()

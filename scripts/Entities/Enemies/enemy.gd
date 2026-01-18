@@ -31,7 +31,7 @@ func reset() -> void:
     sprite.play("idle")
 
 func shoot():
-    if !player:
+    if !player || !_shooting:
         return
         
     _shooting.look_at(player.position)

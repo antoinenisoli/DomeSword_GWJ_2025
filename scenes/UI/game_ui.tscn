@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="2_r4w1u"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_5038c"]
 [ext_resource type="Texture2D" uid="uid://cym110ttbull3" path="res://assets/sprites/UI/window_theme/window_theme_green/message_box_B.png" id="4_mbbca"]
+[ext_resource type="Texture2D" uid="uid://cgoi4ycrsje7c" path="res://assets/sprites/UI/window_theme/window_theme_green/message_box_A.png" id="6_7klwy"]
 [ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="6_mbbca"]
 [ext_resource type="FontFile" uid="uid://cs0kjgt1ymay3" path="res://assets/fonts/PixelOperator8.ttf" id="8_owrpm"]
 [ext_resource type="Texture2D" uid="uid://dxiurw3sbi472" path="res://assets/sprites/tutorial/green.png" id="9_mbbca"]
@@ -16,6 +17,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_hvehc"]
 font = ExtResource("4_5038c")
 font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_7klwy"]
+font = ExtResource("4_5038c")
+font_size = 31
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbbca"]
 texture = ExtResource("10_jqo5s")
@@ -42,7 +47,7 @@ texture = ExtResource("10_5038c")
 font = ExtResource("4_5038c")
 font_size = 41
 
-[node name="GameUI" type="Control" unique_id=1454038955 node_paths=PackedStringArray("enemy_txt", "pause_screen", "gameover_screen")]
+[node name="GameUI" type="Control" unique_id=1454038955 node_paths=PackedStringArray("enemy_txt", "wave_txt", "tuto_Txt", "pause_screen", "gameover_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +56,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d8ncw")
 enemy_txt = NodePath("CanvasLayer/Screens/HUD/KillsBox/VBoxContainer/Control/enemy_count")
+wave_txt = NodePath("CanvasLayer/Screens/HUD/WaveCounter/label")
+tuto_Txt = NodePath("CanvasLayer/Screens/HUD/tuto1")
 pause_screen = NodePath("CanvasLayer/Screens/PauseScreen")
 gameover_screen = NodePath("CanvasLayer/Screens/GameOverScreen")
 floating_txt = ExtResource("2_r4w1u")
@@ -127,7 +134,56 @@ offset_bottom = 49.999966
 texture = ExtResource("6_mbbca")
 stretch_mode = 4
 
+[node name="WaveCounter" type="TextureRect" parent="CanvasLayer/Screens/HUD" unique_id=1977369488]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 121.0
+offset_bottom = 111.0
+texture = ExtResource("6_7klwy")
+stretch_mode = 4
+
+[node name="label" type="Label" parent="CanvasLayer/Screens/HUD/WaveCounter" unique_id=758339461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -20.5
+offset_right = 32.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "0/5"
+label_settings = SubResource("LabelSettings_hvehc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="tuto1" type="Label" parent="CanvasLayer/Screens/HUD" unique_id=1423126642]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -483.0
+offset_right = 497.0
+offset_bottom = 155.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Do a swing with the sword to start the first wave!"
+label_settings = SubResource("LabelSettings_7klwy")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
 [node name="PauseScreen" type="Control" parent="CanvasLayer/Screens" unique_id=1646600217]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -31,6 +31,10 @@ func reset() -> void:
 
 func start_slash() -> void:
     timer.start()
+    if !GameManager.tutoDone:
+        GameManager.tutoDone = true
+        EventManager.on_game_started.emit()
+
     target_velocity = force_slider.value
     print("slash!! " + str(target_velocity))
     force_slider.value = 0

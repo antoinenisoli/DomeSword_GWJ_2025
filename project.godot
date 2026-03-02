@@ -21,10 +21,11 @@ config/icon="uid://s3grxe55xgi0"
 
 [autoload]
 
-TimeManager="*res://scenes/time_manager.tscn"
-FxManager="*res://scenes/fx_manager.tscn"
+TimeManager="*res://scenes/scripts/time_manager.tscn"
+FxManager="*res://scenes/scripts/fx_manager.tscn"
 EventManager="*res://scripts/event_manager.gd"
-AudioManager="*res://scenes/audio_manager.tscn"
+AudioManager="*res://scenes/scripts/audio_manager.tscn"
+GameManager="*uid://wfvh6l3f13hg"
 
 [display]
 

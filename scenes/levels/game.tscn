@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://pmrhth1mkfnr"]
+[gd_scene format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://crkwkw4c7tgkv" path="res://scenes/UI/game_ui.tscn" id="5_cx7qy"]
-[ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/game_manager.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/scripts/game_manager.tscn" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
@@ -28,9 +28,9 @@ resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1227426491]
 
-[node name="Camera2D" parent="." instance=ExtResource("7_xmnyv")]
+[node name="Camera2D" parent="." unique_id=1109533623 instance=ExtResource("7_xmnyv")]
 position = Vector2(0, -132)
 zoom = Vector2(1.51, 1.51)
 shakers = Dictionary[String, ExtResource("2_fojqs")]({
@@ -38,55 +38,56 @@ shakers = Dictionary[String, ExtResource("2_fojqs")]({
 "sword_hit": SubResource("Resource_bgnkb")
 })
 
-[node name="Dome" parent="." instance=ExtResource("7_7rg7d")]
+[node name="Dome" parent="." unique_id=136624599 instance=ExtResource("7_7rg7d")]
 position = Vector2(1, 108)
 _health = SubResource("Resource_oi2tv")
 
-[node name="GameUI" parent="." instance=ExtResource("5_cx7qy")]
+[node name="GameUI" parent="." unique_id=1363906567 instance=ExtResource("5_cx7qy")]
 
-[node name="GameManager" parent="." instance=ExtResource("5_p57ef")]
+[node name="GameManager" parent="." unique_id=1678798602 node_paths=PackedStringArray("spawners") instance=ExtResource("5_p57ef")]
+spawners = [NodePath("../Spawners/EnemySpawner1"), NodePath("../Spawners/EnemySpawner2"), NodePath("../Spawners/EnemySpawner3"), NodePath("../Spawners/EnemySpawner5"), NodePath("../Spawners/EnemySpawner5")]
 
-[node name="Spawners" type="Node2D" parent="."]
+[node name="Spawners" type="Node2D" parent="." unique_id=1160965866]
 
-[node name="EnemySpawner1" parent="Spawners" instance=ExtResource("6_p57ef")]
+[node name="EnemySpawner1" parent="Spawners" unique_id=761262919 instance=ExtResource("6_p57ef")]
 position = Vector2(450, -37)
 cooldown_range = Vector2(10, 15)
 spawn_range = 50.0
 
-[node name="EnemySpawner2" parent="Spawners" instance=ExtResource("6_p57ef")]
+[node name="EnemySpawner2" parent="Spawners" unique_id=357071477 instance=ExtResource("6_p57ef")]
 position = Vector2(-458, -48)
 cooldown_range = Vector2(10, 15)
 spawn_range = 50.0
 
-[node name="EnemySpawner5" parent="Spawners" instance=ExtResource("6_p57ef")]
+[node name="EnemySpawner5" parent="Spawners" unique_id=235952603 instance=ExtResource("6_p57ef")]
 position = Vector2(-459, 1)
 cooldown_range = Vector2(10, 45)
 spawn_range = 0.0
 enemy = ExtResource("8_6370d")
 
-[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("6_p57ef")]
+[node name="EnemySpawner3" parent="Spawners" unique_id=609712869 instance=ExtResource("6_p57ef")]
 position = Vector2(-42, -474)
 cooldown_range = Vector2(20, 30)
 spawn_range = 200.0
 enemy = ExtResource("8_oi2tv")
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=228741160]
 
-[node name="music" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="music" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1396511848]
 stream = ExtResource("10_uk881")
 volume_db = -15.0
 autoplay = true
 
-[node name="_ART" type="Node2D" parent="."]
+[node name="_ART" type="Node2D" parent="." unique_id=948154698]
 
-[node name="BG" type="Sprite2D" parent="_ART"]
+[node name="BG" type="Sprite2D" parent="_ART" unique_id=366168890]
 z_index = -4096
 position = Vector2(1.00001, -132.00002)
 scale = Vector2(1.325, 1.3333334)
 texture = ExtResource("10_r0gsk")
 metadata/_edit_lock_ = true
 
-[node name="Foreground" type="Sprite2D" parent="_ART"]
+[node name="Foreground" type="Sprite2D" parent="_ART" unique_id=1449318278]
 z_index = -4096
 position = Vector2(1.0000001, 69.999985)
 scale = Vector2(1.325, 1.3333334)

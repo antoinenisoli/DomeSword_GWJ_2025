@@ -1,15 +1,19 @@
 extends Control
 
 @export var enemy_txt: Label
+@export var wave_txt: Label
+@export var tuto_Txt: Label
 @export var pause_screen: Control
 @export var gameover_screen: Control
 @export var floating_txt: PackedScene
 var enemy_killed: int
+var tutoDone: bool
 
 func _ready() -> void:
 	enemy_txt.text = str(0)
 	gameover_screen.visible = false
 	EventManager.collect_ammo.connect(spawn_ammo_text)
+	EventManager.on_game_started.connect(hide_tuto)
 	EventManager.on_player_killed.connect(game_over)
 	EventManager.on_enemy_killed.connect(func f(_args) -> void:
 		enemy_killed += 1
@@ -41,6 +45,11 @@ func set_paused(b: bool) -> void:
 
 func _on_resume_button_pressed() -> void:
 	set_paused(false)
+	if !GameManager.tutoDone:
+		tuto_Txt.visible = true
+
+func hide_tuto() -> void:
+	tuto_Txt.visible = false
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

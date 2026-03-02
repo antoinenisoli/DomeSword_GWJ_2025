@@ -1,21 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://crkwkw4c7tgkv"]
+[gd_scene format=3 uid="uid://crkwkw4c7tgkv"]
 
 [ext_resource type="Script" uid="uid://uqaw0biwnuv2" path="res://scripts/UI/ui_controller.gd" id="1_d8ncw"]
-[ext_resource type="PackedScene" uid="uid://ck27qna5vj213" path="res://scenes/UI/healthbar.tscn" id="2_owrpm"]
 [ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="2_r4w1u"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_5038c"]
 [ext_resource type="Texture2D" uid="uid://cym110ttbull3" path="res://assets/sprites/UI/window_theme/window_theme_green/message_box_B.png" id="4_mbbca"]
-[ext_resource type="Texture2D" uid="uid://dkt3nukb772pa" path="res://assets/sprites/UI/icons/blue/cash_coin_B.png" id="5_jqo5s"]
 [ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="6_mbbca"]
-[ext_resource type="Texture2D" uid="uid://pnv0vj2xn81r" path="res://assets/sprites/UI/icons/blue/power_B.png" id="7_7klwy"]
 [ext_resource type="FontFile" uid="uid://cs0kjgt1ymay3" path="res://assets/fonts/PixelOperator8.ttf" id="8_owrpm"]
+[ext_resource type="Texture2D" uid="uid://dxiurw3sbi472" path="res://assets/sprites/tutorial/green.png" id="9_mbbca"]
+[ext_resource type="Texture2D" uid="uid://wryo8g41hp4y" path="res://assets/sprites/tutorial/yellow.png" id="10_7klwy"]
 [ext_resource type="Texture2D" uid="uid://8dkvi2n8441q" path="res://assets/sprites/UI/window_theme/window_theme_green/window_undecorated.png" id="10_5038c"]
 [ext_resource type="Texture2D" uid="uid://bk2s3hxn8utyk" path="res://assets/sprites/UI/window_theme/window_theme_green/button_default.png" id="10_jqo5s"]
+[ext_resource type="Texture2D" uid="uid://ch110mhmnys81" path="res://assets/sprites/tutorial/red.png" id="11_hvehc"]
 [ext_resource type="Texture2D" uid="uid://o6bjndjcyxyf" path="res://assets/sprites/UI/window_theme/window_theme_green/button_pressed.png" id="11_mbbca"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hvehc"]
 font = ExtResource("4_5038c")
-font_size = 12
+font_size = 15
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbbca"]
 texture = ExtResource("10_jqo5s")
@@ -31,6 +31,10 @@ texture_margin_top = 13.0
 texture_margin_right = 13.0
 texture_margin_bottom = 13.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_t7mk8"]
+font = ExtResource("4_5038c")
+font_size = 12
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqo5s"]
 texture = ExtResource("10_5038c")
 
@@ -38,7 +42,7 @@ texture = ExtResource("10_5038c")
 font = ExtResource("4_5038c")
 font_size = 41
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("enemy_txt", "flame_txt", "pause_screen", "gameover_screen")]
+[node name="GameUI" type="Control" unique_id=1454038955 node_paths=PackedStringArray("enemy_txt", "pause_screen", "gameover_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,15 +50,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d8ncw")
-enemy_txt = NodePath("CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2/enemy_count")
-flame_txt = NodePath("CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control3/flame_count")
+enemy_txt = NodePath("CanvasLayer/Screens/HUD/KillsBox/VBoxContainer/Control/enemy_count")
 pause_screen = NodePath("CanvasLayer/Screens/PauseScreen")
 gameover_screen = NodePath("CanvasLayer/Screens/GameOverScreen")
 floating_txt = ExtResource("2_r4w1u")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=102358193]
 
-[node name="Screens" type="Control" parent="CanvasLayer"]
+[node name="Screens" type="Control" parent="CanvasLayer" unique_id=818936262]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,39 +65,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HUD" type="Control" parent="CanvasLayer/Screens"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Healthbar" parent="CanvasLayer/Screens/HUD" instance=ExtResource("2_owrpm")]
-visible = false
+[node name="HUD" type="Control" parent="CanvasLayer/Screens" unique_id=741646586]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 671.0
-offset_right = 0.0
-offset_bottom = 679.18
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD"]
+[node name="KillsBox" type="TextureRect" parent="CanvasLayer/Screens/HUD" unique_id=254365248]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1134.0
+offset_left = -105.0
 offset_top = 9.0
-offset_right = 1230.0
+offset_right = -9.0
 offset_bottom = 105.0
 grow_horizontal = 0
 texture = ExtResource("4_mbbca")
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Screens/HUD/TextureRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Screens/HUD/KillsBox" unique_id=1046865916]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,88 +100,43 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer"]
-visible = false
+[node name="Control" type="Control" parent="CanvasLayer/Screens/HUD/KillsBox/VBoxContainer" unique_id=1875856251]
 custom_minimum_size = Vector2(0, 30.835)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control"]
+[node name="enemy_count" type="Label" parent="CanvasLayer/Screens/HUD/KillsBox/VBoxContainer/Control" unique_id=1136416783]
 layout_mode = 0
-offset_left = -7.0
-offset_right = 66.99982
-offset_bottom = 42.0
-text = "500"
-label_settings = SubResource("LabelSettings_hvehc")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control"]
-layout_mode = 0
-offset_left = -17.0
-offset_top = 4.0
-offset_right = 14.999825
-offset_bottom = 35.999966
-texture = ExtResource("5_jqo5s")
-stretch_mode = 4
-
-[node name="Control2" type="Control" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30.835)
-layout_mode = 2
-
-[node name="enemy_count" type="Label" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2"]
-layout_mode = 0
-offset_left = -7.0
-offset_right = 69.0
-offset_bottom = 42.0
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 68.0
+offset_bottom = 31.0
 theme_override_font_sizes/font_size = 16
 text = "1000"
 label_settings = SubResource("LabelSettings_hvehc")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/KillsBox/VBoxContainer/Control" unique_id=1598456249]
 layout_mode = 0
-offset_left = -2.0
-offset_top = 4.0
-offset_right = 29.999825
-offset_bottom = 35.999966
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 51.999825
+offset_bottom = 49.999966
 texture = ExtResource("6_mbbca")
 stretch_mode = 4
 
-[node name="Control3" type="Control" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 30.835)
-layout_mode = 2
-
-[node name="flame_count" type="Label" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control3"]
-layout_mode = 0
-offset_left = -7.0
-offset_right = 66.99982
-offset_bottom = 42.0
-text = "500"
-label_settings = SubResource("LabelSettings_hvehc")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/HUD/TextureRect/VBoxContainer/Control3"]
-layout_mode = 0
-offset_left = -7.0
-offset_top = 4.0
-offset_right = 24.999825
-offset_bottom = 35.999966
-texture = ExtResource("7_7klwy")
-stretch_mode = 4
-
-[node name="PauseScreen" type="Control" parent="CanvasLayer/Screens"]
+[node name="PauseScreen" type="Control" parent="CanvasLayer/Screens" unique_id=1646600217]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
-[node name="BG" type="ColorRect" parent="CanvasLayer/Screens/PauseScreen"]
+[node name="BG" type="ColorRect" parent="CanvasLayer/Screens/PauseScreen" unique_id=155312704]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,29 +144,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4627451)
+metadata/_edit_lock_ = true
 
-[node name="tuto" type="Control" parent="CanvasLayer/Screens/PauseScreen"]
+[node name="tuto" type="Control" parent="CanvasLayer/Screens/PauseScreen" unique_id=268951833]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = -307.0
-offset_right = 192.0
-offset_bottom = 285.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="CanvasLayer/Screens/PauseScreen/tuto"]
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=1254477389]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 51.0
-offset_top = -40.0
-offset_right = -36.0
-offset_bottom = 412.0
+offset_left = 81.0
+offset_top = 14.0
+offset_right = -113.0
+offset_bottom = 232.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("8_owrpm")
 theme_override_fonts/bold_font = ExtResource("4_5038c")
@@ -232,39 +175,126 @@ text = "- [b]WASD / Arrow keys[/b] for controlling the active weapon
 
 - [b]Tab[/b] to pause the game
 
-- The light indicator under the turret indicate the amount of ammo you collected.
-
 - Enjoy!"
 autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 161
 
-[node name="resume_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 447.0
-offset_right = 341.0
-offset_bottom = 500.0
+[node name="resume_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=427955313]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -223.0
+offset_right = 147.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_5038c")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_mbbca")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7klwy")
 text = "RESUME"
 
-[node name="quit_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 551.0
-offset_right = 341.0
-offset_bottom = 604.0
+[node name="quit_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=1004556723]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -126.0
+offset_right = 147.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_5038c")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_mbbca")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7klwy")
 text = "QUIT"
 
-[node name="GameOverScreen" type="Control" parent="CanvasLayer/Screens"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=1413795756]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 231.0
+offset_right = 1177.0
+offset_bottom = 439.0
+theme_override_constants/separation = 109
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Screens/PauseScreen/tuto/HBoxContainer" unique_id=585106122]
+layout_mode = 2
+texture = ExtResource("9_mbbca")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Screens/PauseScreen/tuto/HBoxContainer/TextureRect" unique_id=1861040763]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -23.0
+offset_right = 141.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Large ammo amount"
+label_settings = SubResource("LabelSettings_t7mk8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Screens/PauseScreen/tuto/HBoxContainer" unique_id=927061027]
+layout_mode = 2
+texture = ExtResource("10_7klwy")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Screens/PauseScreen/tuto/HBoxContainer/TextureRect2" unique_id=81698671]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -23.0
+offset_right = 141.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Medium ammo amount"
+label_settings = SubResource("LabelSettings_t7mk8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Screens/PauseScreen/tuto/HBoxContainer" unique_id=1366895174]
+layout_mode = 2
+texture = ExtResource("11_hvehc")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Screens/PauseScreen/tuto/HBoxContainer/TextureRect3" unique_id=1947341287]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -23.0
+offset_right = 141.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "The ammo container is empty"
+label_settings = SubResource("LabelSettings_t7mk8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverScreen" type="Control" parent="CanvasLayer/Screens" unique_id=109154899]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -273,7 +303,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="ColorRect" parent="CanvasLayer/Screens/GameOverScreen"]
+[node name="BG" type="ColorRect" parent="CanvasLayer/Screens/GameOverScreen" unique_id=1563796564]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,7 +312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4627451)
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Screens/GameOverScreen"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Screens/GameOverScreen" unique_id=1397218277]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -295,7 +325,7 @@ offset_right = 277.0
 offset_bottom = 216.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_jqo5s")
 
-[node name="Label" type="Label" parent="CanvasLayer/Screens/GameOverScreen/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/Screens/GameOverScreen/Panel" unique_id=1833986501]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

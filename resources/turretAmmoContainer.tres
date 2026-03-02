@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AmmoContainer" format=3 uid="uid://blrg80op7k0mn"]
+
+[ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="1_ilg0w"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_ilg0w")
+start_ammo = 25
+max_ammo = 25
+metadata/_custom_type_script = "uid://15t3ts3yvwg7"

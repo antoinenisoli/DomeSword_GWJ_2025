@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://hmo0bngnvdqj"]
+[gd_scene format=3 uid="uid://hmo0bngnvdqj"]
 
 [ext_resource type="Script" uid="uid://cb8y4fhtikaj7" path="res://scripts/Entities/Player/player_dome.gd" id="1_si0v0"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="3_bstcn"]
 [ext_resource type="Texture2D" uid="uid://boq5dcu4xid3x" path="res://assets/sprites/dome/Dome3.png" id="4_t5h6n"]
 [ext_resource type="Script" uid="uid://bwsckparmx13i" path="res://scripts/UI/healthbar.gd" id="7_16ise"]
 [ext_resource type="Texture2D" uid="uid://c3rv2r2h01koa" path="res://assets/sprites/dome/enviro/GreenCrystal_01.png" id="7_r38io"]
-[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support2.tscn" id="7_t5h6n"]
+[ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="7_t5h6n"]
 [ext_resource type="Texture2D" uid="uid://b35k0c63xgmtt" path="res://assets/sprites/dome/enviro/GreenCrystal_02.png" id="8_pmijb"]
 
 [sub_resource type="Resource" id="Resource_dqkch"]
@@ -38,34 +38,34 @@ bg_color = Color(0, 0, 0, 0.57254905)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfv3k"]
 bg_color = Color(1, 0, 0.015686275, 0.31764707)
 
-[node name="Dome" type="StaticBody2D" node_paths=PackedStringArray("sprite") groups=["Player"]]
+[node name="Dome" type="StaticBody2D" unique_id=867499705 node_paths=PackedStringArray("sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")
 _health = SubResource("Resource_dqkch")
 sprite = NodePath("visuals/dome_sprite")
 hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1925208748]
 visible = false
 position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_x3mc5")
 
-[node name="turret_base" type="Node2D" parent="."]
+[node name="turret_base" type="Node2D" parent="." unique_id=301407612]
 
-[node name="Weapon_support" parent="turret_base" node_paths=PackedStringArray("anchor") instance=ExtResource("7_t5h6n")]
+[node name="Weapon_support" parent="turret_base" unique_id=780883536 node_paths=PackedStringArray("anchor") instance=ExtResource("7_t5h6n")]
 z_index = 0
 position = Vector2(0, -59)
 anchor = NodePath("..")
 
-[node name="visuals" type="Node2D" parent="."]
+[node name="visuals" type="Node2D" parent="." unique_id=1816065891]
 
-[node name="dome_sprite" type="AnimatedSprite2D" parent="visuals"]
+[node name="dome_sprite" type="AnimatedSprite2D" parent="visuals" unique_id=124675442]
 clip_children = 2
 z_index = -5
 position = Vector2(0, -62)
 sprite_frames = SubResource("SpriteFrames_l7o3r")
 autoplay = "default"
 
-[node name="Healthbar" type="ProgressBar" parent="visuals/dome_sprite"]
+[node name="Healthbar" type="ProgressBar" parent="visuals/dome_sprite" unique_id=573745727]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -84,12 +84,12 @@ fill_mode = 3
 show_percentage = false
 script = ExtResource("7_16ise")
 
-[node name="GreenCrystal01" type="Sprite2D" parent="visuals"]
+[node name="GreenCrystal01" type="Sprite2D" parent="visuals" unique_id=769588592]
 z_index = 100
 position = Vector2(50, -23)
 texture = ExtResource("7_r38io")
 
-[node name="GreenCrystal02" type="Sprite2D" parent="visuals"]
+[node name="GreenCrystal02" type="Sprite2D" parent="visuals" unique_id=1835554476]
 z_index = 100
 position = Vector2(-56, -25)
 texture = ExtResource("8_pmijb")

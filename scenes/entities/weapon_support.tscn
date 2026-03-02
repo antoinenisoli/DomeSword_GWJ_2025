@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://c66tdqqqa4low"]
+[gd_scene format=3 uid="uid://c66tdqqqa4low"]
 
-[ext_resource type="Script" uid="uid://bgelaal4mskqu" path="res://scripts/Entities/Player/weapons/weapon_support.gd" id="1_6rd3f"]
-[ext_resource type="Texture2D" uid="uid://d0qklanlrytos" path="res://assets/sprites/dome/Turret2.png" id="2_rwt7f"]
-[ext_resource type="Script" uid="uid://bm32vcb33up3j" path="res://scripts/Entities/Player/weapons/weapon_inventory.gd" id="3_1i5tl"]
-[ext_resource type="Script" uid="uid://15t3ts3yvwg7" path="res://scripts/Entities/Player/weapons/ammo_container.gd" id="4_itk3i"]
-[ext_resource type="PackedScene" uid="uid://kksfipc358r0" path="res://scenes/weapons/turret.tscn" id="5_16mq0"]
-[ext_resource type="PackedScene" uid="uid://c65y8t1ijq160" path="res://scenes/weapons/sword.tscn" id="6_ikkyr"]
+[ext_resource type="Script" uid="uid://bgelaal4mskqu" path="res://scripts/Entities/Player/weapons/weapon_support.gd" id="1_absag"]
+[ext_resource type="Texture2D" uid="uid://d0qklanlrytos" path="res://assets/sprites/dome/Turret2.png" id="2_6xt84"]
+[ext_resource type="Script" uid="uid://bm32vcb33up3j" path="res://scripts/Entities/Player/weapons/weapon_inventory.gd" id="3_vq2rw"]
+[ext_resource type="Resource" uid="uid://blrg80op7k0mn" path="res://resources/turretAmmoContainer.tres" id="4_absag"]
+[ext_resource type="PackedScene" uid="uid://kksfipc358r0" path="res://scenes/weapons/turret.tscn" id="5_mxxdh"]
+[ext_resource type="PackedScene" uid="uid://c65y8t1ijq160" path="res://scenes/weapons/sword.tscn" id="6_i4frm"]
 
 [sub_resource type="Gradient" id="Gradient_538jk"]
 interpolation_mode = 1
@@ -13,39 +13,39 @@ offsets = PackedFloat32Array(0, 0.01, 0.33, 0.66)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.6117647, 0, 1, 1, 0.8901186, 0, 1, 0, 1, 0.41140202, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj5w8"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5hkb"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_487ac"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_538jk"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we0nl"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh6qd"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afr54"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ejf5"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5v22"]
-atlas = ExtResource("2_rwt7f")
+atlas = ExtResource("2_6xt84")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o0ygl"]
@@ -162,14 +162,7 @@ _data = {
 &"show_sword": SubResource("Animation_kagac")
 }
 
-[sub_resource type="Resource" id="Resource_absag"]
-resource_local_to_scene = true
-script = ExtResource("4_itk3i")
-start_ammo = 25
-max_ammo = 75
-metadata/_custom_type_script = "uid://15t3ts3yvwg7"
-
-[sub_resource type="Curve" id="Curve_6xt84"]
+[sub_resource type="Curve" id="Curve_1ogd1"]
 resource_local_to_scene = true
 _limits = [0.0, 10.0, 0.0, 25.0]
 _data = [Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.5, 0, 0, Vector2(25, 10), 0.5, 0.0, 0, 0]
@@ -177,13 +170,13 @@ point_count = 3
 metadata/_snap_enabled = true
 metadata/_snap_count = 90
 
-[sub_resource type="LabelSettings" id="LabelSettings_absag"]
+[sub_resource type="LabelSettings" id="LabelSettings_tllax"]
 resource_local_to_scene = true
 font_size = 10
 
-[node name="Weapon_support" type="Node2D" node_paths=PackedStringArray("sprite", "anim", "weapons", "sword_sprites", "light")]
+[node name="Weapon_support" type="Node2D" unique_id=1490028221 node_paths=PackedStringArray("sprite", "anim", "weapons", "sword_sprites", "light")]
 z_index = 50
-script = ExtResource("1_6rd3f")
+script = ExtResource("1_absag")
 sprite = NodePath("support")
 anim = NodePath("AnimationPlayer")
 weapons = NodePath("weapons_inventory")
@@ -192,82 +185,80 @@ light = NodePath("support/light")
 grad = SubResource("Gradient_538jk")
 blink = Color(18.892157, 0, 0, 1)
 
-[node name="support" type="AnimatedSprite2D" parent="."]
+[node name="support" type="AnimatedSprite2D" parent="." unique_id=1448035210]
 z_index = 50
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_o0ygl")
 animation = &"idle"
 speed_scale = 2.0
 
-[node name="light" type="Sprite2D" parent="support"]
+[node name="light" type="Sprite2D" parent="support" unique_id=29177659]
 self_modulate = Color(0.1333332, 1, 0, 1)
 z_index = 50
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("2_rwt7f")
+texture = ExtResource("2_6xt84")
 region_enabled = true
 region_rect = Rect2(0, 192, 64, 64)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_leg1a")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1095514452]
+libraries/ = SubResource("AnimationLibrary_leg1a")
 speed_scale = 2.0
 
-[node name="weapons_inventory" type="Node2D" parent="." node_paths=PackedStringArray("switch_cooldown", "weapons")]
-script = ExtResource("3_1i5tl")
+[node name="weapons_inventory" type="Node2D" parent="." unique_id=1603036680 node_paths=PackedStringArray("switch_cooldown", "weapons")]
+script = ExtResource("3_vq2rw")
 switch_cooldown = NodePath("switch_cooldown")
-turret_ammo = SubResource("Resource_absag")
+turret_ammo = ExtResource("4_absag")
 weapons = [NodePath("sword"), NodePath("turret")]
 
-[node name="switch_cooldown" type="Timer" parent="weapons_inventory"]
+[node name="switch_cooldown" type="Timer" parent="weapons_inventory" unique_id=33045266]
 one_shot = true
 ignore_time_scale = true
 
-[node name="turret" parent="weapons_inventory" instance=ExtResource("5_16mq0")]
+[node name="turret" parent="weapons_inventory" unique_id=452280370 instance=ExtResource("5_mxxdh")]
 position = Vector2(0, -34)
 
-[node name="sword" parent="weapons_inventory" instance=ExtResource("6_ikkyr")]
-force_curve = SubResource("Curve_6xt84")
+[node name="sword" parent="weapons_inventory" unique_id=1601069241 instance=ExtResource("6_i4frm")]
+force_curve = SubResource("Curve_1ogd1")
 
 [node name="CollisionShape2D" parent="weapons_inventory/sword/hitbox" index="0"]
 position = Vector2(0.49999854, -143.49992)
 scale = Vector2(8.669993, 22.94499)
 
 [node name="Label" parent="weapons_inventory/sword/Control" index="0"]
-label_settings = SubResource("LabelSettings_absag")
+label_settings = SubResource("LabelSettings_tllax")
 
-[node name="sword_base" type="Node2D" parent="."]
+[node name="sword_base" type="Node2D" parent="." unique_id=958973240]
 z_index = -10
 position = Vector2(0, 232)
 
-[node name="bottom" type="Sprite2D" parent="sword_base"]
+[node name="bottom" type="Sprite2D" parent="sword_base" unique_id=698872124]
 position = Vector2(0, -32)
-texture = ExtResource("2_rwt7f")
+texture = ExtResource("2_6xt84")
 flip_v = true
 region_enabled = true
 region_rect = Rect2(192, 64, 64, 64)
 
-[node name="Sprite2D" type="Sprite2D" parent="sword_base"]
+[node name="Sprite2D" type="Sprite2D" parent="sword_base" unique_id=2099591202]
 position = Vector2(0, -68)
-texture = ExtResource("2_rwt7f")
+texture = ExtResource("2_6xt84")
 region_enabled = true
 region_rect = Rect2(0, 128, 64, 64)
 
-[node name="Sprite2D2" type="Sprite2D" parent="sword_base"]
+[node name="Sprite2D2" type="Sprite2D" parent="sword_base" unique_id=1034817]
 position = Vector2(0, -124)
-texture = ExtResource("2_rwt7f")
+texture = ExtResource("2_6xt84")
 region_enabled = true
 region_rect = Rect2(64, 128, 64, 64)
 
-[node name="Sprite2D3" type="Sprite2D" parent="sword_base"]
+[node name="Sprite2D3" type="Sprite2D" parent="sword_base" unique_id=1630036159]
 position = Vector2(0, -188)
-texture = ExtResource("2_rwt7f")
+texture = ExtResource("2_6xt84")
 region_enabled = true
 region_rect = Rect2(128, 128, 64, 64)
 
-[node name="top" type="Sprite2D" parent="sword_base"]
+[node name="top" type="Sprite2D" parent="sword_base" unique_id=1950411185]
 position = Vector2(0, -252)
-texture = ExtResource("2_rwt7f")
+texture = ExtResource("2_6xt84")
 region_enabled = true
 region_rect = Rect2(192, 128, 64, 64)
 

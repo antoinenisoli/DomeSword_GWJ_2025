@@ -154,31 +154,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=1254477389]
+[node name="IntroTxt" type="RichTextLabel" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=336356940]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 81.0
-offset_top = 14.0
-offset_right = -113.0
-offset_bottom = 232.0
+offset_left = 43.0
+offset_top = 28.0
+offset_right = -665.0
+offset_bottom = 315.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("8_owrpm")
 theme_override_fonts/bold_font = ExtResource("4_5038c")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "- [b]WASD / Arrow keys[/b] for controlling the active weapon
+text = "The [b]DOME[/b] is attacked! Survive the waves and protect it at all cost. You can use one of these weapons:
 
-- [b]Left Click / Space[/b] to use the active weapon
+- The [b]SWORD[/b], you have to charge it in a direction (left or right) before unleashing it. The damage value depends on the sword momentum. Each enemy killed generate ammunitions for the [b]TURRET[/b]
 
-- [b]E[/b] to switch active weapon
-
-- [b]Tab[/b] to pause the game
-
-- Enjoy!"
+- The [b]TURRET[/b], to shoot on distant enemies. The only way to get ammo is to use the [b]SWORD[/b]"
+scroll_active = false
 autowrap_mode = 2
 horizontal_alignment = 1
-vertical_alignment = 1
+justification_flags = 161
+
+[node name="InputsTxt" type="RichTextLabel" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=1254477389]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 653.0
+offset_top = 24.0
+offset_right = -19.0
+offset_bottom = 326.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("8_owrpm")
+theme_override_fonts/bold_font = ExtResource("4_5038c")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "- [b]E[/b] to equip the next weapon
+- [b]TAB[/b] to pause the game
+
+[b]Sword Controls[/b]
+- [b]A / D / Arrow keys[/b] to build momentum and charge the sword in a direction (left or right)
+- [b]Left Click / SPACE[/b] to release it and do a swing
+
+[b]Turret Controls[/b]
+- [b]A / D / Arrow keys[/b] to move the turret along the dome
+- [b]Left Click / SPACE[/b] to shoot"
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
 justification_flags = 161
 
 [node name="resume_Button" type="Button" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=427955313]
@@ -189,9 +213,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -147.0
-offset_top = -223.0
+offset_top = -164.0
 offset_right = 147.0
-offset_bottom = -170.0
+offset_bottom = -111.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_5038c")
@@ -208,9 +232,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -147.0
-offset_top = -126.0
+offset_top = -79.0
 offset_right = 147.0
-offset_bottom = -73.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_5038c")
@@ -222,9 +246,9 @@ text = "QUIT"
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Screens/PauseScreen/tuto" unique_id=1413795756]
 layout_mode = 0
 offset_left = 101.0
-offset_top = 231.0
+offset_top = 298.0
 offset_right = 1177.0
-offset_bottom = 439.0
+offset_bottom = 530.0
 theme_override_constants/separation = 109
 alignment = 1
 

@@ -1,6 +1,7 @@
 extends Node2D
 class_name WeaponSupport
 
+@export var input_Sprite: AnimatedSprite2D
 @export var anchor: Node2D
 @export var sprite: AnimatedSprite2D
 @export var anim: AnimationPlayer

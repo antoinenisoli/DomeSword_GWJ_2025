@@ -79,6 +79,7 @@ volume_db = -15.0
 autoplay = true
 
 [node name="_ART" type="Node2D" parent="." unique_id=948154698]
+scale = Vector2(1.03, 1.03)
 
 [node name="BG" type="Sprite2D" parent="_ART" unique_id=366168890]
 z_index = -4096

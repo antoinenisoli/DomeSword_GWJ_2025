@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c65y8t1ijq160"]
+[gd_scene format=3 uid="uid://c65y8t1ijq160"]
 
 [ext_resource type="Script" uid="uid://cwitcaqalkwy8" path="res://scripts/Entities/Player/weapons/sword_controller.gd" id="1_o616w"]
 [ext_resource type="Curve" uid="uid://bhy33dv46yc6t" path="res://resources/sword_force_curve.tres" id="2_3pnln"]
@@ -31,11 +31,11 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="sword" type="Node2D" node_paths=PackedStringArray("timer", "txt", "force_slider")]
+[node name="sword" type="Node2D" unique_id=1116312238 node_paths=PackedStringArray("timer", "txt", "force_slider")]
 z_index = -5
 script = ExtResource("1_o616w")
 preview_angle = 0.1
-push_force = 75.0
+push_force = 100.0
 charge_color = SubResource("Gradient_gwb47")
 timer = NodePath("swing_timer")
 txt = NodePath("Control/Label")
@@ -45,20 +45,20 @@ force_curve = ExtResource("2_3pnln")
 collect_enabled = true
 match_enemies = Array[int]([0])
 
-[node name="swing_timer" type="Timer" parent="."]
+[node name="swing_timer" type="Timer" parent="." unique_id=34505874]
 wait_time = 2.0
 one_shot = true
 ignore_time_scale = true
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." unique_id=905413076]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=89443418]
 position = Vector2(0, -161.18437)
 scale = Vector2(8.669998, 22.945)
 shape = SubResource("RectangleShape2D_0ph48")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=2079307278]
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
@@ -66,7 +66,7 @@ offset_top = -45.0
 offset_right = 40.0
 offset_bottom = -5.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=130337581]
 visible = false
 layout_mode = 0
 offset_left = -55.357143
@@ -77,7 +77,7 @@ text = "180"
 label_settings = SubResource("LabelSettings_3pnln")
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Control"]
+[node name="HSlider" type="HSlider" parent="Control" unique_id=1893945698]
 layout_mode = 0
 offset_left = -41.0
 offset_top = -10.526323
@@ -87,7 +87,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_gwb47")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_58ehi")
 value = 50.0
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=45772217]
 layout_mode = 0
 offset_left = -49.0
 offset_top = 1.0
@@ -95,7 +95,7 @@ offset_right = -31.0
 offset_bottom = 19.0
 texture = ExtResource("5_11jj1")
 
-[node name="TextureRect2" type="TextureRect" parent="Control"]
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1861585038]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 1.0

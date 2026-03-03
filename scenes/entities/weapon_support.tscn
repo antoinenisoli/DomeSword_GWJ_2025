@@ -162,7 +162,7 @@ _data = {
 &"show_sword": SubResource("Animation_kagac")
 }
 
-[sub_resource type="Curve" id="Curve_1ogd1"]
+[sub_resource type="Curve" id="Curve_vq2rw"]
 resource_local_to_scene = true
 _limits = [0.0, 10.0, 0.0, 25.0]
 _data = [Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.5, 0, 0, Vector2(25, 10), 0.5, 0.0, 0, 0]
@@ -170,13 +170,14 @@ point_count = 3
 metadata/_snap_enabled = true
 metadata/_snap_count = 90
 
-[sub_resource type="LabelSettings" id="LabelSettings_tllax"]
+[sub_resource type="LabelSettings" id="LabelSettings_v7k43"]
 resource_local_to_scene = true
 font_size = 10
 
-[node name="Weapon_support" type="Node2D" unique_id=1490028221 node_paths=PackedStringArray("sprite", "anim", "weapons", "sword_sprites", "light")]
+[node name="Weapon_support" type="Node2D" unique_id=1490028221 node_paths=PackedStringArray("input_Sprite", "sprite", "anim", "weapons", "sword_sprites", "light")]
 z_index = 50
 script = ExtResource("1_absag")
+input_Sprite = NodePath("")
 sprite = NodePath("support")
 anim = NodePath("AnimationPlayer")
 weapons = NodePath("weapons_inventory")
@@ -218,14 +219,14 @@ ignore_time_scale = true
 position = Vector2(0, -34)
 
 [node name="sword" parent="weapons_inventory" unique_id=1601069241 instance=ExtResource("6_i4frm")]
-force_curve = SubResource("Curve_1ogd1")
+force_curve = SubResource("Curve_vq2rw")
 
-[node name="CollisionShape2D" parent="weapons_inventory/sword/hitbox" index="0"]
+[node name="CollisionShape2D" parent="weapons_inventory/sword/hitbox" parent_id_path=PackedInt32Array(1601069241, 905413076) index="0" unique_id=89443418]
 position = Vector2(0.49999854, -143.49992)
 scale = Vector2(8.669993, 22.94499)
 
-[node name="Label" parent="weapons_inventory/sword/Control" index="0"]
-label_settings = SubResource("LabelSettings_tllax")
+[node name="Label" parent="weapons_inventory/sword/Control" parent_id_path=PackedInt32Array(1601069241, 2079307278) index="0" unique_id=130337581]
+label_settings = SubResource("LabelSettings_v7k43")
 
 [node name="sword_base" type="Node2D" parent="." unique_id=958973240]
 z_index = -10

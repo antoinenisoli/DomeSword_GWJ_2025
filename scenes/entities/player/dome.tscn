@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bwsckparmx13i" path="res://scripts/UI/healthbar.gd" id="7_16ise"]
 [ext_resource type="Texture2D" uid="uid://c3rv2r2h01koa" path="res://assets/sprites/dome/enviro/GreenCrystal_01.png" id="7_r38io"]
 [ext_resource type="PackedScene" uid="uid://c66tdqqqa4low" path="res://scenes/entities/weapon_support.tscn" id="7_t5h6n"]
+[ext_resource type="Texture2D" uid="uid://br53pvqa50rme" path="res://assets/sprites/UI/keyboard/SPACE.png" id="8_l7o3r"]
 [ext_resource type="Texture2D" uid="uid://b35k0c63xgmtt" path="res://assets/sprites/dome/enviro/GreenCrystal_02.png" id="8_pmijb"]
 
 [sub_resource type="Resource" id="Resource_dqkch"]
@@ -38,6 +39,35 @@ bg_color = Color(0, 0, 0, 0.57254905)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfv3k"]
 bg_color = Color(1, 0, 0.015686275, 0.31764707)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_si0v0"]
+atlas = ExtResource("8_l7o3r")
+region = Rect2(0, 0, 98, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ise"]
+atlas = ExtResource("8_l7o3r")
+region = Rect2(98, 0, 98, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5j6v"]
+atlas = ExtResource("8_l7o3r")
+region = Rect2(196, 0, 98, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_si0v0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si0v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16ise")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5j6v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Dome" type="StaticBody2D" unique_id=867499705 node_paths=PackedStringArray("sprite") groups=["Player"]]
 script = ExtResource("1_si0v0")
 _health = SubResource("Resource_dqkch")
@@ -51,9 +81,10 @@ shape = SubResource("CapsuleShape2D_x3mc5")
 
 [node name="turret_base" type="Node2D" parent="." unique_id=301407612]
 
-[node name="Weapon_support" parent="turret_base" unique_id=780883536 node_paths=PackedStringArray("anchor") instance=ExtResource("7_t5h6n")]
+[node name="Weapon_support" parent="turret_base" unique_id=780883536 node_paths=PackedStringArray("input_Sprite", "anchor") instance=ExtResource("7_t5h6n")]
 z_index = 0
 position = Vector2(0, -59)
+input_Sprite = NodePath("../../visuals/spaceInput")
 anchor = NodePath("..")
 
 [node name="visuals" type="Node2D" parent="." unique_id=1816065891]
@@ -93,3 +124,10 @@ texture = ExtResource("7_r38io")
 z_index = 100
 position = Vector2(-56, -25)
 texture = ExtResource("8_pmijb")
+
+[node name="spaceInput" type="AnimatedSprite2D" parent="visuals" unique_id=2061455420]
+z_index = 100
+position = Vector2(0, -40)
+scale = Vector2(0.5102041, 1)
+sprite_frames = SubResource("SpriteFrames_si0v0")
+autoplay = "default"

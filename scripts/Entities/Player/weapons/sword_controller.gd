@@ -23,6 +23,8 @@ func _ready():
 
 func reset() -> void:
     target_velocity = 0
+    weapon_support.input_Sprite.visible = false
+
     force_slider.value = 0
     force_slider.value = 0
     force_slider.min_value = - max_power
@@ -39,6 +41,7 @@ func start_slash() -> void:
     print("slash!! " + str(target_velocity))
     force_slider.value = 0
     charge_sword(0)
+    weapon_support.input_Sprite.visible = false
 
 func get_weight() -> float:
     var t = 1 - (timer.time_left / timer.wait_time)
@@ -74,9 +77,9 @@ func charge_sword(axis: float) -> void:
         spr.self_modulate = charge_color.sample(v)
 
 func move_sword(_delta) -> void:
-    #if Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right"):
     var axis: float = Input.get_axis("move_left", "move_right")
     if axis != 0:
+        weapon_support.input_Sprite.visible = force_slider.value != 0
         force_slider.value += axis * power
         if target_velocity == 0 && force_slider.value < force_slider.max_value && force_slider.value > force_slider.min_value:
             charge_sword(axis)

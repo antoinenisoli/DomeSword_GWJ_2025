@@ -6,8 +6,6 @@ extends Control
 @export var pause_screen: Control
 @export var gameover_screen: Control
 @export var floating_txt: PackedScene
-var enemy_killed: int
-var tutoDone: bool
 
 func _ready() -> void:
 	enemy_txt.text = str(0)
@@ -16,8 +14,7 @@ func _ready() -> void:
 	EventManager.on_game_started.connect(hide_tuto)
 	EventManager.on_player_killed.connect(game_over)
 	EventManager.on_enemy_killed.connect(func f(_args) -> void:
-		enemy_killed += 1
-		enemy_txt.text = str(enemy_killed)
+		enemy_txt.text = str(GameManager.enemy_killed)
 		)
 
 	set_paused(true)

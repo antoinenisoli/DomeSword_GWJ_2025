@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
 [ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://crkwkw4c7tgkv" path="res://scenes/UI/game_ui.tscn" id="5_cx7qy"]
-[ext_resource type="PackedScene" uid="uid://wfvh6l3f13hg" path="res://scenes/scripts/game_manager.tscn" id="5_p57ef"]
+[ext_resource type="Script" uid="uid://bkfig22cimxdt" path="res://scripts/gameplay/spawn_manager.gd" id="6_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
@@ -44,32 +44,79 @@ _health = SubResource("Resource_oi2tv")
 
 [node name="GameUI" parent="." unique_id=1363906567 instance=ExtResource("5_cx7qy")]
 
-[node name="GameManager" parent="." unique_id=1678798602 node_paths=PackedStringArray("spawners") instance=ExtResource("5_p57ef")]
-spawners = [NodePath("../Spawners/EnemySpawner1"), NodePath("../Spawners/EnemySpawner2"), NodePath("../Spawners/EnemySpawner3"), NodePath("../Spawners/EnemySpawner5"), NodePath("../Spawners/EnemySpawner5")]
+[node name="SpawnManager" type="Node2D" parent="." unique_id=1678798602 node_paths=PackedStringArray("_timer", "waves")]
+script = ExtResource("6_oi2tv")
+_timer = NodePath("Timer")
+waves = [NodePath("SpawnersA/EnemySpawner1"), NodePath("SpawnersA/EnemySpawner2"), NodePath("SpawnersA/EnemySpawner3")]
 
-[node name="Spawners" type="Node2D" parent="." unique_id=1160965866]
+[node name="Timer" type="Timer" parent="SpawnManager" unique_id=406161203]
+one_shot = true
+ignore_time_scale = true
 
-[node name="EnemySpawner1" parent="Spawners" unique_id=761262919 instance=ExtResource("6_p57ef")]
+[node name="SpawnersA" type="Node2D" parent="SpawnManager" unique_id=1160965866]
+
+[node name="EnemySpawner1" parent="SpawnManager/SpawnersA" unique_id=761262919 instance=ExtResource("6_p57ef")]
 position = Vector2(450, -37)
-cooldown_range = Vector2(10, 15)
+time_frame = Vector2(0, 10)
 spawn_range = 50.0
+cooldown_range = Vector2(1, 2)
 
-[node name="EnemySpawner2" parent="Spawners" unique_id=357071477 instance=ExtResource("6_p57ef")]
+[node name="EnemySpawner2" parent="SpawnManager/SpawnersA" unique_id=357071477 instance=ExtResource("6_p57ef")]
 position = Vector2(-458, -48)
-cooldown_range = Vector2(10, 15)
+time_frame = Vector2(10, 20)
 spawn_range = 50.0
+cooldown_range = Vector2(1, 5)
 
-[node name="EnemySpawner5" parent="Spawners" unique_id=235952603 instance=ExtResource("6_p57ef")]
+[node name="EnemySpawner3" parent="SpawnManager/SpawnersA" unique_id=609712869 instance=ExtResource("6_p57ef")]
+position = Vector2(-42, -474)
+time_frame = Vector2(20, 30)
+spawn_range = 200.0
+cooldown_range = Vector2(20, 30)
+enemy = ExtResource("8_oi2tv")
+
+[node name="EnemySpawner4" parent="SpawnManager/SpawnersA" unique_id=413920337 instance=ExtResource("6_p57ef")]
+position = Vector2(-42, -474)
+spawn_range = 200.0
+cooldown_range = Vector2(20, 30)
+enemy = ExtResource("8_oi2tv")
+
+[node name="EnemySpawner5" parent="SpawnManager/SpawnersA" unique_id=235952603 instance=ExtResource("6_p57ef")]
 position = Vector2(-459, 1)
-cooldown_range = Vector2(10, 45)
 spawn_range = 0.0
+cooldown_range = Vector2(10, 45)
 enemy = ExtResource("8_6370d")
 
-[node name="EnemySpawner3" parent="Spawners" unique_id=609712869 instance=ExtResource("6_p57ef")]
+[node name="SpawnersDebug" type="Node2D" parent="SpawnManager" unique_id=515137776]
+process_mode = 4
+visible = false
+
+[node name="EnemySpawner1" parent="SpawnManager/SpawnersDebug" unique_id=1499889026 instance=ExtResource("6_p57ef")]
+position = Vector2(450, -37)
+spawn_range = 50.0
+cooldown_range = Vector2(1, 10)
+
+[node name="EnemySpawner2" parent="SpawnManager/SpawnersDebug" unique_id=832785443 instance=ExtResource("6_p57ef")]
+position = Vector2(-458, -48)
+spawn_range = 50.0
+cooldown_range = Vector2(1, 5)
+
+[node name="EnemySpawner3" parent="SpawnManager/SpawnersDebug" unique_id=1210427031 instance=ExtResource("6_p57ef")]
 position = Vector2(-42, -474)
-cooldown_range = Vector2(20, 30)
 spawn_range = 200.0
+cooldown_range = Vector2(20, 30)
 enemy = ExtResource("8_oi2tv")
+
+[node name="EnemySpawner4" parent="SpawnManager/SpawnersDebug" unique_id=759249855 instance=ExtResource("6_p57ef")]
+position = Vector2(-42, -474)
+spawn_range = 200.0
+cooldown_range = Vector2(20, 30)
+enemy = ExtResource("8_oi2tv")
+
+[node name="EnemySpawner5" parent="SpawnManager/SpawnersDebug" unique_id=2073000752 instance=ExtResource("6_p57ef")]
+position = Vector2(-459, 1)
+spawn_range = 0.0
+cooldown_range = Vector2(10, 45)
+enemy = ExtResource("8_6370d")
 
 [node name="Sounds" type="Node2D" parent="." unique_id=228741160]
 

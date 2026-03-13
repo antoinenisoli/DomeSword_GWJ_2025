@@ -2,6 +2,7 @@ extends Control
 
 @export var enemy_txt: Label
 @export var wave_txt: Label
+@export var time_txt: Label
 @export var tuto_Txt: Label
 @export var pause_screen: Control
 @export var gameover_screen: Control
@@ -52,5 +53,7 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _process(_delta):
+	wave_txt.text = str(GameManager.waveData.x) + "/" + str(GameManager.waveData.y)
+	time_txt.text = str(GameManager.game_time)
 	if Input.is_action_just_pressed("pause_game") && !pause_screen.visible:
 		set_paused(true)

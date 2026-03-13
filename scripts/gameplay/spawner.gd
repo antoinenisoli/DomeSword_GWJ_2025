@@ -10,12 +10,12 @@ class_name Spawner
 func start():
     cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
     cooldown.start()
-    print("start wave ", time_frame.x, time_frame.y)
+    #print("start wave ", time_frame.x, time_frame.y)
     pass
 
 func stop():
     cooldown.stop()
-    print("stop wave ", time_frame.x, time_frame.y)
+    #print("stop wave ", time_frame.x, time_frame.y)
 
 func _on_cooldown_timeout() -> void:
     spawn()

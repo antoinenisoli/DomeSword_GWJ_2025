@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://d1eu2jc3tnqsy" path="res://scenes/UI/floating_text.tscn" id="2_r4w1u"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_5038c"]
 [ext_resource type="Texture2D" uid="uid://cym110ttbull3" path="res://assets/sprites/UI/window_theme/window_theme_green/message_box_B.png" id="4_mbbca"]
-[ext_resource type="Texture2D" uid="uid://cgoi4ycrsje7c" path="res://assets/sprites/UI/window_theme/window_theme_green/message_box_A.png" id="6_7klwy"]
+[ext_resource type="Texture2D" uid="uid://uhiqq1e14fpw" path="res://assets/sprites/UI/window_theme/window_theme_green/window.png" id="6_hvehc"]
 [ext_resource type="Texture2D" uid="uid://b4027sw648h1i" path="res://assets/sprites/UI/icons/blue/sword.png" id="6_mbbca"]
+[ext_resource type="Texture2D" uid="uid://cjkxav05bnbfp" path="res://assets/sprites/UI/icons/blue/time.png" id="7_hvehc"]
 [ext_resource type="FontFile" uid="uid://cs0kjgt1ymay3" path="res://assets/fonts/PixelOperator8.ttf" id="8_owrpm"]
 [ext_resource type="Texture2D" uid="uid://dxiurw3sbi472" path="res://assets/sprites/tutorial/green.png" id="9_mbbca"]
 [ext_resource type="Texture2D" uid="uid://wryo8g41hp4y" path="res://assets/sprites/tutorial/yellow.png" id="10_7klwy"]
@@ -17,6 +18,14 @@
 [sub_resource type="LabelSettings" id="LabelSettings_hvehc"]
 font = ExtResource("4_5038c")
 font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_jtm65"]
+font = ExtResource("4_5038c")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_5r867"]
+font = ExtResource("4_5038c")
+font_size = 11
 
 [sub_resource type="LabelSettings" id="LabelSettings_7klwy"]
 font = ExtResource("4_5038c")
@@ -47,7 +56,7 @@ texture = ExtResource("10_5038c")
 font = ExtResource("4_5038c")
 font_size = 41
 
-[node name="GameUI" type="Control" unique_id=1454038955 node_paths=PackedStringArray("enemy_txt", "wave_txt", "tuto_Txt", "pause_screen", "gameover_screen")]
+[node name="GameUI" type="Control" unique_id=1454038955 node_paths=PackedStringArray("enemy_txt", "wave_txt", "time_txt", "tuto_Txt", "pause_screen", "gameover_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +65,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d8ncw")
 enemy_txt = NodePath("CanvasLayer/Screens/HUD/KillsBox/VBoxContainer/Control/enemy_count")
-wave_txt = NodePath("CanvasLayer/Screens/HUD/WaveCounter/label")
+wave_txt = NodePath("CanvasLayer/Screens/HUD/GameData/WaveCounter")
+time_txt = NodePath("CanvasLayer/Screens/HUD/GameData/Time/GameTime")
 tuto_Txt = NodePath("CanvasLayer/Screens/HUD/tuto1")
 pause_screen = NodePath("CanvasLayer/Screens/PauseScreen")
 gameover_screen = NodePath("CanvasLayer/Screens/GameOverScreen")
@@ -134,35 +144,85 @@ offset_bottom = 49.999966
 texture = ExtResource("6_mbbca")
 stretch_mode = 4
 
-[node name="WaveCounter" type="TextureRect" parent="CanvasLayer/Screens/HUD" unique_id=1977369488]
+[node name="GameData" type="TextureRect" parent="CanvasLayer/Screens/HUD" unique_id=1977369488]
 layout_mode = 1
 offset_left = 25.0
 offset_top = 15.0
 offset_right = 121.0
 offset_bottom = 111.0
-texture = ExtResource("6_7klwy")
+texture = ExtResource("6_hvehc")
 stretch_mode = 4
 
-[node name="label" type="Label" parent="CanvasLayer/Screens/HUD/WaveCounter" unique_id=758339461]
+[node name="WaveCounter" type="Label" parent="CanvasLayer/Screens/HUD/GameData" unique_id=758339461]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -20.5
-offset_right = 32.5
-offset_bottom = 20.5
+offset_left = -48.0
+offset_top = -29.0
+offset_right = 44.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 16
 text = "0/5"
-label_settings = SubResource("LabelSettings_hvehc")
+label_settings = SubResource("LabelSettings_jtm65")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
+
+[node name="Time" type="Control" parent="CanvasLayer/Screens/HUD/GameData" unique_id=383536948]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -40.0
+offset_right = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GameTime" type="Label" parent="CanvasLayer/Screens/HUD/GameData/Time" unique_id=541501369]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -10.0
+offset_right = 23.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "500"
+label_settings = SubResource("LabelSettings_5r867")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="TimeIcon" type="TextureRect" parent="CanvasLayer/Screens/HUD/GameData/Time" unique_id=2011466591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -10.0
+offset_right = -10.0
+offset_bottom = 8.000053
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_hvehc")
+stretch_mode = 4
 
 [node name="tuto1" type="Label" parent="CanvasLayer/Screens/HUD" unique_id=1423126642]
 visible = false

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hmo0bngnvdqj" path="res://scenes/entities/player/dome.tscn" id="7_7rg7d"]
 [ext_resource type="PackedScene" uid="uid://dvqd0ooccv04c" path="res://scenes/camera_2d.tscn" id="7_xmnyv"]
 [ext_resource type="PackedScene" uid="uid://b5k4wrsldj08p" path="res://scenes/entities/enemies/egg_enemy.tscn" id="8_6370d"]
+[ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/enemies/frog_enemy.tscn" id="8_fojqs"]
 [ext_resource type="PackedScene" uid="uid://d352piharubl" path="res://scenes/entities/enemies/fly_enemy.tscn" id="8_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://d0oe0ioiyxgar" path="res://assets/sprites/dome/enviro/Foreground_01.png" id="9_oi2tv"]
 [ext_resource type="Texture2D" uid="uid://by7wkobibgtv7" path="res://assets/sprites/dome/enviro/background_placeholder3.png" id="10_r0gsk"]
@@ -23,7 +24,7 @@ script = ExtResource("2_fojqs")
 shake_duration = 0.3
 metadata/_custom_type_script = "uid://b3sjd2wth0hut"
 
-[sub_resource type="Resource" id="Resource_fojqs"]
+[sub_resource type="Resource" id="Resource_uk881"]
 resource_local_to_scene = true
 script = ExtResource("2_yqjtg")
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
@@ -40,7 +41,7 @@ shakers = Dictionary[String, ExtResource("2_fojqs")]({
 
 [node name="Dome" parent="." unique_id=136624599 instance=ExtResource("7_7rg7d")]
 position = Vector2(1, 108)
-_health = SubResource("Resource_fojqs")
+_health = SubResource("Resource_uk881")
 
 [node name="GameUI" parent="." unique_id=1363906567 instance=ExtResource("5_cx7qy")]
 
@@ -55,48 +56,58 @@ ignore_time_scale = true
 
 [node name="SpawnersA" type="Node2D" parent="SpawnManager" unique_id=1160965866]
 
-[node name="EnemySpawner1" parent="SpawnManager/SpawnersA" unique_id=761262919 instance=ExtResource("6_p57ef")]
-position = Vector2(450, -37)
-spawn_range = 50.0
-cooldown_range = Vector2(1, 5)
+[node name="EnemySpawner1" parent="SpawnManager/SpawnersA" unique_id=761262919 node_paths=PackedStringArray("spawnPoints") instance=ExtResource("6_p57ef")]
+cooldown_range = Vector2(5, 15)
+spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint_2")]
 
 [node name="WaveTimer" parent="SpawnManager/SpawnersA/EnemySpawner1" index="1" unique_id=339017835]
-wait_time = 5.0
+wait_time = 30.0
+
+[node name="SpawnPoint" parent="SpawnManager/SpawnersA/EnemySpawner1" index="2" unique_id=549486642]
+position = Vector2(450, -37)
+
+[node name="SpawnPoint_2" type="Node2D" parent="SpawnManager/SpawnersA/EnemySpawner1" unique_id=1630493473]
+position = Vector2(-458, -48)
 
 [node name="EnemySpawner2" parent="SpawnManager/SpawnersA" unique_id=357071477 instance=ExtResource("6_p57ef")]
-position = Vector2(-458, -48)
-spawn_range = 50.0
-cooldown_range = Vector2(1, 5)
+cooldown_range = Vector2(10, 15)
+enemies = Array[PackedScene]([ExtResource("8_fojqs"), ExtResource("8_6370d")])
 
 [node name="WaveTimer" parent="SpawnManager/SpawnersA/EnemySpawner2" index="1" unique_id=339017835]
-wait_time = 5.0
+wait_time = 30.0
+
+[node name="SpawnPoint" parent="SpawnManager/SpawnersA/EnemySpawner2" index="2" unique_id=549486642]
+position = Vector2(-458, 25)
+
+[node name="SpawnPoint2" type="Node2D" parent="SpawnManager/SpawnersA/EnemySpawner2" unique_id=1751444577]
+position = Vector2(500, 25)
 
 [node name="EnemySpawner3" parent="SpawnManager/SpawnersA" unique_id=609712869 instance=ExtResource("6_p57ef")]
-position = Vector2(-42, -474)
-spawn_range = 200.0
-cooldown_range = Vector2(1, 5)
-enemy = ExtResource("8_oi2tv")
+cooldown_range = Vector2(10, 15)
+enemies = Array[PackedScene]([ExtResource("8_oi2tv")])
 
 [node name="WaveTimer" parent="SpawnManager/SpawnersA/EnemySpawner3" index="1" unique_id=339017835]
-wait_time = 5.0
+wait_time = 30.0
+
+[node name="SpawnPoint" parent="SpawnManager/SpawnersA/EnemySpawner3" index="2" unique_id=549486642]
+position = Vector2(487, -451)
 
 [node name="EnemySpawner4" parent="SpawnManager/SpawnersA" unique_id=413920337 instance=ExtResource("6_p57ef")]
-position = Vector2(-42, -474)
-spawn_range = 200.0
-cooldown_range = Vector2(1, 5)
-enemy = ExtResource("8_oi2tv")
+cooldown_range = Vector2(5, 20)
+enemies = Array[PackedScene]([ExtResource("8_fojqs"), ExtResource("8_6370d")])
 
 [node name="WaveTimer" parent="SpawnManager/SpawnersA/EnemySpawner4" index="1" unique_id=339017835]
-wait_time = 5.0
+wait_time = 30.0
 
 [node name="EnemySpawner5" parent="SpawnManager/SpawnersA" unique_id=235952603 instance=ExtResource("6_p57ef")]
-position = Vector2(-459, 1)
-spawn_range = 0.0
-cooldown_range = Vector2(1, 5)
-enemy = ExtResource("8_6370d")
+cooldown_range = Vector2(3, 20)
+enemies = Array[PackedScene]([ExtResource("8_oi2tv")])
 
 [node name="WaveTimer" parent="SpawnManager/SpawnersA/EnemySpawner5" index="1" unique_id=339017835]
-wait_time = 5.0
+wait_time = 30.0
+
+[node name="SpawnPoint" parent="SpawnManager/SpawnersA/EnemySpawner5" index="2" unique_id=549486642]
+position = Vector2(-431, -462)
 
 [node name="Sounds" type="Node2D" parent="." unique_id=228741160]
 

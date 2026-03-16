@@ -29,7 +29,7 @@ func end_game():
 func _process(_delta):
 	GameManager.game_time = roundi(_timer.time_left)
 	var elapsedTime = _timer.wait_time - _timer.time_left
-	print(index, " ", waves.size())
+	#print(index, " ", waves.size())
 	if !_timer.is_stopped():
 		print(roundf(elapsedTime))
 
@@ -40,6 +40,6 @@ func _process(_delta):
 		else:
 			var next = waves[index + 1]
 			next.start()
-			#print("wave ", index, " completed!")
+			print("wave ", index, " completed!")
 			index += 1
 			GameManager.waveData = Vector2(index, waves.size())

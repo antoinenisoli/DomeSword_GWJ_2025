@@ -1,11 +1,12 @@
 extends Node2D
 class_name Spawner
 
-@export var spawn_range: float = 100
-@export var cooldown_range: Vector2
-@export var enemy: PackedScene
 @export var cooldown: Timer
 @export var waveTimer: Timer
+@export var spawn_range: float = 100
+@export var cooldown_range: Vector2
+@export var enemies: Array[PackedScene]
+@export var spawnPoints: Array[Node2D]
 var waveDone: bool
 
 func start():
@@ -24,12 +25,13 @@ func _on_cooldown_timeout() -> void:
     spawn()
 
 func spawn_enemy() -> void:
-    var _enemy = enemy.instantiate()
+    var _enemy = enemies.pick_random().instantiate()
     get_tree().current_scene.add_child(_enemy)
 
     var randomOffset = (Vector2.RIGHT * randf_range(0, spawn_range)).rotated(randf_range(0, PI))
     #print(randomOffset)
-    _enemy.position = position + randomOffset
+    var spawnArea = spawnPoints.pick_random()
+    _enemy.position = spawnArea.position + randomOffset
     _enemy.rotation = rotation
 
 func spawn():

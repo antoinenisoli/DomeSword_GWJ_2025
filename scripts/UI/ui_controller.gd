@@ -13,6 +13,8 @@ func _ready() -> void:
 	gameover_screen.visible = false
 	EventManager.collect_ammo.connect(spawn_ammo_text)
 	EventManager.on_game_started.connect(hide_tuto)
+	EventManager.on_game_win.connect(game_over)
+	
 	EventManager.on_player_killed.connect(game_over)
 	EventManager.on_enemy_killed.connect(func f(_args) -> void:
 		enemy_txt.text = str(GameManager.enemy_killed)

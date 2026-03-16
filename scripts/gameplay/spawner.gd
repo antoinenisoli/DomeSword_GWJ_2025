@@ -1,20 +1,23 @@
 extends Node2D
 class_name Spawner
 
-@export var time_frame: Vector2
 @export var spawn_range: float = 100
 @export var cooldown_range: Vector2
 @export var enemy: PackedScene
 @export var cooldown: Timer
+@export var waveTimer: Timer
+var waveDone: bool
 
 func start():
+    waveTimer.start()
     cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
     cooldown.start()
-    #print("start wave ", time_frame.x, time_frame.y)
+    print("start wave ", waveTimer.wait_time)
     pass
 
-func stop():
+func _on_wave_timeout() -> void:
     cooldown.stop()
+    waveDone = true
     #print("stop wave ", time_frame.x, time_frame.y)
 
 func _on_cooldown_timeout() -> void:

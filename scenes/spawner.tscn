@@ -3,13 +3,19 @@
 [ext_resource type="Script" uid="uid://cspl7fwiehio3" path="res://scripts/gameplay/spawner.gd" id="1_2vbf6"]
 [ext_resource type="PackedScene" uid="uid://byxfdf0x8un4k" path="res://scenes/entities/enemies/frog_enemy.tscn" id="2_ik2nu"]
 
-[node name="Spawner" type="Node2D" node_paths=PackedStringArray("cooldown")]
+[node name="Spawner" type="Node2D" unique_id=497935836 node_paths=PackedStringArray("cooldown", "waveTimer")]
 script = ExtResource("1_2vbf6")
 cooldown_range = Vector2(2, 10)
 enemy = ExtResource("2_ik2nu")
 cooldown = NodePath("cooldown")
+waveTimer = NodePath("WaveTimer")
 
-[node name="cooldown" type="Timer" parent="."]
+[node name="cooldown" type="Timer" parent="." unique_id=287662801]
+
+[node name="WaveTimer" type="Timer" parent="." unique_id=339017835]
+wait_time = 60.0
+one_shot = true
 
 [connection signal="child_entered_tree" from="cooldown" to="." method="_on_cooldown_child_entered_tree"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timeout"]

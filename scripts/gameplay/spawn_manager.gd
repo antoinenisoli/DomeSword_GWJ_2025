@@ -17,7 +17,9 @@ func get_game_duration() -> float:
 
 func start_game():
 	GameManager.waveData = Vector2(1, waves.size())
-	waves[0].start()
+	waves[index].start(1)
+	print("start wave ", 1)
+
 	_timer.wait_time = get_game_duration()
 	_timer.start()
 
@@ -28,10 +30,7 @@ func end_game():
 	
 func _process(_delta):
 	GameManager.game_time = roundi(_timer.time_left)
-	var elapsedTime = _timer.wait_time - _timer.time_left
 	#print(index, " ", waves.size())
-	if !_timer.is_stopped():
-		print(roundf(elapsedTime))
 
 	var current = waves[index]
 	if current.waveDone:

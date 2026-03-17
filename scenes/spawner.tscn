@@ -13,6 +13,7 @@ enemies = Array[PackedScene]([ExtResource("2_ik2nu")])
 spawnPoints = [NodePath("SpawnPoint")]
 
 [node name="cooldown" type="Timer" parent="." unique_id=287662801]
+wait_time = 10.0
 
 [node name="WaveTimer" type="Timer" parent="." unique_id=339017835]
 wait_time = 60.0

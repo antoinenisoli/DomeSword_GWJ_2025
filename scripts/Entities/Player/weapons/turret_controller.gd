@@ -5,7 +5,7 @@ class_name Turret
 @export var rotate_speed: float = 0.8
 
 func _ready():
-    print(owner)
+    #print(owner)
     _shooting.on_bullet_shot.connect(on_bullet_shot)
     EventManager.collect_ammo.connect(ammo_from_sword)
 
@@ -21,7 +21,7 @@ func on_bullet_shot(bullet) -> void:
     print("shoot anim!!")
     weapon_support.sprite.play("shoot")
     AudioManager.play_sound("jump", Vector2(0.8, 1.2))
-    bullet.init(self)
+    bullet.init(self )
     weapons.turret_ammo.shoot()
 
 func rotate_turret(_delta: float) -> void:

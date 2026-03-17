@@ -9,12 +9,14 @@ class_name Spawner
 @export var spawnPoints: Array[Node2D]
 var waveDone: bool
 
-func start():
+func start(delay: float = 0):
     waveTimer.start()
-    cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
+    if delay != 0:
+        cooldown.wait_time = delay
+    else:
+        cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
+
     cooldown.start()
-    print("start wave ", waveTimer.wait_time)
-    pass
 
 func _on_wave_timeout() -> void:
     cooldown.stop()
@@ -37,5 +39,4 @@ func spawn_enemy() -> void:
 func spawn():
     spawn_enemy()
     cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
-    #print(cooldown.wait_time)
-    pass
+    print("spawn enemy: ", cooldown.wait_time)

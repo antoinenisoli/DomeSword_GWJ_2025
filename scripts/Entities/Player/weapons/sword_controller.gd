@@ -104,6 +104,7 @@ func _process(_delta: float):
 
 func play_vfx(body) -> void:
     var fx = FxManager.spawn_fx("blood_stream", body.position)
+    print(fx)
     fx.anim.flip_h = target_velocity > 0
 
 func attack_enemy(enemy: Enemy) -> void:
@@ -113,7 +114,7 @@ func attack_enemy(enemy: Enemy) -> void:
         return
 
     TimeManager.slow_motion(slowMo)
-    play_vfx(enemy)
+    play_vfx(enemy.get_parent())
     EventManager.on_sword_hit.emit(dmg)
 
     enemy.takeDmg(dmg)

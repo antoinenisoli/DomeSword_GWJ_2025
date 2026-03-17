@@ -306,7 +306,7 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_nwdrs")
 speed = 50.0
-min_distance = 200.0
+min_distance = 150.0
 enemy = NodePath("Frog_Entity")
 push_cooldown = NodePath("pushedCooldown")
 
@@ -354,14 +354,14 @@ speed_scale = 2.0
 
 [node name="Steering" type="Node2D" parent="." unique_id=1949269131 node_paths=PackedStringArray("collision_ray", "avoidance_ray", "line", "body")]
 script = ExtResource("6_wmmkl")
-collision_ray = NodePath("RayCast2D")
+collision_ray = NodePath("CollisionRay")
 avoidance_ray = NodePath("AvoidanceRay")
 line = NodePath("ObstacleLine")
 body = NodePath("..")
 max_ahead = 150.0
 max_avoidance = 250.0
 
-[node name="RayCast2D" type="RayCast2D" parent="Steering" unique_id=1127945971]
+[node name="CollisionRay" type="RayCast2D" parent="Steering" unique_id=1127945971]
 
 [node name="AvoidanceRay" type="RayCast2D" parent="Steering" unique_id=979331868]
 self_modulate = Color(18.892157, 0, 1.1297288, 1)

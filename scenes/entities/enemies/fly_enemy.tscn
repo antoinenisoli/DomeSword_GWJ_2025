@@ -249,7 +249,6 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_hucf0")
 speed = 50.0
-min_distance = 500.0
 enemy = NodePath("Entity")
 push_cooldown = NodePath("pushedCooldown")
 

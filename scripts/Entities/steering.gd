@@ -18,8 +18,8 @@ func avoid_obstacle(obstacle_center: Vector2):
 func _process(_delta):
 	collision_ray.target_position = body.linear_velocity.normalized() * max_ahead
 	line.set_point_position(0, Vector2(0, 0))
-	
-	if collision_ray.is_colliding():
+
+	if collision_ray.is_colliding() && collision_ray.get_collider().is_in_group("Enemies"):
 		avoid_obstacle(collision_ray.get_collider().position)
 	else:
 		avoidance_ray.target_position = Vector2(0, 0)

@@ -12,6 +12,7 @@
 [sub_resource type="Resource" id="Resource_dqkch"]
 resource_local_to_scene = true
 script = ExtResource("3_bstcn")
+max_hp = 50
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3mc5"]
@@ -37,7 +38,7 @@ animations = [{
 bg_color = Color(0, 0, 0, 0.57254905)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfv3k"]
-bg_color = Color(1, 0, 0.015686275, 0.31764707)
+bg_color = Color(1, 0, 0.015686275, 0.3529412)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_si0v0"]
 atlas = ExtResource("8_l7o3r")
@@ -72,7 +73,7 @@ animations = [{
 script = ExtResource("1_si0v0")
 _health = SubResource("Resource_dqkch")
 sprite = NodePath("visuals/dome_sprite")
-hitColor = Color(2.2639842, 2.2639842, 2.2639842, 1)
+hitColor = Color(6.3913965, 6.3913965, 6.3913965, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1925208748]
 visible = false
@@ -90,6 +91,7 @@ anchor = NodePath("..")
 [node name="visuals" type="Node2D" parent="." unique_id=1816065891]
 
 [node name="dome_sprite" type="AnimatedSprite2D" parent="visuals" unique_id=124675442]
+modulate = Color(6.1466823, 6.1466823, 6.1466823, 1)
 clip_children = 2
 z_index = -5
 position = Vector2(0, -62)
@@ -101,9 +103,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -60.0
+offset_left = -58.0
 offset_top = -130.0
-offset_right = -70.0
+offset_right = -72.0
 offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0

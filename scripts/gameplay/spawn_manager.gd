@@ -38,7 +38,7 @@ func _process(_delta):
 			end_game()
 		else:
 			var next = waves[index + 1]
-			next.start()
+			next.start(1)
 			print("wave ", index, " completed!")
 			index += 1
 			GameManager.waveData = Vector2(index, waves.size())

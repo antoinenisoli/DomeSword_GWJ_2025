@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2prflq4kr3yx" path="res://assets/sprites/UI/icons/blue/arrow_right.png" id="6_dx2j5"]
 
 [sub_resource type="Gradient" id="Gradient_gwb47"]
-colors = PackedColorArray(1, 1, 1, 1, 0.44832852, 1.6553112, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.6381526, 1.6553911, 1)
 
 [sub_resource type="Curve" id="Curve_232hh"]
 _data = [Vector2(0, 0), 0.0, -5.097836, 0, 0, Vector2(0.5, 1), -5.425904, -5.425904, 0, 0, Vector2(0.8, 0.1), -1.2075583, -1.2075583, 0, 0, Vector2(1, 0), -0.35753322, 0.0, 0, 0]
@@ -14,7 +14,7 @@ point_count = 4
 metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ph48"]
-size = Vector2(4.959635, 12.508177)
+size = Vector2(8, 13)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3pnln"]
 resource_local_to_scene = true
@@ -54,8 +54,8 @@ ignore_time_scale = true
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=89443418]
-position = Vector2(0, -161.18437)
-scale = Vector2(8.669998, 22.945)
+position = Vector2(0, -161.18434)
+scale = Vector2(8.669996, 22.944996)
 shape = SubResource("RectangleShape2D_0ph48")
 
 [node name="Control" type="Control" parent="." unique_id=2079307278]

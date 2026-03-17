@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cplgp60jm7ofw"]
+[gd_scene format=3 uid="uid://cplgp60jm7ofw"]
 
 [ext_resource type="Script" uid="uid://dmt32mip85esf" path="res://scripts/autodestroy_fx.gd" id="1_obqis"]
 [ext_resource type="Texture2D" uid="uid://cuqhe01ag8xjd" path="res://assets/sprites/fx/bldfx1_blood_stream_C_large_orange/spritesheet.png" id="2_obqis"]
@@ -74,13 +74,14 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="BloodStream" type="Node2D"]
+[node name="BloodStream" type="Node2D" unique_id=885708601]
+scale = Vector2(2, 2)
 script = ExtResource("1_obqis")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=774137918]
 sprite_frames = SubResource("SpriteFrames_0gthp")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.8941144
+frame_progress = 0.39204693
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]

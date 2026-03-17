@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1eu2jc3tnqsy"]
+[gd_scene format=3 uid="uid://d1eu2jc3tnqsy"]
 
 [ext_resource type="Script" uid="uid://dxy21mwprena5" path="res://scripts/UI/floating_text.gd" id="1_0htfi"]
 [ext_resource type="FontFile" uid="uid://7c3dgnsy1yfo" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_38qr0"]
 
-[node name="FloatingText" type="Node2D" node_paths=PackedStringArray("txt")]
+[node name="FloatingText" type="Node2D" unique_id=2034161568 node_paths=PackedStringArray("txt")]
 scale = Vector2(0.125, 0.125)
 script = ExtResource("1_0htfi")
 txt = NodePath("RichTextLabel")
 up_offset = Vector2(0, -50)
 tween_duration = 1.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=923139114]
 custom_minimum_size = Vector2(1000, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,7 +23,7 @@ offset_right = 500.0
 offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(1, 1, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_38qr0")
 theme_override_font_sizes/normal_font_size = 105
 bbcode_enabled = true

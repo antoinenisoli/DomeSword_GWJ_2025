@@ -39,4 +39,5 @@ func spawn_enemy() -> void:
 func spawn():
     spawn_enemy()
     cooldown.wait_time = randf_range(cooldown_range.x, cooldown_range.y)
-    print("spawn enemy: ", cooldown.wait_time)
+    cooldown.start()
+    print(self.name, " spawn enemy: ", cooldown.wait_time)

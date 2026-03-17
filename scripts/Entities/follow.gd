@@ -6,13 +6,18 @@ class_name Follow
 @export var target: Node2D
 @export var enemy: Enemy
 @export var push_cooldown: Timer
+@export var steering: Steering
 var enemy_state: Enums.ENEMY_STATE
 
 func direction() -> Vector2:
     if !target:
         return Vector2.ZERO
 
-    return (target.position - position).normalized()
+    var dir = (target.position - position).normalized()
+    if steering:
+        dir += steering.avoidance_ray.target_position
+        
+    return dir
 
 func stop() -> void:
     enemy_state = Enums.ENEMY_STATE.IDLE

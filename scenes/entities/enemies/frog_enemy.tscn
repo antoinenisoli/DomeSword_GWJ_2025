@@ -301,7 +301,10 @@ _data = {
 &"death_jump": SubResource("Animation_jr1g6")
 }
 
-[node name="Frog" type="RigidBody2D" unique_id=1267947820 node_paths=PackedStringArray("enemy", "push_cooldown") groups=["Enemies"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmmkl"]
+radius = 20.0
+
+[node name="Frog" type="RigidBody2D" unique_id=1267947820 node_paths=PackedStringArray("enemy", "push_cooldown", "steering") groups=["Enemies"]]
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_nwdrs")
@@ -309,6 +312,7 @@ speed = 50.0
 min_distance = 150.0
 enemy = NodePath("Frog_Entity")
 push_cooldown = NodePath("pushedCooldown")
+steering = NodePath("Steering")
 
 [node name="Frog_Entity" type="Node2D" parent="." unique_id=1208964928 node_paths=PackedStringArray("_shooting", "shadow", "anim", "sprite") groups=["Enemies"]]
 script = ExtResource("2_v8emy")
@@ -353,15 +357,14 @@ libraries/ = SubResource("AnimationLibrary_4fpkd")
 speed_scale = 2.0
 
 [node name="Steering" type="Node2D" parent="." unique_id=1949269131 node_paths=PackedStringArray("collision_ray", "avoidance_ray", "line", "body")]
+visible = false
 script = ExtResource("6_wmmkl")
 collision_ray = NodePath("CollisionRay")
 avoidance_ray = NodePath("AvoidanceRay")
 line = NodePath("ObstacleLine")
 body = NodePath("..")
-max_ahead = 150.0
-max_avoidance = 250.0
-
-[node name="CollisionRay" type="RayCast2D" parent="Steering" unique_id=1127945971]
+max_ahead = 200.0
+max_avoidance = 10.0
 
 [node name="AvoidanceRay" type="RayCast2D" parent="Steering" unique_id=979331868]
 self_modulate = Color(18.892157, 0, 1.1297288, 1)
@@ -369,10 +372,14 @@ target_position = Vector2(36, 49)
 collide_with_bodies = false
 
 [node name="ObstacleLine" type="Line2D" parent="Steering" unique_id=1476141731]
-visible = false
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.5
 default_color = Color(0.3499999, 1, 0, 1)
+
+[node name="CollisionRay" type="ShapeCast2D" parent="Steering" unique_id=1232345504]
+self_modulate = Color(1, 1, 1, 0.39215687)
+shape = SubResource("CircleShape2D_wmmkl")
+max_results = 1
 
 [connection signal="damage_taken" from="Frog_Entity" to="Frog_Entity" method="_on_damage_taken"]
 

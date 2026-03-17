@@ -33,7 +33,7 @@ func _process(_delta):
 	#print(index, " ", waves.size())
 
 	var current = waves[index]
-	if current.waveDone:
+	if current.waveDone || current.process_mode == ProcessMode.PROCESS_MODE_DISABLED:
 		if index + 1 == waves.size():
 			end_game()
 		else:

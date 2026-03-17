@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d352piharubl"]
+[gd_scene format=3 uid="uid://d352piharubl"]
 
 [ext_resource type="Script" uid="uid://cpdgxp65xk74c" path="res://scripts/Entities/follow.gd" id="1_hucf0"]
 [ext_resource type="Script" uid="uid://ci8pvrmrt3e2s" path="res://scripts/Entities/Enemies/enemy.gd" id="2_wdgjv"]
@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_jr1g6"]
 resource_local_to_scene = true
 script = ExtResource("3_xe7in")
-max_hp = 15
+max_hp = 6
 metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
@@ -244,7 +244,7 @@ _data = {
 &"death_jump": SubResource("Animation_jr1g6")
 }
 
-[node name="Fly" type="RigidBody2D" node_paths=PackedStringArray("enemy", "push_cooldown") groups=["Enemies"]]
+[node name="Fly" type="RigidBody2D" unique_id=461512460 node_paths=PackedStringArray("enemy", "push_cooldown") groups=["Enemies"]]
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_hucf0")
@@ -253,7 +253,7 @@ min_distance = 500.0
 enemy = NodePath("Entity")
 push_cooldown = NodePath("pushedCooldown")
 
-[node name="Entity" type="Node2D" parent="." node_paths=PackedStringArray("_shooting", "anim", "sprite") groups=["Enemies"]]
+[node name="Entity" type="Node2D" parent="." unique_id=1858895915 node_paths=PackedStringArray("_shooting", "anim", "sprite") groups=["Enemies"]]
 script = ExtResource("2_wdgjv")
 _shooting = NodePath("../shoot")
 anim = NodePath("../AnimationPlayer")
@@ -264,28 +264,26 @@ _health = SubResource("Resource_jr1g6")
 sprite = NodePath("../CollisionShape2D/AnimatedSprite2D")
 hitColor = Color(4.6165767, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152108392]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_4ra3w")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=701568545]
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"move"
 autoplay = "idle"
 frame_progress = 0.55155116
 
-[node name="shoot" parent="." instance=ExtResource("5_1uv0x")]
+[node name="shoot" parent="." unique_id=1887724282 instance=ExtResource("5_1uv0x")]
 position = Vector2(8.5, -1)
 shoot_rate = 1.0
 
-[node name="pushedCooldown" type="Timer" parent="."]
+[node name="pushedCooldown" type="Timer" parent="." unique_id=982569780]
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=495114900]
 process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_4fpkd")
-}
+libraries/ = SubResource("AnimationLibrary_4fpkd")
 speed_scale = 2.0
 
 [connection signal="damage_taken" from="Entity" to="Entity" method="_on_damage_taken"]

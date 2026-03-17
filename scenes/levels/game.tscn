@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pmrhth1mkfnr"]
 
 [ext_resource type="Script" uid="uid://b3sjd2wth0hut" path="res://scripts/camera/camera_shake.gd" id="2_fojqs"]
+[ext_resource type="Script" uid="uid://ckfsoeqxbgpdo" path="res://scripts/Entities/Health.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://crkwkw4c7tgkv" path="res://scenes/UI/game_ui.tscn" id="5_cx7qy"]
 [ext_resource type="Script" uid="uid://bkfig22cimxdt" path="res://scripts/gameplay/spawn_manager.gd" id="6_oi2tv"]
 [ext_resource type="PackedScene" uid="uid://b2rl7rcfgc1gi" path="res://scenes/spawner.tscn" id="6_p57ef"]
@@ -15,13 +16,19 @@
 
 [sub_resource type="Resource" id="Resource_eiv1w"]
 script = ExtResource("2_fojqs")
-shake_amount = 7
+shake_amount = 15
 metadata/_custom_type_script = "uid://b3sjd2wth0hut"
 
 [sub_resource type="Resource" id="Resource_bgnkb"]
 script = ExtResource("2_fojqs")
 shake_duration = 0.3
 metadata/_custom_type_script = "uid://b3sjd2wth0hut"
+
+[sub_resource type="Resource" id="Resource_6370d"]
+resource_local_to_scene = true
+script = ExtResource("2_yqjtg")
+max_hp = 50
+metadata/_custom_type_script = "uid://ckfsoeqxbgpdo"
 
 [node name="Game" type="Node2D" unique_id=1227426491]
 
@@ -35,10 +42,12 @@ shakers = Dictionary[String, ExtResource("2_fojqs")]({
 
 [node name="Dome" parent="." unique_id=136624599 instance=ExtResource("7_7rg7d")]
 position = Vector2(1, 105)
+_health = SubResource("Resource_6370d")
 
 [node name="GameUI" parent="." unique_id=1363906567 instance=ExtResource("5_cx7qy")]
 
 [node name="SpawnManager" type="Node2D" parent="." unique_id=1678798602 node_paths=PackedStringArray("_timer", "waves")]
+process_mode = 4
 script = ExtResource("6_oi2tv")
 _timer = NodePath("Timer")
 waves = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5")]
@@ -135,6 +144,12 @@ position = Vector2(1.0000001, 69.999985)
 scale = Vector2(1.325, 1.3333334)
 texture = ExtResource("9_oi2tv")
 metadata/_edit_lock_ = true
+
+[node name="Frog" parent="." unique_id=1267947820 instance=ExtResource("8_fojqs")]
+position = Vector2(-165, -85)
+
+[node name="Frog2" parent="." unique_id=926049314 instance=ExtResource("8_fojqs")]
+position = Vector2(-296, -240)
 
 [editable path="SpawnManager/Spawners/EnemySpawner1"]
 [editable path="SpawnManager/Spawners/EnemySpawner2"]
